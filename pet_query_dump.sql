@@ -48,7 +48,7 @@ DROP TABLE IF EXISTS `application`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `application` (
   `AppID` varchar(45) NOT NULL,
-  `App Status` int NOT NULL,
+  `AppStatus` int NOT NULL,
   PRIMARY KEY (`AppID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -97,13 +97,8 @@ DROP TABLE IF EXISTS `create`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `create` (
   `Username` varchar(45) NOT NULL,
-  `UsrName` varchar(45) NOT NULL,
-  `Email` varchar(45) NOT NULL,
-  `Date` varchar(45) NOT NULL,
-  `Time` varchar(45) NOT NULL,
   `AppointmentID` varchar(45) NOT NULL,
-  PRIMARY KEY (`Username`),
-  UNIQUE KEY `Email_UNIQUE` (`Email`)
+  PRIMARY KEY (`Username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -113,7 +108,7 @@ CREATE TABLE `create` (
 
 LOCK TABLES `create` WRITE;
 /*!40000 ALTER TABLE `create` DISABLE KEYS */;
-INSERT INTO `create` VALUES ('username1','Oliver Grant','oliver.grant@gmail.com','10/01/2024','1:00 PM','AP-001'),('username10','Grace Mitchell','grace.mitchell@gmail.com','10/03/2024','2:00 PM','AP-010'),('username2','Amelia Collins','amelia.collins@gmail.com','10/01/2024','2:00 PM','AP-002'),('username3','Ethan Reed','ethan.reed@gmail.com','10/01/2024','3:00 PM','AP-003'),('username4','Sophia Bennett','sophia.bennett@gmail.com','10/01/2024','4:00 PM','AP-004'),('username5','Jackson Hayes','jackson.hayes@gmail.com','10/02/2024','1:00 PM','AP-005'),('username6','Lily Carter','lily.carter@gmail.com','10/02/2024','2:00 PM','AP-006'),('username7','Mason Brooks','mason.brooks@gmail.com','10/02/2024','3:00 PM','AP-007'),('username8','Ava Sullivan','ava.sullivan@gmail.com','10/02/2024','4:00 PM','AP-008'),('username9','Liam Turner','liam.turner@gmail.com','10/03/2024','1:00 PM','AP-009');
+INSERT INTO `create` VALUES ('username1','AP-001'),('username10','AP-010'),('username2','AP-002'),('username3','AP-003'),('username4','AP-004'),('username5','AP-005'),('username6','AP-006'),('username7','AP-007'),('username8','AP-008'),('username9','AP-009');
 /*!40000 ALTER TABLE `create` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -126,10 +121,6 @@ DROP TABLE IF EXISTS `organized`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `organized` (
   `OrgID` varchar(45) NOT NULL,
-  `Address` varchar(45) NOT NULL,
-  `Org Name` varchar(45) NOT NULL,
-  `Date` varchar(45) NOT NULL,
-  `Time` varchar(45) NOT NULL,
   `AppointmentID` varchar(45) NOT NULL,
   PRIMARY KEY (`OrgID`,`AppointmentID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -141,7 +132,7 @@ CREATE TABLE `organized` (
 
 LOCK TABLES `organized` WRITE;
 /*!40000 ALTER TABLE `organized` DISABLE KEYS */;
-INSERT INTO `organized` VALUES ('408-262-2133','901 Ames Ave. Milpitas, CA 95035','Humane Society Silicon Valley','10/02/2024','1:00 PM','AP-005'),('408-262-2133','901 Ames Ave. Milpitas, CA 95035','Humane Society Silicon Valley','10/02/2024','3:00 PM','AP-007'),('408-262-2133','901 Ames Ave. Milpitas, CA 95035','Humane Society Silicon Valley','10/03/2024','1:00 PM','AP-009'),('408-262-2133','901 Ames Ave. Milpitas, CA 95035','Humane Society Silicon Valley','10/03/2024','2:00 PM','AP-010'),('408-337-2339','702 East Julian Street, San Jose, CA, 95112','The Dancing Cat','10/01/2024','2:00 PM','AP-002'),('408-337-2339','702 East Julian Street, San Jose, CA, 95112','The Dancing Cat','10/01/2024','4:00 PM','AP-004'),('408-337-2339','702 East Julian Street, San Jose, CA, 95112','The Dancing Cat','10/02/2024','2:00 PM','AP-006'),('408-794-7297','2750 Monterey Road, San Jose, CA 95111','San Jose Animal Care Center','10/01/2024','1:00 PM','AP-001'),('408-794-7297','2750 Monterey Road, San Jose, CA 95111','San Jose Animal Care Center','10/01/2024','3:00 PM','AP-003'),('408-794-7297','2750 Monterey Road, San Jose, CA 95111','San Jose Animal Care Center','10/02/2024','4:00 PM','AP-008');
+INSERT INTO `organized` VALUES ('408-262-2133','AP-005'),('408-262-2133','AP-007'),('408-262-2133','AP-009'),('408-262-2133','AP-010'),('408-337-2339','AP-002'),('408-337-2339','AP-004'),('408-337-2339','AP-006'),('408-794-7297','AP-001'),('408-794-7297','AP-003'),('408-794-7297','AP-008');
 /*!40000 ALTER TABLE `organized` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -155,11 +146,6 @@ DROP TABLE IF EXISTS `owns`;
 CREATE TABLE `owns` (
   `OrgID` varchar(45) NOT NULL,
   `PetID` varchar(45) NOT NULL,
-  `Address` varchar(45) NOT NULL,
-  `Org Name` varchar(45) NOT NULL,
-  `Pet Name` varchar(45) NOT NULL,
-  `Age` varchar(45) NOT NULL,
-  `Category` varchar(45) NOT NULL,
   PRIMARY KEY (`OrgID`,`PetID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -170,34 +156,34 @@ CREATE TABLE `owns` (
 
 LOCK TABLES `owns` WRITE;
 /*!40000 ALTER TABLE `owns` DISABLE KEYS */;
-INSERT INTO `owns` VALUES ('408-262-2133','262-2133-001','901 Ames Ave. Milpitas, CA 95035','Humane Society Silicon Valley','Huck','3 Months, 1 Week','Dog & Puppies'),('408-262-2133','262-2133-002','901 Ames Ave. Milpitas, CA 95035','Humane Society Silicon Valley','Dewey','10 Weeks','Dog & Puppies'),('408-262-2133','262-2133-003','901 Ames Ave. Milpitas, CA 95035','Humane Society Silicon Valley','Delta','6 Months, 2 Weeks','Cat & Kittens'),('408-262-2133','262-2133-004','901 Ames Ave. Milpitas, CA 95035','Humane Society Silicon Valley','Kite','5 Months, 4 Weeks','Cat & Kittens'),('408-262-2133','262-2133-005','901 Ames Ave. Milpitas, CA 95035','Humane Society Silicon Valley','Sir Hopsalot','1 Year, 1 Month','Rabbits'),('408-262-2133','262-2133-006','901 Ames Ave. Milpitas, CA 95035','Humane Society Silicon Valley','Tawny','10 Weeks','Dog & Puppies'),('408-337-2339','337-2339-001','702 East Julian Street, San Jose, CA, 95112','The Dancing Cat','Galen','2 Years','Cat & Kittens'),('408-337-2339','337-2339-002','702 East Julian Street, San Jose, CA, 95112','The Dancing Cat','Dora','6 Months','Cat & Kittens'),('408-337-2339','337-2339-003','702 East Julian Street, San Jose, CA, 95112','The Dancing Cat','Gogo','1 Year','Cat & Kittens'),('408-337-2339','337-2339-004','702 East Julian Street, San Jose, CA, 95112','The Dancing Cat','Benedict','7 Years, 7 Months','Cat & Kittens'),('408-337-2339','337-2339-005','702 East Julian Street, San Jose, CA, 95112','The Dancing Cat','Foggy','6 Months','Cat & Kittens'),('408-337-2339','337-2339-006','702 East Julian Street, San Jose, CA, 95112','The Dancing Cat','Mercury','2 Years, 9 Months','Cat & Kittens'),('408-794-7297','794-7297-001','2750 Monterey Road, San Jose, CA 95111','San Jose Animal Care Center','Maui','7 Years','Dog & Puppies'),('408-794-7297','794-7297-002','2750 Monterey Road, San Jose, CA 95111','San Jose Animal Care Center','Kylo','7 Years','Dog & Puppies'),('408-794-7297','794-7297-003','2750 Monterey Road, San Jose, CA 95111','San Jose Animal Care Center','Karma','8 Years','Dog & Puppies'),('408-794-7297','794-7297-004','2750 Monterey Road, San Jose, CA 95111','San Jose Animal Care Center','Tiny','4 Years','Cat & Kittens'),('408-794-7297','794-7297-005','2750 Monterey Road, San Jose, CA 95111','San Jose Animal Care Center','Angelo','1 Year, 11 Months','Cat & Kittens'),('408-794-7297','794-7297-006','2750 Monterey Road, San Jose, CA 95111','San Jose Animal Care Center','Emilio','2 Years, 1 Month','Cat & Kittens');
+INSERT INTO `owns` VALUES ('408-262-2133','262-2133-001'),('408-262-2133','262-2133-002'),('408-262-2133','262-2133-003'),('408-262-2133','262-2133-004'),('408-262-2133','262-2133-005'),('408-262-2133','262-2133-006'),('408-337-2339','337-2339-001'),('408-337-2339','337-2339-002'),('408-337-2339','337-2339-003'),('408-337-2339','337-2339-004'),('408-337-2339','337-2339-005'),('408-337-2339','337-2339-006'),('408-794-7297','794-7297-001'),('408-794-7297','794-7297-002'),('408-794-7297','794-7297-003'),('408-794-7297','794-7297-004'),('408-794-7297','794-7297-005'),('408-794-7297','794-7297-006');
 /*!40000 ALTER TABLE `owns` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `pet organization`
+-- Table structure for table `petorganization`
 --
 
-DROP TABLE IF EXISTS `pet organization`;
+DROP TABLE IF EXISTS `petorganization`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `pet organization` (
+CREATE TABLE `petorganization` (
   `OrgID` varchar(45) NOT NULL,
   `Address` varchar(45) NOT NULL,
-  `Org Name` varchar(45) NOT NULL,
-  `Org Email` varchar(45) NOT NULL,
+  `OrgName` varchar(45) NOT NULL,
+  `OrgEmail` varchar(45) NOT NULL,
   PRIMARY KEY (`OrgID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `pet organization`
+-- Dumping data for table `petorganization`
 --
 
-LOCK TABLES `pet organization` WRITE;
-/*!40000 ALTER TABLE `pet organization` DISABLE KEYS */;
-INSERT INTO `pet organization` VALUES ('408-262-2133','901 Ames Ave. Milpitas, CA 95035','Humane Society Silicon Valley','adoptions@hssv.org'),('408-337-2339','702 East Julian Street, San Jose, CA, 95112','The Dancing Cat','info@thedancingcat.org'),('408-794-7297','2750 Monterey Road, San Jose, CA 95111','San Jose Animal Care Center','AdoptAPetSJ@sanjoseca.gov');
-/*!40000 ALTER TABLE `pet organization` ENABLE KEYS */;
+LOCK TABLES `petorganization` WRITE;
+/*!40000 ALTER TABLE `petorganization` DISABLE KEYS */;
+INSERT INTO `petorganization` VALUES ('408-262-2133','901 Ames Ave. Milpitas, CA 95035','Humane Society Silicon Valley','adoptions@hssv.org'),('408-337-2339','702 East Julian Street, San Jose, CA, 95112','The Dancing Cat','info@thedancingcat.org'),('408-794-7297','2750 Monterey Road, San Jose, CA 95111','San Jose Animal Care Center','AdoptAPetSJ@sanjoseca.gov');
+/*!40000 ALTER TABLE `petorganization` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -209,7 +195,7 @@ DROP TABLE IF EXISTS `pets`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `pets` (
   `PetID` varchar(45) NOT NULL,
-  `Pet Name` varchar(45) NOT NULL,
+  `PetName` varchar(45) NOT NULL,
   `Age` varchar(45) NOT NULL,
   `Category` varchar(45) NOT NULL,
   PRIMARY KEY (`PetID`)
@@ -236,8 +222,6 @@ DROP TABLE IF EXISTS `submits`;
 CREATE TABLE `submits` (
   `AppID` varchar(45) NOT NULL,
   `Username` varchar(45) NOT NULL,
-  `UsrName` varchar(45) NOT NULL,
-  `UsrEmail` varchar(45) NOT NULL,
   PRIMARY KEY (`AppID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -248,7 +232,7 @@ CREATE TABLE `submits` (
 
 LOCK TABLES `submits` WRITE;
 /*!40000 ALTER TABLE `submits` DISABLE KEYS */;
-INSERT INTO `submits` VALUES ('A01','username1','Oliver Grant','oliver.grant@gmail.com'),('A010','username10','Grace Mitchell','grace.mitchell@gmail.com'),('A02','username2','Amelia Collins','amelia.collins@gmail.com'),('A03','username3','Ethan Reed','ethan.reed@gmail.com'),('A04','username4','Sophia Bennett','sophia.bennett@gmail.com'),('A05','username5','Jackson Hayes','jackson.hayes@gmail.com'),('A06','username6','Lily Carter','lily.carter@gmail.com'),('A07','username7','Mason Brooks','mason.brooks@gmail.com'),('A08','username8','Ava Sullivan','ava.sullivan@gmail.com'),('A09','username9','Liam Turner','liam.turner@gmail.com');
+INSERT INTO `submits` VALUES ('A01','username1'),('A010','username10'),('A02','username2'),('A03','username3'),('A04','username4'),('A05','username5'),('A06','username6'),('A07','username7'),('A08','username8'),('A09','username9');
 /*!40000 ALTER TABLE `submits` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -290,4 +274,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-09-29 18:49:00
+-- Dump completed on 2024-10-01 11:13:30
