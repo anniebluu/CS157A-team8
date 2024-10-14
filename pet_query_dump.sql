@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.38, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.38, for macos14 (arm64)
 --
--- Host: localhost    Database: chu
+-- Host: localhost    Database: petquery
 -- ------------------------------------------------------
--- Server version	9.0.1
+-- Server version	8.0.39
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -23,9 +23,9 @@ DROP TABLE IF EXISTS `adopts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `adopts` (
-  `Username` varchar(45) NOT NULL,
+  `UserID` varchar(45) NOT NULL,
   `PetID` varchar(45) NOT NULL,
-  PRIMARY KEY (`Username`,`PetID`)
+  PRIMARY KEY (`UserID`,`PetID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -40,86 +40,87 @@ INSERT INTO `adopts` VALUES ('username1','794-7297-002'),('username10','262-2133
 UNLOCK TABLES;
 
 --
--- Table structure for table `application`
+-- Table structure for table `applications`
 --
 
-DROP TABLE IF EXISTS `application`;
+DROP TABLE IF EXISTS `applications`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `application` (
-  `AppID` varchar(45) NOT NULL,
+CREATE TABLE `applications` (
+  `ApplicationID` varchar(45) NOT NULL,
   `AppStatus` int NOT NULL,
-  PRIMARY KEY (`AppID`)
+  PRIMARY KEY (`ApplicationID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `application`
+-- Dumping data for table `applications`
 --
 
-LOCK TABLES `application` WRITE;
-/*!40000 ALTER TABLE `application` DISABLE KEYS */;
-INSERT INTO `application` VALUES ('A01',0),('A02',0),('A03',0),('A04',0),('A05',0),('A06',0),('A07',0),('A08',0),('A09',0),('A10',0);
-/*!40000 ALTER TABLE `application` ENABLE KEYS */;
+LOCK TABLES `applications` WRITE;
+/*!40000 ALTER TABLE `applications` DISABLE KEYS */;
+INSERT INTO `applications` VALUES ('A01',0),('A02',0),('A03',0),('A04',0),('A05',0),('A06',0),('A07',0),('A08',0),('A09',0),('A10',0);
+/*!40000 ALTER TABLE `applications` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `appointment`
+-- Table structure for table `appointments`
 --
 
-DROP TABLE IF EXISTS `appointment`;
+DROP TABLE IF EXISTS `appointments`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `appointment` (
+CREATE TABLE `appointments` (
   `AppointmentID` varchar(45) NOT NULL,
   `Date` varchar(45) NOT NULL,
   `Time` varchar(45) NOT NULL,
-  PRIMARY KEY (`AppointmentID`)
+  PRIMARY KEY (`AppointmentID`),
+  UNIQUE KEY `AppointmentID_UNIQUE` (`AppointmentID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `appointment`
+-- Dumping data for table `appointments`
 --
 
-LOCK TABLES `appointment` WRITE;
-/*!40000 ALTER TABLE `appointment` DISABLE KEYS */;
-INSERT INTO `appointment` VALUES ('AP-001','10/01/2024','1:00 PM'),('AP-002','10/01/2024','2:00 PM'),('AP-003','10/01/2024','3:00 PM'),('AP-004','10/01/2024','4:00 PM'),('AP-005','10/02/2024','1:00 PM'),('AP-006','10/02/2024','2:00 PM'),('AP-007','10/02/2024','3:00 PM'),('AP-008','10/02/2024','4:00 PM'),('AP-009','10/03/2024','1:00 PM'),('AP-010','10/03/2024','2:00 PM');
-/*!40000 ALTER TABLE `appointment` ENABLE KEYS */;
+LOCK TABLES `appointments` WRITE;
+/*!40000 ALTER TABLE `appointments` DISABLE KEYS */;
+INSERT INTO `appointments` VALUES ('AP-001','10/01/2024','1:00 PM'),('AP-002','10/01/2024','2:00 PM'),('AP-003','10/01/2024','3:00 PM'),('AP-004','10/01/2024','4:00 PM'),('AP-005','10/02/2024','1:00 PM'),('AP-006','10/02/2024','2:00 PM'),('AP-007','10/02/2024','3:00 PM'),('AP-008','10/02/2024','4:00 PM'),('AP-009','10/03/2024','1:00 PM'),('AP-010','10/03/2024','2:00 PM');
+/*!40000 ALTER TABLE `appointments` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `create`
+-- Table structure for table `creates`
 --
 
-DROP TABLE IF EXISTS `create`;
+DROP TABLE IF EXISTS `creates`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `create` (
-  `Username` varchar(45) NOT NULL,
+CREATE TABLE `creates` (
+  `UserID` varchar(45) NOT NULL,
   `AppointmentID` varchar(45) NOT NULL,
-  PRIMARY KEY (`Username`)
+  PRIMARY KEY (`UserID`,`AppointmentID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `create`
+-- Dumping data for table `creates`
 --
 
-LOCK TABLES `create` WRITE;
-/*!40000 ALTER TABLE `create` DISABLE KEYS */;
-INSERT INTO `create` VALUES ('username1','AP-001'),('username10','AP-010'),('username2','AP-002'),('username3','AP-003'),('username4','AP-004'),('username5','AP-005'),('username6','AP-006'),('username7','AP-007'),('username8','AP-008'),('username9','AP-009');
-/*!40000 ALTER TABLE `create` ENABLE KEYS */;
+LOCK TABLES `creates` WRITE;
+/*!40000 ALTER TABLE `creates` DISABLE KEYS */;
+INSERT INTO `creates` VALUES ('username1','AP-001'),('username10','AP-010'),('username2','AP-002'),('username3','AP-003'),('username4','AP-004'),('username5','AP-005'),('username6','AP-006'),('username7','AP-007'),('username8','AP-008'),('username9','AP-009');
+/*!40000 ALTER TABLE `creates` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `organized`
+-- Table structure for table `organizes`
 --
 
-DROP TABLE IF EXISTS `organized`;
+DROP TABLE IF EXISTS `organizes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `organized` (
+CREATE TABLE `organizes` (
   `OrgID` varchar(45) NOT NULL,
   `AppointmentID` varchar(45) NOT NULL,
   PRIMARY KEY (`OrgID`,`AppointmentID`)
@@ -127,13 +128,13 @@ CREATE TABLE `organized` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `organized`
+-- Dumping data for table `organizes`
 --
 
-LOCK TABLES `organized` WRITE;
-/*!40000 ALTER TABLE `organized` DISABLE KEYS */;
-INSERT INTO `organized` VALUES ('408-262-2133','AP-005'),('408-262-2133','AP-007'),('408-262-2133','AP-009'),('408-262-2133','AP-010'),('408-337-2339','AP-002'),('408-337-2339','AP-004'),('408-337-2339','AP-006'),('408-794-7297','AP-001'),('408-794-7297','AP-003'),('408-794-7297','AP-008');
-/*!40000 ALTER TABLE `organized` ENABLE KEYS */;
+LOCK TABLES `organizes` WRITE;
+/*!40000 ALTER TABLE `organizes` DISABLE KEYS */;
+INSERT INTO `organizes` VALUES ('408-262-2133','AP-005'),('408-262-2133','AP-007'),('408-262-2133','AP-009'),('408-262-2133','AP-010'),('408-337-2339','AP-002'),('408-337-2339','AP-004'),('408-337-2339','AP-006'),('408-794-7297','AP-001'),('408-794-7297','AP-003'),('408-794-7297','AP-008');
+/*!40000 ALTER TABLE `organizes` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -161,29 +162,30 @@ INSERT INTO `owns` VALUES ('408-262-2133','262-2133-001'),('408-262-2133','262-2
 UNLOCK TABLES;
 
 --
--- Table structure for table `petorganization`
+-- Table structure for table `petorganizations`
 --
 
-DROP TABLE IF EXISTS `petorganization`;
+DROP TABLE IF EXISTS `petorganizations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `petorganization` (
+CREATE TABLE `petorganizations` (
   `OrgID` varchar(45) NOT NULL,
-  `Address` varchar(45) NOT NULL,
   `OrgName` varchar(45) NOT NULL,
   `OrgEmail` varchar(45) NOT NULL,
-  PRIMARY KEY (`OrgID`)
+  `Address` varchar(45) NOT NULL,
+  PRIMARY KEY (`OrgID`),
+  UNIQUE KEY `OrgID_UNIQUE` (`OrgID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `petorganization`
+-- Dumping data for table `petorganizations`
 --
 
-LOCK TABLES `petorganization` WRITE;
-/*!40000 ALTER TABLE `petorganization` DISABLE KEYS */;
-INSERT INTO `petorganization` VALUES ('408-262-2133','901 Ames Ave. Milpitas, CA 95035','Humane Society Silicon Valley','adoptions@hssv.org'),('408-337-2339','702 East Julian Street, San Jose, CA, 95112','The Dancing Cat','info@thedancingcat.org'),('408-794-7297','2750 Monterey Road, San Jose, CA 95111','San Jose Animal Care Center','AdoptAPetSJ@sanjoseca.gov');
-/*!40000 ALTER TABLE `petorganization` ENABLE KEYS */;
+LOCK TABLES `petorganizations` WRITE;
+/*!40000 ALTER TABLE `petorganizations` DISABLE KEYS */;
+INSERT INTO `petorganizations` VALUES ('209-365-0535','Animal Friends Connection Humane Society','office@animalfriendsconnect.org','933 S. Cherokee Lane, Lodi, CA 95240'),('209-831-6364','City of Tracy Animal Services','animalservices@tracypd.com','2375 Paradise Ave., Tracy, CA 95304'),('209-937-7445','City of Stockton Animal Shelter','animalservices@stocktonca.gov','1575 S. Lincoln Street, Stockton, CA 95206'),('408-262-2133','Humane Society Silicon Valley','adoptions@hssv.org','901 Ames Ave. Milpitas, CA 95035'),('408-337-2339','The Dancing Cat','info@thedancingcat.org','702 East Julian Street, San Jose, CA, 95112'),('408-794-7297','San Jose Animal Care Center','adoptapetsj@sanjoseca.gov','2750 Monterey Road, San Jose, CA 95111'),('510-621-3493','Jelly\'s Place','adopt@jellysplace.org','2905 San Pablo Dam Road, San Pablo, CA 94803'),('510-900-2275','Milo Foundation','info@milofoundation.org','220 S Garrard Blvd, Pt. Richmond, CA 94801'),('530-668-5287','Yolo County Animal Services','adoptycas@gmail.com','140C Tony Diaz Drive, Woodland, CA 95776'),('925-608-8400','Contra Costa Animal Services Martinez','asdweb@asd.cccounty.us','4800 Imhoff Place, Martinez, CA 94553');
+/*!40000 ALTER TABLE `petorganizations` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -198,7 +200,8 @@ CREATE TABLE `pets` (
   `PetName` varchar(45) NOT NULL,
   `Age` varchar(45) NOT NULL,
   `Category` varchar(45) NOT NULL,
-  PRIMARY KEY (`PetID`)
+  PRIMARY KEY (`PetID`),
+  UNIQUE KEY `PetID_UNIQUE` (`PetID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -220,9 +223,9 @@ DROP TABLE IF EXISTS `submits`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `submits` (
-  `AppID` varchar(45) NOT NULL,
-  `Username` varchar(45) NOT NULL,
-  PRIMARY KEY (`AppID`)
+  `ApplicationID` varchar(45) NOT NULL,
+  `UserID` varchar(45) NOT NULL,
+  PRIMARY KEY (`ApplicationID`,`UserID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -244,13 +247,14 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `users` (
-  `Username` varchar(50) NOT NULL,
-  `UsrEmail` varchar(50) NOT NULL,
-  `UsrName` varchar(50) NOT NULL,
-  `UsrPassword` varchar(50) NOT NULL,
-  `AccountType` varchar(50) NOT NULL,
-  PRIMARY KEY (`Username`),
-  UNIQUE KEY `UsrEmail_UNIQUE` (`UsrEmail`),
+  `UserId` varchar(50) NOT NULL,
+  `UserEmail` varchar(50) NOT NULL,
+  `UserName` varchar(50) NOT NULL,
+  `Password` varchar(50) NOT NULL,
+  `AccountType` int NOT NULL,
+  PRIMARY KEY (`UserId`),
+  UNIQUE KEY `UsrEmail_UNIQUE` (`UserEmail`),
+  UNIQUE KEY `Username_UNIQUE` (`UserId`),
   CONSTRAINT `users_chk_1` CHECK ((`AccountType` in (0,1)))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -261,7 +265,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('username1','oliver.grant@gmail.com','Oliver Grant','password1','0'),('username10','grace.mitchell@gmail.com','Grace Mitchell','password10','0'),('username2','amelia.collins@gmail.com','Amelia Collins','password2','0'),('username3','ethan.reed@gmail.com','Ethan Reed','password3','0'),('username4','sophia.bennett@gmail.com','Sophia Bennett','password4','0'),('username5','jackson.hayes@gmail.com','Jackson Hayes','password5','0'),('username6','lily.carter@gmail.com','Lily Carter','password6','0'),('username7','mason.brooks@gmail.com','Mason Brooks','password7','0'),('username8','ava.sullivan@gmail.com','Ava Sullivan','password8','0'),('username9','liam.turner@gmail.com','Liam Turner','password9','0');
+INSERT INTO `users` VALUES ('admin','admin@petquery.com','admin','password',1),('username1','oliver.grant@gmail.com','Oliver Grant','password1',0),('username10','grace.mitchell@gmail.com','Grace Mitchell','password10',0),('username2','amelia.collins@gmail.com','Amelia Collins','password2',0),('username3','ethan.reed@gmail.com','Ethan Reed','password3',0),('username4','sophia.bennett@gmail.com','Sophia Bennett','password4',0),('username5','jackson.hayes@gmail.com','Jackson Hayes','password5',0),('username6','lily.carter@gmail.com','Lily Carter','password6',0),('username7','mason.brooks@gmail.com','Mason Brooks','password7',0),('username8','ava.sullivan@gmail.com','Ava Sullivan','password8',0),('username9','liam.turner@gmail.com','Liam Turner','password9',0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -274,4 +278,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-10-01 11:13:30
+-- Dump completed on 2024-10-14 15:57:30
