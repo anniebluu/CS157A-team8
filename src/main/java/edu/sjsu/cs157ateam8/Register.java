@@ -34,13 +34,13 @@ public class Register extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String uname=request.getParameter("uname");
+		String userID=request.getParameter("userID");
+		String userEmail=request.getParameter("userEmail");
+		String userName=request.getParameter("userName");
 		String password=request.getParameter("password");
-		String email=request.getParameter("email");
-		String phone=request.getParameter("phone");
-		Member member=new Member(uname, password, email, phone);
+		User user=new User(userID, userEmail, userName, password, 0);
 		RegisterDao rdao=new RegisterDao();
-		String result=rdao.insert(member);
+		String result=rdao.insert(user);
 		response.getWriter().println(result);
 	}
 }

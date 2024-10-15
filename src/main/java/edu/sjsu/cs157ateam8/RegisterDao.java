@@ -6,9 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class RegisterDao {
-	private String dburl = "jdbc:mysql://localhost:3306/Pet Query";
+	private String dburl = "jdbc:mysql://localhost:3306/petquery";
 	private String dbuname = "root";
-	private String dbpassword = "";
+	private String dbpassword = "Sequelrelationsystem6*";
     private String dbdriver = "com.mysql.cj.jdbc.Driver";
 
 	public void loadDriver(String dbDriver)
@@ -34,18 +34,19 @@ public class RegisterDao {
 		return con;
 	}
 
-	public String insert(Member member) {
+	public String insert(User user) {
 		loadDriver(dbdriver);
 		Connection con = getConnection();
-		String sql = "insert into member values(?,?,?,?)";
+		String sql = "insert into users values(?,?,?,?,?)";
 		String result="Data Entered Successfully";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, member.getUname());
-			ps.setString(2, member.getPassword());
-			ps.setString(3, member.getEmail());
-			ps.setNString(4, member.getPhone());
+			ps.setString(1, user.getUserID());
+			ps.setString(2, user.getUserEmail());
+			ps.setString(3, user.getUserName());
+			ps.setString(4, user.getPassword());
+			ps.setInt(5, user.getAccountType());
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
