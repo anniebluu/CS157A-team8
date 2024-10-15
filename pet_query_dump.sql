@@ -247,14 +247,14 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `users` (
-  `UserId` varchar(50) NOT NULL,
+  `UserID` varchar(50) NOT NULL,
   `UserEmail` varchar(50) NOT NULL,
   `UserName` varchar(50) NOT NULL,
   `Password` varchar(50) NOT NULL,
   `AccountType` int NOT NULL,
-  PRIMARY KEY (`UserId`),
+  PRIMARY KEY (`UserID`),
   UNIQUE KEY `UsrEmail_UNIQUE` (`UserEmail`),
-  UNIQUE KEY `Username_UNIQUE` (`UserId`),
+  UNIQUE KEY `Username_UNIQUE` (`UserID`),
   CONSTRAINT `users_chk_1` CHECK ((`AccountType` in (0,1)))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -278,4 +278,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-10-14 15:57:30
+-- Dump completed on 2024-10-14 20:37:01
