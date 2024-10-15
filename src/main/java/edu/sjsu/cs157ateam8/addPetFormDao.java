@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class addPetFormDao {
 	private String dburl = "jdbc:mysql://localhost:3306/petquery";
 	private String dbuname = "root";
-	private String dbpassword = "";
+	private String dbpassword = "Lupineapple#0117";
     private String dbdriver = "com.mysql.cj.jdbc.Driver";
 
 	public void loadDriver(String dbDriver)
@@ -37,7 +37,7 @@ public class addPetFormDao {
 	public String insertPet(Pet pet) {
 		loadDriver(dbdriver);
 		Connection con = getConnection();
-		String sql = "insert into users values(?,?,?,?)";
+		String sql = "insert into pets values(?,?,?,?)";
 		String result="Data Entered Successfully";
 
 		try {
