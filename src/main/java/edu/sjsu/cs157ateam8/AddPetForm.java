@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Register
  */
-@WebServlet("/addPetForm")
+@WebServlet("/AddPetForm")
 public class AddPetForm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -34,10 +34,10 @@ public class AddPetForm extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String petID=request.getParameter("userID");
-		String petName=request.getParameter("userEmail");
-		String age=request.getParameter("userName");
-		String category=request.getParameter("password");
+		String petID=request.getParameter("petID");
+		String petName=request.getParameter("petName");
+		String age=request.getParameter("age");
+		String category=request.getParameter("category");
 		Pet pet = new Pet(petID, petName, age, category);
 		addPetFormDao pdao=new addPetFormDao();
 		String result=pdao.insertPet(pet);

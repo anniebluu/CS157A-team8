@@ -6,9 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class addPetFormDao {
-	private String dburl = "jdbc:mysql://localhost:3306/pet_query";
+	private String dburl = "jdbc:mysql://localhost:3306/petquery";
 	private String dbuname = "root";
-	private String dbpassword = " ";
+	private String dbpassword = "";
     private String dbdriver = "com.mysql.cj.jdbc.Driver";
 
 	public void loadDriver(String dbDriver)
