@@ -26,5 +26,6 @@
 			</table>
 
 	    </form>
+	    <button onclick="location.href='http://localhost:8080/CS157A-team8/userRegister.jsp'">Register</button>
     </body>
 </html>
