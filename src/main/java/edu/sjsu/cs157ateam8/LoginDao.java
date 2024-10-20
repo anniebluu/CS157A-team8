@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class LoginDao {
 	private String dburl = "jdbc:mysql://localhost:3306/petquery";
 	private String dbuname = "root";
-	private String dbpassword = "";
+	private String dbpassword = "HaroldChu!00";
     private String dbdriver = "com.mysql.cj.jdbc.Driver";
 
 	public void loadDriver(String dbDriver)
@@ -38,7 +38,7 @@ public class LoginDao {
 	public String verify(User user) {
 		loadDriver(dbdriver);
 		Connection con = getConnection();
-		String sql = "SELECT password, accounttype FROM users WHERE userID = ?";
+		String sql = "SELECT  password, accounttype, userEmail, userName FROM users WHERE userID = ?";
 		String result = "Data Entered Successfully";
 		ResultSet rs;
 
@@ -60,6 +60,8 @@ public class LoginDao {
 				if (match) {					
 					// Check this user's AccountType
 					int accType = rs.getInt(2);
+					user.setUserEmail(rs.getString(3));
+					user.setUserName(rs.getString(4));
 					if (accType == 0) {
 						result = "Successfully logged in as user";
 					}
@@ -76,9 +78,6 @@ public class LoginDao {
 			result="Data Not Entered Successfully";
 			e.printStackTrace();
 		}
-		
-
-		
 
 		return result;
 	}
