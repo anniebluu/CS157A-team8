@@ -1,11 +1,15 @@
-package edu.sjsu.cs157ateam8;
+package cs157a.team8.dao;
+
+import cs157a.team8.entity.User;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class addPetFormDao {
+public class LoginDao {
+
 	private String dburl = "jdbc:mysql://localhost:3306/petquery";
 	private String dbuname = "root";
 	private String dbpassword = "";
@@ -34,25 +38,52 @@ public class addPetFormDao {
 		return con;
 	}
 
-	public String insertPet(Pet pet) {
+	public String verify(User user) {
 		loadDriver(dbdriver);
 		Connection con = getConnection();
-		String sql = "insert into pets values(?,?,?,?)";
-		String result="Data Entered Successfully";
+		String sql = "SELECT password, accounttype FROM users WHERE userID = ?";
+		String result = "Data Entered Successfully";
+		ResultSet rs;
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, pet.getPetID());
-			ps.setString(2, pet.getPetName());
-			ps.setString(3, pet.getAge());
-			ps.setString(4, pet.getCategory());
-			ps.executeUpdate();
+			ps.setString(1, user.getUserID());
+			rs = ps.executeQuery();
+			
+			// Check if rs contains any results
+			if (!rs.next()) {
+				result = "Wrong UserID Entered";
+			}
+			// rs returned a result, so check if the password matches
+			else {
+				String pswd = rs.getString(1);
+				String userPswd = user.getPassword();
+				boolean match = pswd.equals(userPswd);
+				
+				if (match) {					
+					// Check this user's AccountType
+					int accType = rs.getInt(2);
+					if (accType == 0) {
+						result = "Successfully logged in as user";
+					}
+					else {
+						result = "Successfully logged in as admin";
+					}
+				}
+				else {
+					result = "Wrong Password Entered";
+				}
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			result="Data Not Entered Successfully";
 			e.printStackTrace();
 		}
+		
+
+		
 
 		return result;
 	}
+	
 }

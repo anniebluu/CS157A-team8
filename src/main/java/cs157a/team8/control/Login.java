@@ -1,4 +1,7 @@
-package edu.sjsu.cs157ateam8;
+package cs157a.team8.control;
+
+import cs157a.team8.entity.User;
+import cs157a.team8.dao.LoginDao;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
