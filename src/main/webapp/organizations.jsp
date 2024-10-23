@@ -17,7 +17,7 @@
      String db = "petquery";
         String user; // assumes database name is the same as username
         user = "root";
-        String password = "";
+        String password = "HaroldChu!00";
         try {
             java.sql.Connection con;
             Class.forName("com.mysql.cj.jdbc.Driver");
