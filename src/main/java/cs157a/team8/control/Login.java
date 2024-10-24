@@ -9,6 +9,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 
 /**
  * Servlet implementation class Login
@@ -48,9 +50,13 @@ public class Login extends HttpServlet {
 		if (result.equals("Successfully logged in as admin")) {
 			response.sendRedirect("http://localhost:8080/CS157A-team8/adminDashboard.jsp");
 		}
-		else {
-			response.getWriter().println(result);
+		else if(result.equals("Successfully logged in as user")) {
+			response.sendRedirect("http://localhost:8080/CS157A-team8/petQueryHome.jsp");
+			HttpSession session = request.getSession();
+            session.setAttribute("userName", user.getUserName());
+            session.setAttribute("userID", user.getUserID());
 		}
 		
 	}
 }
+
