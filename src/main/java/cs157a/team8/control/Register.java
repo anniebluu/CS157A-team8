@@ -1,4 +1,7 @@
-package edu.sjsu.cs157ateam8;
+package cs157a.team8.control;
+
+import cs157a.team8.entity.User;
+import cs157a.team8.dao.RegisterDao;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -10,14 +13,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Register
  */
-@WebServlet("/AddPetForm")
-public class AddPetForm extends HttpServlet {
+@WebServlet("/Register")
+public class Register extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddPetForm() {
+    public Register() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,13 +37,13 @@ public class AddPetForm extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String petID=request.getParameter("petID");
-		String petName=request.getParameter("petName");
-		String age=request.getParameter("age");
-		String category=request.getParameter("category");
-		Pet pet = new Pet(petID, petName, age, category);
-		addPetFormDao pdao=new addPetFormDao();
-		String result=pdao.insertPet(pet);
+		String userID=request.getParameter("userID");
+		String userEmail=request.getParameter("userEmail");
+		String userName=request.getParameter("userName");
+		String password=request.getParameter("password");
+		User user=new User(userID, userEmail, userName, password, 0);
+		RegisterDao rdao=new RegisterDao();
+		String result=rdao.insert(user);
 		response.getWriter().println(result);
 	}
 }

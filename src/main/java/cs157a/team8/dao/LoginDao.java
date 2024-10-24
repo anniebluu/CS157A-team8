@@ -1,4 +1,6 @@
-package edu.sjsu.cs157ateam8;
+package cs157a.team8.dao;
+
+import cs157a.team8.entity.User;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class LoginDao {
+
 	private String dburl = "jdbc:mysql://localhost:3306/petquery";
 	private String dbuname = "root";
 	private String dbpassword = "";

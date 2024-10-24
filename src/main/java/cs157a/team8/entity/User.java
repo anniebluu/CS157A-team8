@@ -1,4 +1,4 @@
-package edu.sjsu.cs157ateam8;
+package cs157a.team8.entity;
 
 public class User 
 {

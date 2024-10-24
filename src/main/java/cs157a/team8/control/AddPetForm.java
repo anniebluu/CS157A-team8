@@ -1,4 +1,7 @@
-package edu.sjsu.cs157ateam8;
+package cs157a.team8.control;
+
+import cs157a.team8.entity.Pet;
+import cs157a.team8.dao.addPetFormDao;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -6,19 +9,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class Login
+ * Servlet implementation class Register
  */
-@WebServlet("/Login")
-public class Login extends HttpServlet {
+@WebServlet("/AddPetForm")
+public class AddPetForm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Login() {
+    public AddPetForm() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,23 +37,13 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userID=request.getParameter("userID");
-		String password=request.getParameter("password");
-		// Don't know AccountType yet, so put -1
-		User user=new User(userID, null, null, password, -1);
-		LoginDao ldao=new LoginDao();
-		String result=ldao.verify(user);
-		
-		// Check if user is an admin
-		if (result.equals("Successfully logged in as admin")) {
-			response.sendRedirect("http://localhost:8080/CS157A-team8/adminDashboard.jsp");
-		}
-		else if(result.equals("Successfully logged in as user")) {
-			response.sendRedirect("http://localhost:8080/CS157A-team8/petQueryHome.jsp");
-			HttpSession session = request.getSession();
-            session.setAttribute("userName", user.getUserName());
-            session.setAttribute("userID", user.getUserID());
-		}
-		
+		String petID=request.getParameter("petID");
+		String petName=request.getParameter("petName");
+		String age=request.getParameter("age");
+		String category=request.getParameter("category");
+		Pet pet = new Pet(petID, petName, age, category);
+		addPetFormDao pdao=new addPetFormDao();
+		String result=pdao.insertPet(pet);
+		response.getWriter().println(result);
 	}
 }

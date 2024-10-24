@@ -1,4 +1,7 @@
-package edu.sjsu.cs157ateam8;
+package cs157a.team8.control;
+
+import cs157a.team8.entity.User;
+import cs157a.team8.dao.LoginDao;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -6,18 +9,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class Register
+ * Servlet implementation class Login
  */
-@WebServlet("/Register")
-public class Register extends HttpServlet {
+@WebServlet("/Login")
+public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Register() {
+    public Login() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,12 +39,22 @@ public class Register extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userID=request.getParameter("userID");
-		String userEmail=request.getParameter("userEmail");
-		String userName=request.getParameter("userName");
 		String password=request.getParameter("password");
-		User user=new User(userID, userEmail, userName, password, 0);
-		RegisterDao rdao=new RegisterDao();
-		String result=rdao.insert(user);
-		response.getWriter().println(result);
+		// Don't know AccountType yet, so put -1
+		User user=new User(userID, null, null, password, -1);
+		LoginDao ldao=new LoginDao();
+		String result=ldao.verify(user);
+		
+		// Check if user is an admin
+		if (result.equals("Successfully logged in as admin")) {
+			response.sendRedirect("http://localhost:8080/CS157A-team8/adminDashboard.jsp");
+		}
+		else if(result.equals("Successfully logged in as user")) {
+			response.sendRedirect("http://localhost:8080/CS157A-team8/petQueryHome.jsp");
+			HttpSession session = request.getSession();
+            session.setAttribute("userName", user.getUserName());
+            session.setAttribute("userID", user.getUserID());
+		}
+		
 	}
 }
