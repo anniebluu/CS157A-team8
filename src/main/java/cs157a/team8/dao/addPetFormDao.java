@@ -8,11 +8,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-<<<<<<< HEAD:src/main/java/edu/sjsu/cs157ateam8/RegisterDao.java
-public class RegisterDao {
-=======
+
 public class addPetFormDao {
->>>>>>> 0c90863 (Create database class & .properties file):src/main/java/cs157a/team8/dao/addPetFormDao.java
 	private String dburl = "jdbc:mysql://localhost:3306/petquery";
 	private String dbuname = "root";
 	private String dbpassword = "";

@@ -38,10 +38,9 @@ build/
 
 ### Mac OS ###
 .DS_Store
-<<<<<<< HEAD
+
 /.metadata/
-=======
+
 
 ### MySQL Database ###
 **/src/main/resources/db.properties
->>>>>>> 62ddcdf (Update .gitignore to ignore db.properties)
