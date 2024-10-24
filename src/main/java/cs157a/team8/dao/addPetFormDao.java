@@ -8,7 +8,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-
 public class addPetFormDao {
 	private String dburl = "jdbc:mysql://localhost:3306/petquery";
 	private String dbuname = "root";
