@@ -1,4 +1,7 @@
-package edu.sjsu.cs157ateam8;
+package cs157a.team8.control;
+
+import cs157a.team8.entity.Pet;
+import cs157a.team8.dao.PetDao;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -10,14 +13,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Register
  */
-@WebServlet("/Register")
-public class Register extends HttpServlet {
+@WebServlet("/AddPet")
+public class AddPet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Register() {
+    public AddPet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,13 +37,13 @@ public class Register extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String uname=request.getParameter("uname");
-		String password=request.getParameter("password");
-		String email=request.getParameter("email");
-		String phone=request.getParameter("phone");
-		Member member=new Member(uname, password, email, phone);
-		RegisterDao rdao=new RegisterDao();
-		String result=rdao.insert(member);
+		String petID=request.getParameter("petID");
+		String petName=request.getParameter("petName");
+		String age=request.getParameter("age");
+		String category=request.getParameter("category");
+		Pet pet = new Pet(petID, petName, age, category);
+		PetDao pdao=new PetDao();
+		String result=pdao.insertPet(pet);
 		response.getWriter().println(result);
 	}
 }
