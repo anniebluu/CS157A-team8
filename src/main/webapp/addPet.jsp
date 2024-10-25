@@ -4,13 +4,13 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Add Pet Form</title>
+		<title>Add Pet</title>
 		<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
 	  	<h1>Pet Query</h1>
-	  	<h2>Add Pet Form</h2>
-	    <form action="AddPetForm" method="post">
+	  	<h2>Add Pet</h2>
+	    <form action="AddPet" method="post">
 	    <table>
 			  <tr>
 			    <td>Pet ID</td>

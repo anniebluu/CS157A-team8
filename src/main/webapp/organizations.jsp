@@ -1,4 +1,6 @@
 <%@ page import="java.sql.*"%>
+<%@ page import="cs157a.team8.database.Database"%>
+
 <html>
 <head>
   <title>Pet Organizations</title>
@@ -14,14 +16,11 @@
     <td>Address</td>
   </tr>
     <%
-     String db = "petquery";
-        String user; // assumes database name is the same as username
-        user = "root";
-        String password = "";
         try {
             java.sql.Connection con;
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/petquery?autoReconnect=true&useSSL=false", user, password);
+            /* Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/petquery?autoReconnect=true&useSSL=false", user, password); */
+            con = new Database().getConnection();
            /*  out.println(db + " database successfully opened.<br/><br/>"); */
 
            /*  out.println("Initial entries in table \"petorganizations\": <br/>"); */

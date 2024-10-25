@@ -7,11 +7,11 @@
     <welcome-file>index.htm</welcome-file>
     <welcome-file>default.html</welcome-file>
     <welcome-file>default.jsp</welcome-file>
-    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.htm</welcome-file><welcome-file>landingPage.jsp</welcome-file>
     
     <welcome-file>adminDashboard.jsp</welcome-file>
     <welcome-file>userLogin.jsp</welcome-file>
-    <welcome-file>landingPage.jsp</welcome-file>
+    
     <welcome-file>organizations.jsp</welcome-file>
     <welcome-file>petQueryHome.jsp</welcome-file>
     <welcome-file>Pets.jsp</welcome-file>
