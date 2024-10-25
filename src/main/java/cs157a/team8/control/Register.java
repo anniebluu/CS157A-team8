@@ -1,7 +1,7 @@
 package cs157a.team8.control;
 
 import cs157a.team8.entity.User;
-import cs157a.team8.dao.RegisterDao;
+import cs157a.team8.dao.UserDao;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -42,8 +42,8 @@ public class Register extends HttpServlet {
 		String userName=request.getParameter("userName");
 		String password=request.getParameter("password");
 		User user=new User(userID, userEmail, userName, password, 0);
-		RegisterDao rdao=new RegisterDao();
-		String result=rdao.insert(user);
+		UserDao userDao=new UserDao();
+		String result=userDao.insert(user);
 		response.getWriter().println(result);
 	}
 }

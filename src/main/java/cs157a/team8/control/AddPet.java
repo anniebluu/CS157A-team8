@@ -1,7 +1,7 @@
 package cs157a.team8.control;
 
 import cs157a.team8.entity.Pet;
-import cs157a.team8.dao.addPetFormDao;
+import cs157a.team8.dao.PetDao;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -13,14 +13,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Register
  */
-@WebServlet("/AddPetForm")
-public class AddPetForm extends HttpServlet {
+@WebServlet("/AddPet")
+public class AddPet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddPetForm() {
+    public AddPet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -42,7 +42,7 @@ public class AddPetForm extends HttpServlet {
 		String age=request.getParameter("age");
 		String category=request.getParameter("category");
 		Pet pet = new Pet(petID, petName, age, category);
-		addPetFormDao pdao=new addPetFormDao();
+		PetDao pdao=new PetDao();
 		String result=pdao.insertPet(pet);
 		response.getWriter().println(result);
 	}

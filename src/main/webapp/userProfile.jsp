@@ -41,18 +41,6 @@
                     <button onclick="saveInfo('name')">Save</button>
                 </div>
                 <div class="info-row">
-                    <label for="birthdate">Birthdate:</label>
-                    <input type="date" id="birthdate" value="1990-01-01" readonly>
-                    <button onclick="enableEdit('birthdate')">Edit</button>
-                    <button onclick="saveInfo('birthdate')">Save</button>
-                </div>
-                <div class="info-row">
-                    <label for="address">Address:</label>
-                    <input type="text" id="address" value="1234 Elm St, Springfield" readonly>
-                    <button onclick="enableEdit('address')">Edit</button>
-                    <button onclick="saveInfo('address')">Save</button>
-                </div>
-                <div class="info-row">
                     <label for="email">Email:</label>
                     <input type="email" id="email" value="john@example.com" readonly>
                     <button onclick="enableEdit('email')">Edit</button>

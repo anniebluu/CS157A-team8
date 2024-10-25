@@ -1,4 +1,6 @@
 <%@ page import="java.sql.*"%>
+<%@ page import="cs157a.team8.database.Database"%>
+
 <html>
 <head>
   <title>Pets</title>
@@ -14,28 +16,23 @@
     <td>Category</td>
   </tr>
     <%
-     String db = "petquery";
-        String user; // assumes database name is the same as username
-        user = "root";
-        String password = "HaroldChu!00";
-        try {
-            java.sql.Connection con;
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/petquery?autoReconnect=true&useSSL=false", user, password);
-           /*  out.println(db + " database successfully opened.<br/><br/>"); */
-
-           /*  out.println("Initial entries in table \"petorganizations\": <br/>"); */
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM pets");
-            while (rs.next()) {
-         out.println("<tr>" + "<td>" + rs.getString(1) + "</td>"+ "<td>" + rs.getString(2) + "</td>" + "<td>" + rs.getString(3) + "</td>" + "<td>" + rs.getString(4) + "</td>" + "</tr>");
-            }
-            rs.close();
-            stmt.close();
-            con.close();
-        } catch(SQLException e) {
-            out.println("SQLException caught: " + e.getMessage());
-        }
+		try {
+		    java.sql.Connection con;
+		    con = new Database().getConnection();
+		   /*  out.println(db + " database successfully opened.<br/><br/>"); */
+		
+		   /*  out.println("Initial entries in table \"petorganizations\": <br/>"); */
+		    Statement stmt = con.createStatement();
+		    ResultSet rs = stmt.executeQuery("SELECT * FROM pets");
+		    while (rs.next()) {
+		 out.println("<tr>" + "<td>" + rs.getString(1) + "</td>"+ "<td>" + rs.getString(2) + "</td>" + "<td>" + rs.getString(3) + "</td>" + "<td>" + rs.getString(4) + "</td>" + "</tr>");
+		    }
+		    rs.close();
+		    stmt.close();
+		    con.close();
+		} catch(SQLException e) {
+		    out.println("SQLException caught: " + e.getMessage());
+		}
     %>
 </body>
 </html>
