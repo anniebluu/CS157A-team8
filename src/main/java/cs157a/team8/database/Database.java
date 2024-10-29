@@ -17,7 +17,7 @@ public class Database {
         Connection con = null;
         try {
         	Properties prop = new Properties();
-        	String propFilePath = "db.properties";
+        	String propFilePath = "/db.properties";
         	InputStream in = getClass().getClassLoader().getResourceAsStream(propFilePath);
 
         	prop.load(in);

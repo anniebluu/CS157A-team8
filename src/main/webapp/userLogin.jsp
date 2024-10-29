@@ -13,17 +13,8 @@
 </head>
 <body>
    <!-- header section starts -->
-
-   <header class="header">
-
-    <a href="#" class="logo"><i class="fas fa-paw"></i> Pet Query</a>
-
-    <div class="icons" onclick="location.href='http://localhost:8080/CS157A-team8/userLogin.jsp'">
-        <div class="fas fa-user"></div>
-    </div>
-</header>
-
-<!-- header section ends -->
+	<jsp:include page="header.jsp"/>
+	<!-- header section ends -->
 
 <!-- container -->
 
@@ -55,7 +46,7 @@
     </div>
 
     <div class="image">
-        <img src="golden retriever.png" alt="">
+        <img src="images/golden retriever.png" alt="">
     </div>
 
 </div>
