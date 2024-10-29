@@ -29,7 +29,7 @@
                 </div>
                 <div class="info-row">
                     <label for="password">Password:</label>
-                    <input type="password" id="password" value="password123" readonly>
+                    <input type="password" id="password" value="<%= (session.getAttribute("password") != null) ? session.getAttribute("password") : "" %>" readonly>
                     <button onclick="enableEdit('password')">Edit</button>
                     <button onclick="saveInfo('password')">Save</button>
                 </div>
@@ -37,14 +37,14 @@
                     <label for="name">Name:</label>
 					<input type="text" id="Name" 
 					value="<%= (session.getAttribute("userName") != null) ? session.getAttribute("userName") : "" %>" readonly>
-                    <button onclick="enableEdit('name')">Edit</button>
-                    <button onclick="saveInfo('name')">Save</button>
+                    <buttongrey>Edit</buttongrey>
+                    <buttongrey>Save</buttongrey>
                 </div>
                 <div class="info-row">
                     <label for="email">Email:</label>
-                    <input type="email" id="email" value="john@example.com" readonly>
-                    <button onclick="enableEdit('email')">Edit</button>
-                    <button onclick="saveInfo('email')">Save</button>
+                    <input type="email" id="email" value="<%= (session.getAttribute("userEmail") != null) ? session.getAttribute("userEmail") : "" %>" readonly>
+                    <buttongrey>Edit</buttongrey>
+                    <buttongrey>Save</buttongrey>
                 </div>
             </div>
         </div>

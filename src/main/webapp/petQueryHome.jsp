@@ -21,7 +21,6 @@
         <ul>
             <li><a href="#">Organizations</a></li>
             <li><a href="#">Pets</a></li>
-            <li><a href="#">Appointments</a></li>
         </ul>
     </nav>
 

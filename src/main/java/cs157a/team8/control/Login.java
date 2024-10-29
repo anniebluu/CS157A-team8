@@ -48,10 +48,12 @@ public class Login extends HttpServlet {
 		
 		// Check if user is an admin
 		if (result.equals("Successfully logged in as admin")) {
-			response.sendRedirect("http://localhost:8080/CS157A-team8/adminDashboard.jsp");
+			HttpSession session = request.getSession();
+			session.setAttribute("userID", userID);
+			response.sendRedirect("adminDashboard.jsp");
 		}
 		else if(result.equals("Successfully logged in as user")) {
-			response.sendRedirect("http://localhost:8080/CS157A-team8/userProfile.jsp");
+			response.sendRedirect("userProfile.jsp");
 			HttpSession session = request.getSession();
             session.setAttribute("userName", user.getUserName());
             session.setAttribute("userID", user.getUserID());
