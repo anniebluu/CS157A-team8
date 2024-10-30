@@ -41,22 +41,64 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userID=request.getParameter("userID");
 		String password=request.getParameter("password");
-		// Don't know AccountType yet, so put -1
-		User user=new User(userID, null, null, password, -1);
+//		// Don't know AccountType yet, so put -1
+//		User user=new User(userID, null, null, password, -1);
 		UserDao userDao=new UserDao();
-		String result=userDao.verify(user);
+//		String result=userDao.verify(user);
+//		
+//		// Check if user is an admin
+//		if (result.equals("Successfully logged in as admin")) {
+//			HttpSession session = request.getSession();
+//			session.setAttribute("userID", userID);
+//			response.sendRedirect("adminDashboard.jsp");
+//		}
+//		else if(result.equals("Successfully logged in as user")) {
+//			response.sendRedirect("userProfile.jsp");
+//			HttpSession session = request.getSession();
+//            session.setAttribute("userName", user.getUserName());
+//            session.setAttribute("userID", user.getUserID());
+//		}
 		
-		// Check if user is an admin
-		if (result.equals("Successfully logged in as admin")) {
-			HttpSession session = request.getSession();
-			session.setAttribute("userID", userID);
-			response.sendRedirect("adminDashboard.jsp");
-		}
-		else if(result.equals("Successfully logged in as user")) {
-			response.sendRedirect("userProfile.jsp");
-			HttpSession session = request.getSession();
-            session.setAttribute("userName", user.getUserName());
-            session.setAttribute("userID", user.getUserID());
+		// check that the user exists in the database
+		if(userDao.checkUserIDExists(userID)) {
+			// check that the userID and password match entry in database
+			User user = userDao.checkPassword(userID, password);
+			System.out.print(user);
+			if(user != null && user.getAccountType() == 1) {
+				HttpSession session = request.getSession();
+				session.setAttribute("userID", user.getUserID());
+				session.setAttribute("password", user.getPassword());
+				session.setAttribute("userName", user.getUserName());
+				session.setAttribute("userEmail", user.getUserEmail());
+				response.sendRedirect("adminDashboard.jsp");
+			} else if (user != null && user.getAccountType() == 0) {
+				HttpSession session = request.getSession();
+				session.setAttribute("userID", user.getUserID());
+				session.setAttribute("password", user.getPassword());
+				session.setAttribute("userName", user.getUserName());
+				session.setAttribute("userEmail", user.getUserEmail());
+				response.sendRedirect("userProfile.jsp");
+			} else {
+				// An alert to send to login page.
+	            String alert = "<div class=\"alert alert-danger wrap-input100\">\n" +
+	                    "                        <p style=\"font-family: Ubuntu-Bold; font-size: 18px; margin: 0.25em 0; text-align: center\">\n" +
+	                    "                            Wrong password!\n" +
+	                    "                        </p>\n" +
+	                    "                    </div>";
+	            // Set attribute for alert tag in login.jsp page.
+	            request.setAttribute("alert", alert);
+	            request.getRequestDispatcher("userLogin.jsp").forward(request, response);
+			}
+		} else {
+			// An alert to send to login page.
+            String alert = "<div class=\"alert alert-danger wrap-input100\">\n" +
+                    "                        <p style=\"font-family: Ubuntu-Bold; font-size: 18px; margin: 0.25em 0; text-align: center\">\n" +
+                    "                            Wrong username!\n" +
+                    "                        </p>\n" +
+                    "                    </div>";
+            // Set attribute for alert tag in login.jsp page.
+            request.setAttribute("alert", alert);
+            request.getRequestDispatcher("userLogin.jsp").forward(request, response);
 		}
 		
 	}
