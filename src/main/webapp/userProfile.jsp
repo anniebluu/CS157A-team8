@@ -12,6 +12,10 @@
 
 </head>
 <body>
+   <!-- header section starts -->
+	<jsp:include page="header.jsp"/>
+	<!-- header section ends -->
+	
     <div class="sidebar">
         <a href="#" class="active">My Profile</a>
         <a href="#">Appointments</a>
@@ -23,13 +27,13 @@
                 <div class="info-row">
                     <label for="username">Username:</label>
 					<input type="text" id="user id" 
-					value="<%= (session.getAttribute("userID") != null) ? session.getAttribute("userID") : "" %>" readonly>
+					value="<%= (session.getAttribute("userID") != null) ? session.getAttribute("userID") : session.getAttribute("userID") %>" readonly>
 					<buttongrey>Edit</buttongrey>
                     <buttongrey>Save</buttongrey>
                 </div>
                 <div class="info-row">
                     <label for="password">Password:</label>
-                    <input type="password" id="password" value="<%= (session.getAttribute("password") != null) ? session.getAttribute("password") : "" %>" readonly>
+                    <input type="password" id="password" value="<%= (session.getAttribute("password") != null) ? session.getAttribute("password") : session.getAttribute("password") %>" readonly>
                     <button onclick="enableEdit('password')">Edit</button>
                     <button onclick="saveInfo('password')">Save</button>
                 </div>
