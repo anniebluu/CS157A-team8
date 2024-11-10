@@ -9,29 +9,47 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class PetDao {
-	Connection con = null;
-	PreparedStatement ps = null;
-	ResultSet rs = null;
+    private Connection con = null;
+    private PreparedStatement ps = null;
+    private ResultSet rs = null;
 
-	// method inserts new Pet into database
-	public String insertPet(Pet pet) {
-		Connection con = new Database().getConnection();
-		String sql = "insert into pets values(?,?,?,?)";
-		String result="Data Entered Successfully";
+    // method to insert a new Pet
+    public String insertPet(Pet pet) {
+        if (checkPetIDExists(pet.getPetID())) {
+            return "Error: petID already exists";
+        }
 
-		try {
-			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, pet.getPetID());
-			ps.setString(2, pet.getPetName());
-			ps.setString(3, pet.getAge());
-			ps.setString(4, pet.getCategory());
-			ps.executeUpdate();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			result="Data Not Entered Successfully";
-			e.printStackTrace();
-		}
+        con = new Database().getConnection();
+        String result = "Data Entered Successfully";
+        String sql = "insert into pets (petID, petName, age, category) values (?, ?, ?, ?)";
+        
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, pet.getPetID());
+            ps.setString(2, pet.getPetName());
+            ps.setString(3, pet.getAge());
+            ps.setString(4, pet.getCategory());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            result = "Data Not Entered Successfully";
+            e.printStackTrace();
+        }
 
-		return result;
-	}
+        return result;
+    }
+    
+    // method checks if a Pet ID already exists
+    public boolean checkPetIDExists(String petID) {
+        con = new Database().getConnection();
+        String query = "select * from pets where petID = = '" + petID + "'";
+        try {
+            ps = con.prepareStatement(query);
+            ps.setString(1, petID);
+            rs = ps.executeQuery();
+            return rs.next(); // checks for petID, if result returned, petID exists in db
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
