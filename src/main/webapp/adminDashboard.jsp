@@ -16,6 +16,10 @@
   </head>
   
   <body>
+    <!-- header section starts -->
+	<jsp:include page="header.jsp"/>
+	<!-- header section ends -->
+	
  	<div class="sidebar">
 		<a href="javascript:void(0);" onclick="changeIframeSrc('organizations.jsp')">Organizations</a>
 		<a href="javascript:void(0);" onclick="changeIframeSrc('pets.jsp')">Pets</a>

@@ -20,10 +20,11 @@
 
 <div class="container">
 
-    <div class="content">
+<div class="content">
 <div class="login-container">
         <div class="header-title">Pet Query</div>
         <div class="header-subtitle">Login</div>
+        ${alert}
         <form action="Login" method="post">
             <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
