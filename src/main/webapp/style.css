@@ -83,14 +83,16 @@
   }
   .login-container {
     max-width: 400px;
+    padding-top:15px;
     padding: 20px;
     background: #ffffff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding-top: 10rem;
     animation: content .5s linear;
 	}
+	
 	.header-title {
+		color: black;
 	    font-size: 28px;
 	    text-align: center;
 	    margin-bottom: 5px;
@@ -100,6 +102,65 @@
 	    text-align: center;
 	    margin-bottom: 20px;
 	    color: #6c757d;
+	}
+	
+	.mb-3{
+		color: black;
+	}
+	
+	/* Style all input fields */
+	.registration input {
+	  width: 100%;
+	  padding: 12px;
+	  border: 1px solid #ccc;
+	  border-radius: 4px;
+	  box-sizing: border-box;
+	  margin-top: 6px;
+	  margin-bottom: 16px;
+	}
+	
+	/* Style the submit button */
+	.registration input[type=submit] {
+	  background-color: #04AA6D;
+	  color: white;
+	}
+	
+	/* The message box is shown when the user clicks on the password field */
+	.password-validation {
+	  font-size: 1rem;
+	  display:none;
+	  background: #f1f1f1;
+	  color: #000;
+	  position: relative;
+	  padding: 10px;
+	  margin-top: 10px;
+	}
+/* 	
+	.password-validation p {
+		padding: 10px 35px;
+		font-size: 12px;
+	} */
+	
+	/* Add a green text color and a checkmark when the requirements are right */
+	.password-validation .valid {
+		font-size: 1rem;
+	  	color: green;
+	}
+	
+	.password-validation .valid:before {
+	  position: relative;
+	  left: -35px;
+	}
+	
+	/* Add a red text color and an "x" icon when the requirements are wrong */
+	.password-validation .invalid {
+		font-size: 1rem;
+		color: red;
+	}
+	
+	.password-validation .invalid:before {
+	  position: relative;
+	  left: -35px;
 	}
   
   .content{
