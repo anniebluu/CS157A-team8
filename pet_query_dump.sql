@@ -225,6 +225,7 @@ DROP TABLE IF EXISTS `submits`;
 CREATE TABLE `submits` (
   `ApplicationID` varchar(45) NOT NULL,
   `UserID` varchar(45) NOT NULL,
+  `PetID` varchar(45) NOT NULL,
   PRIMARY KEY (`ApplicationID`,`UserID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -235,7 +236,7 @@ CREATE TABLE `submits` (
 
 LOCK TABLES `submits` WRITE;
 /*!40000 ALTER TABLE `submits` DISABLE KEYS */;
-INSERT INTO `submits` VALUES ('A01','username1'),('A010','username10'),('A02','username2'),('A03','username3'),('A04','username4'),('A05','username5'),('A06','username6'),('A07','username7'),('A08','username8'),('A09','username9');
+INSERT INTO `submits` VALUES ('A01','username1', '262-2133-001'),('A010','username10', '262-2133-002'),('A02','username2', '262-2133-003'),('A03','username3', '262-2133-004'),('A04','username4', '262-2133-004'),('A05','username5', '262-2133-002'),('A06','username6', '262-2133-005'),('A07','username7', '262-2133-006'),('A08','username8', '262-2133-010'),('A09','username9', '262-2133-008');
 /*!40000 ALTER TABLE `submits` ENABLE KEYS */;
 UNLOCK TABLES;
 

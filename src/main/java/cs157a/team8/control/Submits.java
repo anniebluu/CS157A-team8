@@ -1,6 +1,7 @@
 package cs157a.team8.control;
 
-import cs157a.team8.entity.Pet;
+import cs157a.team8.entity.AppSubmits;
+import cs157a.team8.dao.ApplicationDao;
 import cs157a.team8.dao.PetDao;
 
 import java.io.IOException;
@@ -14,14 +15,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Register
  */
-@WebServlet("/AddPet")
-public class AddPet extends HttpServlet {
+@WebServlet("/Submits")
+public class Submits extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddPet() {
+    public Submits() {
         super();
     }
 
@@ -36,15 +37,23 @@ public class AddPet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	String username = request.getParameter("username");
         String petID = request.getParameter("petID");
-        String petName = request.getParameter("petName");
-        String age = request.getParameter("age");
-        String category = request.getParameter("category");
 
-        Pet pet = new Pet(petID, petName, age, category);
-        PetDao pdao = new PetDao();
+        ApplicationDao applicationDao = new ApplicationDao();
+        String applicationID = applicationDao.getNextApplicationID();
 
-        String result = pdao.insertPet(pet);
-        response.getWriter().println(result);
+        if (applicationID != null) {
+            boolean submitted = applicationDao.insertApplication(applicationID, username, petID);
+            if (submitted) {
+                response.getWriter().println("Application submitted successfully. Your ApplicationID is: " + applicationID);
+            } 
+            else {
+                response.getWriter().println("Error: Failed to submit application.");
+            }
+        } 
+        else {
+            response.getWriter().println("Error: Failed to get new ApplicationID.");
+        }
     }
 }
