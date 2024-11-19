@@ -53,7 +53,7 @@
 							</table>
 							
 					    </form> -->
-						<form action="Register" method="post">
+						<form class="registration" action="Register" method="post">
 							<div class="mb-3">
 								<label for="userID" class="form-label">Username</label>
 								<input type="text" class="form-control" id="userID" name="userID" placeholder="Enter your username" required>
@@ -74,8 +74,8 @@
 								<label for="repeatPassword" class="form-label">Repeat Password</label>
 								<input type="password" class="form-control" id="repeatPassword" name="repeatPassword" placeholder="Enter your password again" required>
 							</div>
-							<div id="message">
-							  <h4>Password must contain the following:</h4>
+							<div class="password-validation" id="message">
+							  <h5>Password must contain the following:</h4>
 							  <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
 							  <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
 							  <p id="number" class="invalid">A <b>number</b></p>
