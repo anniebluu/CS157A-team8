@@ -37,7 +37,7 @@ public class Profile extends HttpServlet {
         if (session == null || session.getAttribute("userID") == null) {
             response.sendRedirect("userLogin.jsp");
         } else {
-            request.getRequestDispatcher("adminDashboard.jsp").forward(request, response);
+            request.getRequestDispatcher("userProfile.jsp").forward(request, response);
         }
 	}
     
