@@ -34,4 +34,43 @@ public class ApplicationDao {
 		return result;
 	}
 	
+	
+	// method approve existing Application in database
+	public String approve(Application application) {
+		con = new Database().getConnection();
+		String sql = "UPDATE applications SET AppStatus = 2 WHERE ApplicationID = ?";
+		String result="Data Updated Successfully";
+		
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1,  application.getApplicationID());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			result="Data Not Updated Successfully";
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	// method approve existing Application in database
+	public String reject(Application application) {
+		con = new Database().getConnection();
+		String sql = "UPDATE applications SET AppStatus = 0 WHERE ApplicationID = ?";
+		String result="Data Updated Successfully";
+		
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1,  application.getApplicationID());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			result="Data Not Updated Successfully";
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
 }
