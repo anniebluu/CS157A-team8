@@ -17,7 +17,8 @@
 	<!-- header section ends -->
 	
     <div class="sidebar">
-        <a href="#" class="active">My Profile</a>
+        <a href="userProfile.jsp" class="active">My Profile</a>
+        <a href="userApplications.jsp">Applications</a>
         <a href="#">Appointments</a>
     </div>
 
