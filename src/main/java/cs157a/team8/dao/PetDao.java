@@ -20,8 +20,6 @@ public class PetDao {
         Pet pet = new Pet();
         try {
             con = new Database().getConnection();
-            // added line below
-        	con = DriverManager.getConnection("jdbc:mysql://localhost:3306/pet_query", "root", "Lupineapple#0117");
             ps = con.prepareStatement(query);
             rs = ps.executeQuery();
             if (rs.next()) // if query returned rows, set and return
@@ -50,8 +48,6 @@ public class PetDao {
         String sql = "insert into pets (petID, petName, age, category) values (?, ?, ?, ?)";
         
         try {
-        	// added line below
-        	con = DriverManager.getConnection("jdbc:mysql://localhost:3306/pet_query", "root", "Lupineapple#0117");
         	ps = con.prepareStatement(sql);
             ps.setString(1, pet.getPetID());
             ps.setString(2, pet.getPetName());
