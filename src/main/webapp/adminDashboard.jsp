@@ -24,6 +24,7 @@
 		<a href="javascript:void(0);" onclick="changeIframeSrc('organizations.jsp')">Organizations</a>
 		<a href="javascript:void(0);" onclick="changeIframeSrc('pets.jsp')">Pets</a>
 		<a href="javascript:void(0);" onclick="changeIframeSrc('users.jsp')">Users</a>
+		<a href="javascript:void(0);" onclick="changeIframeSrc('applications.jsp')">Applications</a>
     </div>
   
 	<div class="main-content">
