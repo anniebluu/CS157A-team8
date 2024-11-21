@@ -1,7 +1,4 @@
-package cs157a.team8.control;
-
-import cs157a.team8.entity.User;
-import cs157a.team8.dao.UserDao;
+package edu.sjsu.cs157ateam8;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -10,7 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 
 /**
  * Servlet implementation class Login
@@ -43,17 +39,15 @@ public class Login extends HttpServlet {
 		String password=request.getParameter("password");
 		// Don't know AccountType yet, so put -1
 		User user=new User(userID, null, null, password, -1);
-		UserDao userDao=new UserDao();
-		String result=userDao.verify(user);
+		LoginDao ldao=new LoginDao();
+		String result=ldao.verify(user);
 		
 		// Check if user is an admin
 		if (result.equals("Successfully logged in as admin")) {
-			HttpSession session = request.getSession();
-			session.setAttribute("userID", userID);
-			response.sendRedirect("adminDashboard.jsp");
+			response.sendRedirect("http://localhost:8080/CS157A-team8/adminDashboard.jsp");
 		}
 		else if(result.equals("Successfully logged in as user")) {
-			response.sendRedirect("userProfile.jsp");
+			response.sendRedirect("http://localhost:8080/CS157A-team8/petQueryHome.jsp");
 			HttpSession session = request.getSession();
             session.setAttribute("userName", user.getUserName());
             session.setAttribute("userID", user.getUserID());
@@ -61,4 +55,3 @@ public class Login extends HttpServlet {
 		
 	}
 }
-

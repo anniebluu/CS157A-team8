@@ -25,7 +25,7 @@ public class UserDao {
 				user.setUserEmail(rs.getString(2));
 				user.setUserName(rs.getString(3));
 				user.setPassword(rs.getString(4));
-				user.setAccountType(rs.getInt(5));
+				user.setAccountType(0);
 				
 				return user;
 			}
@@ -45,18 +45,18 @@ public class UserDao {
 	
 
 	// method inserts new User into database
-	public String insert(String userID, String userEmail, String userName, String password) {
+	public String insert(User user) {
 		con = new Database().getConnection();
 		String sql = "insert into users values(?,?,?,?,?)";
 		String result="Data Entered Successfully";
 
 		try {
 			ps = con.prepareStatement(sql);
-			ps.setString(1, userID);
-			ps.setString(2, userEmail);
-			ps.setString(3, userName);
-			ps.setString(4, password);
-			ps.setInt(5, 0);
+			ps.setString(1, user.getUserID());
+			ps.setString(2, user.getUserEmail());
+			ps.setString(3, user.getUserName());
+			ps.setString(4, user.getPassword());
+			ps.setInt(5, user.getAccountType());
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -77,12 +77,6 @@ public class UserDao {
     public boolean checkUserEmailExists(String userEmail) {
         String query = "SELECT * FROM users WHERE UserEmail = '" + userEmail + "'";
         return (queryUsers(query) != null);
-    }
-    
-    // method checks if the password of UserID matches
-    public User checkPassword(String userID, String password) {
-    	String query = "SELECT * FROM users WHERE UserID = '" + userID + "' && Password = '" + password + "'";
-    	return queryUsers(query);
     }
 
 	// method verifies user during login

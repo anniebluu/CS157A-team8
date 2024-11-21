@@ -30,8 +30,7 @@
 <div class="container">
 
     <div class="content">
-        <h1>Forming many beautiful relations</h1>
-        <h2>Find your perfect pet today</h2>
+        <h1>Find your perfect pet today</h1>
         <p>Our user-friendly platform allows you to effortlessly browse through a diverse selection of pets from multiple adoption centers all in one place.</p>
         <div class="button">
             <a href="#"><button class="btn1" onclick="location.href='http://localhost:8080/CS157A-team8/userLogin.jsp'">Login</button></a>
@@ -40,7 +39,7 @@
     </div>
 
     <div class="image">
-        <img src="images/golden retriever.png" alt="">
+        <img src="golden retriever.png" alt="">
     </div>
 
 </div>

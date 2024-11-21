@@ -43,6 +43,8 @@ public class Register extends HttpServlet {
 		String password=request.getParameter("password");
 		String repeatPassword=request.getParameter("repeatPassword");
 		
+		
+		User user=new User(userID, userEmail, userName, password, 0);
 		UserDao userDao=new UserDao();
 		
 		// check if userID exists in database
@@ -71,7 +73,7 @@ public class Register extends HttpServlet {
             request.setAttribute("alert", alert);
             request.getRequestDispatcher("userRegister.jsp").forward(request, response);
 		} else {
-			userDao.insert(userID, userEmail, userName, password);
+			String result=userDao.insert(user);
 			String alert = "<div class=\"alert alert-success wrap-input100\">\n" +
                     "                        <p style=\"font-family: Ubuntu-Bold; font-size: 18px; margin: 0.25em 0; text-align: center\">\n" +
                     "                            Create account successfully!\n" +
