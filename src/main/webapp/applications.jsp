@@ -7,10 +7,10 @@
   
   <style>
   	.approve-color {
-  		background-color: green;
+  		background-color: lightgreen;
   	}
   	.reject-color {
-  		background-color: red;
+  		background-color: lightcoral;
   	}
   </style>
   
