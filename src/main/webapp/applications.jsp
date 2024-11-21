@@ -22,6 +22,7 @@
   <tr>
     <td>Application ID</td>
     <td>UserID</td>
+    <td>PetID</td>
     <td>Status</td>
     <td>Approve</td>
     <td>Reject</td>
@@ -35,7 +36,7 @@
             ResultSet rs = stmt.executeQuery("SELECT * FROM submits NATURAL JOIN applications");
                         
             while (rs.next()) {
-         		out.println("<tr>" + "<td>" + rs.getString(1) + "</td>"+ "<td>" + rs.getString(2) + "</td>" + "<td>" + rs.getString(3) + "</td>"
+         		out.println("<tr>" + "<td>" + rs.getString(1) + "</td>"+ "<td>" + rs.getString(2) + "</td>" + "<td>" + rs.getString(3) + "</td>" + "<td>" + rs.getString(4) + "</td>"
             		+ "<td><form action=\"SetApplication\" method=\"post\"><input type=\"hidden\" name=\"appId\" value=\"" + rs.getString(1) + "\"/><button class=\"approve-color\" type=\"submit\" name=\"action\" value=\"approve\">Approve</button></form></td>" 
          			+ "<td><form action=\"SetApplication\" method=\"post\"><input type=\"hidden\" name=\"appId\" value=\"" + rs.getString(1) + "\"/><button class=\"reject-color\" type=\"submit\" name=\"action\" value=\"reject\">Reject</button></form></td>" 
             		+ "</tr>");

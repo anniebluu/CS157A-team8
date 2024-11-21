@@ -11,6 +11,12 @@
     <!-- fontswesome cdn link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+    	.apply-color {
+    		background-color: lightblue;
+    	}
+    </style>
+    
 
 </head>
 <body>
@@ -25,7 +31,12 @@
     </div>
 
     <div class="main-content">
-    	<table border="1" style="font-size: 20px; position: absolute; top: 100px; left: 300px;">
+    	<div>
+    		<button class="apply-color" type="submit" style="font-size: 20px; position:absolute; top: 100px; left: 300px;" onClick="location.href='http://localhost:8080/CS157A-team8/submits.jsp'">Apply to adopt a pet!</button>
+    	</div>
+    	<div>
+    	<table border="1" style="font-size: 20px; position: absolute; top: 150px; left: 300px;">
+    	
     		<tr>
     			<td>Application ID</td>
     			<td>Status</td>
@@ -49,13 +60,13 @@
                 // Third column is for conditional button to make appointment based on whether application is accepted
                 while (rs.next()) {
                 	if (rs.getString(2).equals("2")) {
-                		out.println("<tr>" + "<td>" + rs.getString(1) + "</td>" + "<td>" + rs.getString(2) + "</td>" + "<td><a href=\"#\">Make Appointment</a></td>" + "</tr>");
+                		out.println("<tr>" + "<td>" + rs.getString(1) + "</td>" + "<td>" + rs.getString(2) + "</td>" + "<td><a href=\"#\">Approved - Make Appointment</a></td>" + "</tr>");
                 	}
                 	else if (rs.getString(2).equals("1")) {
-                		out.println("<tr>" + "<td>" + rs.getString(1) + "</td>" + "<td>" + rs.getString(2) + "</td>" + "<td>Approval In-Progress</td>" + "</tr>");
+                		out.println("<tr>" + "<td>" + rs.getString(1) + "</td>" + "<td>" + rs.getString(2) + "</td>" + "<td>Rejected</td>" + "</tr>");
                 	}
                 	else {
-                		out.println("<tr>" + "<td>" + rs.getString(1) + "</td>" + "<td>" + rs.getString(2) + "</td>" + "<td>Rejected</td>" + "</tr>");
+                		out.println("<tr>" + "<td>" + rs.getString(1) + "</td>" + "<td>" + rs.getString(2) + "</td>" + "<td>Pending</td>" + "</tr>");
                 	}
              		
                 }
@@ -69,6 +80,7 @@
     		%>
     		
     	</table>
+    	</div>
     </div>
 
 </body>

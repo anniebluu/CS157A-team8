@@ -72,7 +72,7 @@ public class ApplicationDao {
 	// method approve existing Application in database
 	public String reject(Application application) {
 		con = new Database().getConnection();
-		String sql = "UPDATE applications SET AppStatus = 0 WHERE ApplicationID = ?";
+		String sql = "UPDATE applications SET AppStatus = 1 WHERE ApplicationID = ?";
 		String result="Data Updated Successfully";
 		
 		try {
@@ -90,6 +90,7 @@ public class ApplicationDao {
 
 	// generating next appID
 	public String getNextApplicationID() {
+		con = new Database().getConnection();
         String query = "select ApplicationID as maxID from applications order by ApplicationID desc limit 1";
         String nextID = null;
         try {
