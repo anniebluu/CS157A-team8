@@ -42,17 +42,21 @@ public class Submits extends HttpServlet {
 
         ApplicationDao applicationDao = new ApplicationDao();
         String applicationID = applicationDao.getNextApplicationID();
-
-        if (applicationID != null) {
-            boolean submitted = applicationDao.insertApplication(applicationID, username, petID);
-            if (submitted) {
+        
+        if (applicationID != null) // checks for app
+        {
+            boolean submitted = applicationDao.insertApplication(username, petID);
+            if (submitted) 
+            {
                 response.getWriter().println("Application submitted successfully. Your ApplicationID is: " + applicationID);
             } 
-            else {
-                response.getWriter().println("Error: Failed to submit application.");
+            else // some input was wrong
+            {
+                response.getWriter().println("Error: Failed to submit application. Please make sure all information is correct.");
             }
         } 
-        else {
+        else  // couldn't get new ID
+        {
             response.getWriter().println("Error: Failed to get new ApplicationID.");
         }
     }

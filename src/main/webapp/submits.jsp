@@ -27,7 +27,7 @@
 		
 			<div class="mb-3">
 				<label for="username" class="form-label"> UserName</label>
-				<input type="text" class="form-control" id="petName" name="petName" placeholder="Enter Username" required>
+				<input type="text" class="form-control" id="username" name="username" placeholder="Enter Username" required>
 			</div>
 			<div class="mb-3">
 				<label for="petID" class="form-label">Pet ID</label>

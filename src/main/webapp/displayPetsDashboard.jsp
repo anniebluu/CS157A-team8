@@ -38,15 +38,13 @@
 		
 		<div class="card-body">
 			<h5 class="card-title">Pet</h5>
+			<p class="card-text">Pet ID: xxx-xxxx-xxx</p>
 			<p class="card-text">brief description of pet</p>
 			
 			<div class="button">
                 <button type="adopt" class="btn btn-primary"
                 onclick="location.href='http://localhost:8080/CS157A-team8/submits.jsp'">Apply to Adopt!</button>
-                <button type="petInfo" class="btn btn-secondary"
-                onclick="location.href='http://localhost:8080/CS157A-team8/userRegister.jsp'">Learn More about Me!</button>
             </div>
-            
 		</div>
 		</div>
 	</div>
@@ -62,15 +60,13 @@
 		
 		<div class="card-body">
 			<h5 class="card-title">Pet</h5>
+			<p class="card-text">Pet ID: xxx-xxxx-xxx</p>
 			<p class="card-text">brief description of pet</p>
 			
 			<div class="button">
                 <button type="adopt" class="btn btn-primary"
                 onclick="location.href='http://localhost:8080/CS157A-team8/submits.jsp'">Apply to Adopt!</button>
-                <button type="petInfo" class="btn btn-secondary"
-                onclick="location.href='http://localhost:8080/CS157A-team8/userRegister.jsp'">Learn More about Me!</button>
             </div>
-            
 		</div>
 		</div>
 	</div>
@@ -85,15 +81,13 @@
 		
 		<div class="card-body">
 			<h5 class="card-title">Pet</h5>
+			<p class="card-text">Pet ID: xxx-xxxx-xxx</p>
 			<p class="card-text">brief description of pet</p>
 			
 			<div class="button">
                 <button type="adopt" class="btn btn-primary"
                 onclick="location.href='http://localhost:8080/CS157A-team8/submits.jsp'">Apply to Adopt!</button>
-                <button type="petInfo" class="btn btn-secondary"
-                onclick="location.href='http://localhost:8080/CS157A-team8/userRegister.jsp'">Learn More about Me!</button>
             </div>
-            
 		</div>
 		</div>
 	</div>
@@ -108,15 +102,13 @@
 		
 		<div class="card-body">
 			<h5 class="card-title">Pet</h5>
+			<p class="card-text">Pet ID: xxx-xxxx-xxx</p>
 			<p class="card-text">brief description of pet</p>
 			
 			<div class="button">
                 <button type="adopt" class="btn btn-primary"
                 onclick="location.href='http://localhost:8080/CS157A-team8/submits.jsp'">Apply to Adopt!</button>
-                <button type="petInfo" class="btn btn-secondary"
-                onclick="location.href='http://localhost:8080/CS157A-team8/userRegister.jsp'">Learn More about Me!</button>
             </div>
-            
 		</div>
 		</div>
 	</div>
@@ -131,15 +123,13 @@
 		
 		<div class="card-body">
 			<h5 class="card-title">Pet</h5>
+			<p class="card-text">Pet ID: xxx-xxxx-xxx</p>
 			<p class="card-text">brief description of pet</p>
 			
 			<div class="button">
                 <button type="adopt" class="btn btn-primary"
                 onclick="location.href='http://localhost:8080/CS157A-team8/submits.jsp'">Apply to Adopt!</button>
-                <button type="petInfo" class="btn btn-secondary"
-                onclick="location.href='http://localhost:8080/CS157A-team8/userRegister.jsp'">Learn More about Me!</button>
             </div>
-            
 		</div>
 		</div>
 	</div>
@@ -154,15 +144,13 @@
 		
 		<div class="card-body">
 			<h5 class="card-title">Pet</h5>
+			<p class="card-text">Pet ID: xxx-xxxx-xxx</p>
 			<p class="card-text">brief description of pet</p>
 			
 			<div class="button">
                 <button type="adopt" class="btn btn-primary"
                 onclick="location.href='http://localhost:8080/CS157A-team8/submits.jsp'">Apply to Adopt!</button>
-                <button type="petInfo" class="btn btn-secondary"
-                onclick="location.href='http://localhost:8080/CS157A-team8/userRegister.jsp'">Learn More about Me!</button>
             </div>
-            
 		</div>
 		</div>
 	</div>
@@ -177,15 +165,13 @@
 		
 		<div class="card-body">
 			<h5 class="card-title">Pet</h5>
+			<p class="card-text">Pet ID: xxx-xxxx-xxx</p>
 			<p class="card-text">brief description of pet</p>
 			
 			<div class="button">
                 <button type="adopt" class="btn btn-primary"
                 onclick="location.href='http://localhost:8080/CS157A-team8/submits.jsp'">Apply to Adopt!</button>
-                <button type="petInfo" class="btn btn-secondary"
-                onclick="location.href='http://localhost:8080/CS157A-team8/userRegister.jsp'">Learn More about Me!</button>
             </div>
-            
 		</div>
 		</div>
 	</div>
@@ -200,15 +186,13 @@
 		
 		<div class="card-body">
 			<h5 class="card-title">Pet</h5>
+			<p class="card-text">Pet ID: xxx-xxxx-xxx</p>
 			<p class="card-text">brief description of pet</p>
 			
 			<div class="button">
                 <button type="adopt" class="btn btn-primary"
                 onclick="location.href='http://localhost:8080/CS157A-team8/submits.jsp'">Apply to Adopt!</button>
-                <button type="petInfo" class="btn btn-secondary"
-                onclick="location.href='http://localhost:8080/CS157A-team8/userRegister.jsp'">Learn More about Me!</button>
             </div>
-            
 		</div>
 		</div>
 	</div>
