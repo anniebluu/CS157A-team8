@@ -39,7 +39,6 @@
 
     <div class="content">
         <h1>Welcome, <%= (session.getAttribute("userName") != null) ? session.getAttribute("userName") : "Guest" %>!</h1>
-        </div>
     </div>
 </div>
 

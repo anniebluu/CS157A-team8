@@ -75,7 +75,7 @@
 								<input type="password" class="form-control" id="repeatPassword" name="repeatPassword" placeholder="Enter your password again" required>
 							</div>
 							<div class="password-validation" id="message">
-							  <h5>Password must contain the following:</h4>
+							  <h4>Password must contain the following:</h4>
 							  <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
 							  <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
 							  <p id="number" class="invalid">A <b>number</b></p>

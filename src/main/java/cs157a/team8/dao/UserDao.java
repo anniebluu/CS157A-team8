@@ -84,6 +84,18 @@ public class UserDao {
     	String query = "SELECT * FROM users WHERE UserID = '" + userID + "' && Password = '" + password + "'";
     	return queryUsers(query);
     }
+    
+    public void deleteUser(String userID) {
+    	con = new Database().getConnection();
+    	String sql = "DELETE FROM users WHERE UserID = '" + userID + "'";
+    	try {
+    		ps = con.prepareStatement(sql);
+    		ps.executeUpdate();
+	    } catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
 
 	// method verifies user during login
 	public String verify(User user) {
