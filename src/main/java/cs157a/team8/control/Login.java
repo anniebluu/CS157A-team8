@@ -77,7 +77,7 @@ public class Login extends HttpServlet {
 				session.setAttribute("password", user.getPassword());
 				session.setAttribute("userName", user.getUserName());
 				session.setAttribute("userEmail", user.getUserEmail());
-				response.sendRedirect("userProfile.jsp");
+				response.sendRedirect("petQueryHome.jsp");
 			} else {
 				// An alert to send to login page.
 	            String alert = "<div class=\"alert alert-danger wrap-input100\">\n" +

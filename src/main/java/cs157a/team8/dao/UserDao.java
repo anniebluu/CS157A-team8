@@ -143,4 +143,31 @@ public class UserDao {
 
 		return result;
 	}
+	public boolean updateUser(User user) {
+	    con = new Database().getConnection();
+	    String sql = "UPDATE users SET password = ? WHERE userID = ?";
+	    boolean isUpdated = false;
+
+	    try {
+	        ps = con.prepareStatement(sql);
+	        ps.setString(1, user.getPassword());  // Set the new password
+	        ps.setString(2, user.getUserID());    // Specify the user to update
+
+	        int rowsAffected = ps.executeUpdate();
+	        if (rowsAffected > 0) {
+	            isUpdated = true; // Update was successful
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if (con != null) con.close();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+	    return isUpdated; // Return whether the update was successful
+	}
+	
 }

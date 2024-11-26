@@ -8,7 +8,7 @@
     <title>My Profile</title>
     <!-- fontswesome cdn link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="test.css">
 
 </head>
 <body>
@@ -25,19 +25,21 @@
     <div class="main-content">
         <div class="content-box">
             <div class="user-info">
-                <div class="info-row">
+                    <form action="updateProfile" method="post">
+                    <div class="info-row">
                     <label for="username">Username:</label>
 					<input type="text" id="user id" 
 					value="<%= (session.getAttribute("userID") != null) ? session.getAttribute("userID") : session.getAttribute("userID") %>" readonly>
 					<buttongrey>Edit</buttongrey>
                     <buttongrey>Save</buttongrey>
                 </div>
-                <div class="info-row">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" value="<%= (session.getAttribute("password") != null) ? session.getAttribute("password") : session.getAttribute("password") %>" readonly>
-                    <button onclick="enableEdit('password')">Edit</button>
-                    <button onclick="saveInfo('password')">Save</button>
-                </div>
+                    <div class="info-row">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" 
+                               value="<%= (session.getAttribute("password") != null) ? session.getAttribute("password") : "" %>" readonly>
+                        <button type="button" onclick="enableEdit('password')">Edit</button>
+                        <button type="submit">Save</button>
+                    </div>
                 <div class="info-row">
                     <label for="name">Name:</label>
 					<input type="text" id="Name" 
@@ -51,7 +53,12 @@
                     <buttongrey>Edit</buttongrey>
                     <buttongrey>Save</buttongrey>
                 </div>
+                </form>
             </div>
+        </div>
+       	<!-- Bottom-left button to redirect to petQueryHome.jsp -->
+        <div class="bottom-left">
+            <button onclick="window.location.href='petQueryHome.jsp'" class="btn btn-secondary">Home</button>
         </div>
     </div>
 
@@ -73,5 +80,27 @@
             // Add your code here to handle saving the updated information
         }
     </script>
+    <style>
+        /* Position the button at the bottom left */
+        .bottom-left {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+        }
+
+        .bottom-left .btn {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .bottom-left .btn:hover {
+            background-color: #5a6268;
+        }
+    </style>
 </body>
 </html>
