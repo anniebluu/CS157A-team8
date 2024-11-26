@@ -32,7 +32,9 @@
 	
  	<div class="sidebar">
 		<a href="javascript:void(0);" onclick="changeIframeSrc('organizations.jsp')"><i class="bi bi-database"> Organizations</i></a>
+		<a href="javascript:void(0);" onclick="changeIframeSrc('addOrganization.jsp')"><i class="bi bi-database-add"> Add Organization</i></a>
 		<a href="javascript:void(0);" onclick="changeIframeSrc('pets.jsp')"><i class="bi bi-database"> Pets</i></a>
+		<a href="javascript:void(0);" onclick="changeIframeSrc('addPet.jsp')"><i class="bi bi-database-add"> Add Pet</i></a>
 		<a href="javascript:void(0);" onclick="changeIframeSrc('users.jsp')"><i class="bi bi-database"> Users</i></a>
 		<a href="javascript:void(0);" onclick="changeIframeSrc('applications.jsp')"><i class="bi bi-database"> Applications</i></a>
     </div>

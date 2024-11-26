@@ -30,8 +30,16 @@ public class SetApplication extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String applicationID = request.getParameter("id");
+		ApplicationDao applicationDao = new ApplicationDao();
+		
+        if (applicationID != null) {
+            // Delete the record from the database
+        	applicationDao.resetApplicationStatus(applicationID);
+        	request.getRequestDispatcher("applications.jsp").forward(request, response);
+        } else {
+            response.getWriter().println("Invalid Application ID");
+        }
 	}
     
 	/**
@@ -47,6 +55,7 @@ public class SetApplication extends HttpServlet {
 			
 			ApplicationDao appDao = new ApplicationDao();
 			appDao.approve(app);
+			request.getRequestDispatcher("applications.jsp").forward(request, response);
 		}
 		else {
 			// Application is pending
@@ -54,6 +63,7 @@ public class SetApplication extends HttpServlet {
 						
 			ApplicationDao appDao = new ApplicationDao();
 			appDao.reject(app);
+			request.getRequestDispatcher("applications.jsp").forward(request, response);
 		}
 		
 		

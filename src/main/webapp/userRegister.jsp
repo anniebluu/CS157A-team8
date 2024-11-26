@@ -63,7 +63,7 @@
 								<input type="email" class="form-control" id="userEmail" name="userEmail" placeholder="Enter your email" required>
 							</div>
 							<div class="mb-3">
-								<label for="userName" class="form-label">Email</label>
+								<label for="userName" class="form-label">Name</label>
 								<input type="text" class="form-control" id="userName" name="userName" placeholder="Enter your name" required>
 							</div>
 							<div class="mb-3">
