@@ -1,8 +1,5 @@
 package cs157a.team8.control;
 
-import cs157a.team8.entity.User;
-import cs157a.team8.dao.UserDao;
-
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

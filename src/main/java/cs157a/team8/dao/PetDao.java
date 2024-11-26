@@ -14,34 +14,42 @@ public class PetDao {
 	Connection con = null;
 	PreparedStatement ps = null;
 	ResultSet rs = null;
-
+	
 	// method to query pets
-    private Pet queryPets(String query) {
-        Pet pet = new Pet();
-        try {
-            con = new Database().getConnection();
-            ps = con.prepareStatement(query);
-            rs = ps.executeQuery();
-            if (rs.next()) // if query returned rows, set and return
-            {
-                pet.setPetID(rs.getString(1));
-                pet.setPetName(rs.getString(2));
-                pet.setAge(rs.getString(3));
-                pet.setCategory(rs.getString(4));
-
-                return pet;
-            }
-        } catch (SQLException e) {
+	private Pet queryPets(String query) {
+		Pet pet = new Pet();
+		try {
+			con = new Database().getConnection();
+			ps = con.prepareStatement(query);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				pet.setPetID(rs.getString(1));
+				pet.setPetName(rs.getString(2));
+				pet.setAge(rs.getString(3));
+				pet.setCategory(rs.getString(4));
+				
+				return pet;
+			}
+		} catch (SQLException e) {
             System.out.println(e.getMessage());
+        } finally {
+            if(this.con != null) {
+                try {
+                    this.con.close();
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+            }
         }
-        return null;
-    }
+		return null;
+	}
     
     // method to insert a new Pet
     public String insertPet(Pet pet) {
         if (checkPetIDExists(pet.getPetID())) {
             return "Error: petID already exists";
         }
+
 
         con = new Database().getConnection();
         String result = "Data Entered Successfully";
@@ -61,11 +69,22 @@ public class PetDao {
 
         return result;
     }
-    
-    // method checks if a Pet ID already exists
+	
+	// method checks if petID exist in database or not
     public boolean checkPetIDExists(String petID) {
-        con = new Database().getConnection();
-        String query = "select 1 from pets where petID = '" + petID + "'";
-        return (queryPets(query) != null); // calls method to check pets in db
+        String query = "SELECT * FROM pets WHERE PetID = '" + petID + "'";
+        return (queryPets(query) != null);
+    }
+    
+    public void deletePet(String petID) {
+    	con = new Database().getConnection();
+    	String sql = "DELETE FROM pets WHERE PetID = '" + petID + "'";
+    	try {
+    		ps = con.prepareStatement(sql);
+    		ps.executeUpdate();
+	    } catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 }

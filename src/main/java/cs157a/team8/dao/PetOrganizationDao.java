@@ -14,6 +14,34 @@ public class PetOrganizationDao {
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 	
+	private PetOrganization queryOrganizations(String query) {
+		PetOrganization organization = new PetOrganization();
+		try {
+			con = new Database().getConnection();
+			ps = con.prepareStatement(query);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				organization.setOrganizationID(rs.getString(1));
+				organization.setOrganizationName(rs.getString(2));
+				organization.setOrganizationEmail(rs.getString(3));
+				organization.setAddress(rs.getString(4));
+				
+				return organization;
+			}
+		} catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            if(this.con != null) {
+                try {
+                    this.con.close();
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        }
+		return null;
+	}
+	
 	// method insert new PetOrganization into database
 	public String insert(PetOrganization petOrganization) {
 		con = new Database().getConnection();
@@ -36,4 +64,21 @@ public class PetOrganizationDao {
 		return result;
 	}
 	
+	// method checks if organizationID exist in database or not
+    public boolean checkOrganizationIDExists(String organizationID) {
+        String query = "SELECT * FROM petorganizations WHERE OrgID = '" + organizationID + "'";
+        return (queryOrganizations(query) != null);
+    }
+    
+    public void deleteOrganization(String organizationID) {
+    	con = new Database().getConnection();
+    	String sql = "DELETE FROM petorganizations WHERE OrgID = '" + organizationID + "'";
+    	try {
+    		ps = con.prepareStatement(sql);
+    		ps.executeUpdate();
+	    } catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
 }
