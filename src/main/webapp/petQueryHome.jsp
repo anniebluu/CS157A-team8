@@ -19,8 +19,8 @@
     <a href="#" class="logo"><i class="fas fa-paw"></i> Pet Query</a>
 		<nav>
 			<ul>
-				<li><a href="organizations.jsp">Organizations</a></li>
-				<li><a href="pets.jsp">Pets</a></li>
+				<li><a href="organizationsUser.jsp">Organizations</a></li>
+				<li><a href="petsUser.jsp">Pets</a></li>
 			</ul>
 		</nav>
 
