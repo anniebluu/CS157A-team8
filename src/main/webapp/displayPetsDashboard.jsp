@@ -58,9 +58,7 @@
                              <p class="card-text">Pet ID: <%= petID %></p>
                              <div class="button">
                                  <button type="button" class="btn btn-primary"
-                                     onclick="location.href='http://localhost:8080/CS157A-team8/submits.jsp?petID=<%= petID %>'">
-                                     Apply to Adopt!
-                                 </button>
+                                     onclick="location.href='http://localhost:8080/CS157A-team8/submits.jsp?petID=<%= petID %>'">Apply to Adopt!</button>
                              </div>
                          </div>
                      </div>

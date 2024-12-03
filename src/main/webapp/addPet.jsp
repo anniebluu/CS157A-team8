@@ -33,7 +33,7 @@
             <%
                 }
             %>
-
+            
             <form action="AddPet" method="post" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="petID" class="form-label">Pet ID</label>

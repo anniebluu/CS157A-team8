@@ -84,7 +84,7 @@ public class AddPet extends HttpServlet {
         
         // Send response back to user
         if ("Data Entered Successfully".equals(result)) {
-            response.sendRedirect("displayPetsDashboard.jsp"); // takes to dashboard if pet was added
+            response.sendRedirect("adminDashboard.jsp"); // takes to dashboard if pet was added
         } else {
             String alert = "Failed to add pet. Please try again."; // alert if error
             request.setAttribute("alert", alert); // sends to jsp
