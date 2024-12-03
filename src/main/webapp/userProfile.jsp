@@ -19,7 +19,7 @@
     <div class="sidebar">
         <a href="userProfile.jsp" class="active">My Profile</a>
         <a href="userApplications.jsp">Applications</a>
-        <a href="#">Appointments</a>
+        <a href="userAppointments.jsp">Appointments</a>
     </div>
 
     <div class="main-content">
