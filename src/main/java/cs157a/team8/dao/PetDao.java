@@ -8,6 +8,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PetDao {
 	
@@ -53,7 +55,7 @@ public class PetDao {
 
         con = new Database().getConnection();
         String result = "Data Entered Successfully";
-        String sql = "insert into pets (petID, petName, age, category) values (?, ?, ?, ?)";
+        String sql = "insert into pets (petID, petName, age, category, imagePath) values (?, ?, ?, ?, ?)";
         
         try {
         	ps = con.prepareStatement(sql);
@@ -61,6 +63,7 @@ public class PetDao {
             ps.setString(2, pet.getPetName());
             ps.setString(3, pet.getAge());
             ps.setString(4, pet.getCategory());
+            ps.setString(5, pet.getImagePath());
             ps.executeUpdate();
         } catch (SQLException e) {
             result = "Data Not Entered Successfully";
@@ -87,4 +90,7 @@ public class PetDao {
 			e.printStackTrace();
 		}
     }
+    
+    
+
 }

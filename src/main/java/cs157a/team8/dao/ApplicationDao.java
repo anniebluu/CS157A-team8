@@ -4,6 +4,7 @@ import cs157a.team8.database.Database;
 import cs157a.team8.entity.Application;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,7 +19,7 @@ public class ApplicationDao {
 		Application application = new Application();
 		try {
 			con = new Database().getConnection();
-			ps = con.prepareStatement(query);
+    		ps = con.prepareStatement(query);
 			rs = ps.executeQuery();
 			if(rs.next()) {
 				application.setApplicationID(rs.getString(1));
@@ -52,7 +53,7 @@ public class ApplicationDao {
 		// String sql = "insert into users values(?,?,?,?,?)";
 
 		try {
-        	ps = con.prepareStatement(applicationQuery);
+    		ps = con.prepareStatement(applicationQuery);
             ps.setString(1, applicationID);
             ps.setInt(2, 0); // sets AppStatus = 0 (pending)
             ps.executeUpdate();
@@ -119,7 +120,7 @@ public class ApplicationDao {
         String query = "select ApplicationID as maxID from applications order by ApplicationID desc limit 1";
         String nextID = null;
         try {
-        	ps = con.prepareStatement(query);
+    		ps = con.prepareStatement(query);
             rs = ps.executeQuery();
             if (rs.next()) // if query returned row, find max, get newID
             {
