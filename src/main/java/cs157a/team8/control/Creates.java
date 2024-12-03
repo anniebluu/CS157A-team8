@@ -50,7 +50,7 @@ public class Creates extends HttpServlet {
     		
     		String create = appointmentDao.insert(username, newApp);
     		
-    		response.getWriter().println(create);
+    		request.getRequestDispatcher("userAppointments.jsp").forward(request, response);
     	}
     	else {
     		response.getWriter().println("Error: Failed to get new AppointmentID.");
