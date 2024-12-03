@@ -41,22 +41,31 @@ public class Submits extends HttpServlet {
 
         ApplicationDao applicationDao = new ApplicationDao();
         String applicationID = applicationDao.getNextApplicationID();
+       
         
         if (applicationID != null) // checks for app
         {
             boolean submitted = applicationDao.insertApplication(username, petID);
+            // Send response back to user
             if (submitted) 
             {
-                response.getWriter().println("Application submitted successfully. Your ApplicationID is: " + applicationID);
+            	String alert = "Application submitted successfully. Your ApplicationID is: " + applicationID; // alert if submitted
+            	request.setAttribute("alert", alert); // sends to jsp
+                request.getRequestDispatcher("submits.jsp").forward(request, response); // stays in same page
             } 
             else // some input was wrong
             {
-                response.getWriter().println("Error: Failed to submit application. Please make sure all information is correct.");
+                String alert = "Failed to submit pet adoption application. Please make sure all information is correct."; // alert if error
+            	request.setAttribute("alert", alert); // sends to jsp
+            	request.getRequestDispatcher("submits.jsp").forward(request, response); // stays in same page
+            
             }
         } 
         else  // couldn't get new ID
         {
-            response.getWriter().println("Error: Failed to get new ApplicationID.");
+        	String alert = "Failed to submit pet adoption application. Please try again."; // alert if error
+        	request.setAttribute("alert", alert); // sends to jsp
+        	request.getRequestDispatcher("submits.jsp").forward(request, response); // stays in same page
         }
     }
 }

@@ -4,11 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pet Query - Adopt Pet Form</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- fontswesome cdn link -->
+    <title>Pet Query</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="test.css">
 </head>
 <body>
    <!-- header section starts -->
@@ -20,10 +19,22 @@
 <div class="container">
 
 <div class="content">
-	<div class="header-title">Apply to Adopt!</div>
-<div class="login-container">
-	<div class="header-subtitle">Please provide your Username as well as the unique pet ID XXX-XXXX-XXX of the pet you'd like to adopt.</div>
-		<form action="Submits" method="post">
+            <h2>Apply to Adopt!</h2>
+            <p>Please provide your Username as well as the unique Pet ID (XXX-XXXX-XXX) of the pet you'd like to adopt.</p>
+
+            <!-- check alert msg -->
+            <%
+                String alert = (String) request.getAttribute("alert");
+                if (alert != null) {
+            %>
+                <div class="alert alert-danger" role="alert">
+                    <%= alert %>
+                </div>
+            <%
+                }
+            %>
+            
+            <form action="Submits" method="post">
 		
 			<div class="mb-3">
 				<label for="username" class="form-label"> UserName</label>
@@ -32,11 +43,12 @@
 			<div class="mb-3">
 				<label for="petID" class="form-label">Pet ID</label>
 				<input type="text" class="form-control" id="petID" name="petID" placeholder="Enter Desired Pet's ID" required>
+			</div>   
+			<div class="button">
+				<a href="#"><button type="submit" class="btn1">Submit Application</button></a>
+				<a href="#"><button class="btn2" onclick="location.href='http://localhost:8080/CS157A-team8/displayPetsDashboard.jsp'">Return to Pets</button></a>
 			</div>
-                    
-			<div class="d-flex justify-content-end">
-				<button type="submit" class="btn btn-primary">Submit Application</button>
-			</div>
+			
 		</form>
 </div>
 </div>

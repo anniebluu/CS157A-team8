@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class DeleteOrganization
+ * Servlet implementation class DeleteApplication
  */
 @WebServlet("/DeleteApplication")
 public class DeleteApplication extends HttpServlet {

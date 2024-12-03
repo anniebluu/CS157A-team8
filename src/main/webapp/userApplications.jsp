@@ -27,7 +27,7 @@
     <div class="sidebar">
         <a href="userProfile.jsp">My Profile</a>
         <a href="userApplications.jsp">Applications</a>
-        <a href="#">Appointments</a>
+        <a href="userAppointments.jsp">Appointments</a>
     </div>
 
     <div class="main-content">
@@ -60,7 +60,7 @@
                 // Third column is for conditional button to make appointment based on whether application is accepted
                 while (rs.next()) {
                 	if (rs.getString(2).equals("2")) {
-                		out.println("<tr>" + "<td>" + rs.getString(1) + "</td>" + "<td>" + rs.getString(2) + "</td>" + "<td><a href=\"#\">Approved - Make Appointment</a></td>" + "</tr>");
+                		out.println("<tr>" + "<td>" + rs.getString(1) + "</td>" + "<td>" + rs.getString(2) + "</td>" + "<td><a href=\"creates.jsp\">Approved - Make Appointment</a></td>" + "</tr>");
                 	}
                 	else if (rs.getString(2).equals("1")) {
                 		out.println("<tr>" + "<td>" + rs.getString(1) + "</td>" + "<td>" + rs.getString(2) + "</td>" + "<td>Rejected</td>" + "</tr>");
