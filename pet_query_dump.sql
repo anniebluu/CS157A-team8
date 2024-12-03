@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.38, for macos14 (arm64)
 --
--- Host: localhost    Database: petquery
+-- Host: 127.0.0.1    Database: pet_query
 -- ------------------------------------------------------
 -- Server version	8.0.39
 
@@ -35,7 +35,7 @@ CREATE TABLE `adopts` (
 
 LOCK TABLES `adopts` WRITE;
 /*!40000 ALTER TABLE `adopts` DISABLE KEYS */;
-INSERT INTO `adopts` VALUES ('username1','794-7297-002'),('username10','262-2133-001'),('username2','337-2339-001'),('username3','794-7297-006'),('username4','337-2339-006'),('username5','262-2133-003'),('username6','337-2339-002'),('username7','262-2133-005'),('username8','794-7297-003'),('username9','262-2133-006');
+INSERT INTO `adopts` VALUES ('LEWIS','262-2353-934'),('username1','794-7297-002'),('username10','262-2133-001'),('username2','262-2133-001'),('username2','337-2339-001'),('username3','794-7297-006'),('username4','337-2339-006'),('username5','262-2133-003'),('username6','337-2339-002'),('username7','262-2133-005'),('username8','794-7297-003'),('username9','262-2133-006'),('verstappen','262-2133-008'),('verstappen','262-2133-093');
 /*!40000 ALTER TABLE `adopts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -59,7 +59,7 @@ CREATE TABLE `applications` (
 
 LOCK TABLES `applications` WRITE;
 /*!40000 ALTER TABLE `applications` DISABLE KEYS */;
-INSERT INTO `applications` VALUES ('A01',0),('A02',0),('A03',0),('A04',0),('A05',0),('A06',0),('A07',0),('A08',0),('A09',0),('A10',0);
+INSERT INTO `applications` VALUES ('A01',0),('A02',0),('A03',0),('A04',0),('A05',0),('A06',0),('A07',0),('A08',0),('A09',0),('A10',0),('A11',0),('A12',0),('A13',0),('A14',0),('A15',0),('A16',0),('A17',0),('A18',0);
 /*!40000 ALTER TABLE `applications` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -200,6 +200,7 @@ CREATE TABLE `pets` (
   `PetName` varchar(45) NOT NULL,
   `Age` varchar(45) NOT NULL,
   `Category` varchar(45) NOT NULL,
+  `imagePath` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`PetID`),
   UNIQUE KEY `PetID_UNIQUE` (`PetID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -211,7 +212,7 @@ CREATE TABLE `pets` (
 
 LOCK TABLES `pets` WRITE;
 /*!40000 ALTER TABLE `pets` DISABLE KEYS */;
-INSERT INTO `pets` VALUES ('262-2133-001','Huck','3 Months, 1 Week','Dog & Puppies'),('262-2133-002','Dewey','10 Weeks','Dog & Puppies'),('262-2133-003','Delta','6 Months, 2 Weeks','Cat & Kittens'),('262-2133-004','Kite','5 Months, 4 Weeks','Cat & Kittens'),('262-2133-005','Sir Hopsalot','1 Year, 1 Month','Rabbits'),('262-2133-006','Tawny','10 Weeks','Dog & Puppies'),('337-2339-001','Galen','2 Years','Cat & Kittens'),('337-2339-002','Dora','6 Months','Cat & Kittens'),('337-2339-003','Gogo','1 Year','Cat & Kittens'),('337-2339-004','Benedict','7 Years, 7 Months','Cat & Kittens'),('337-2339-005','Foggy','6 Months','Cat & Kittens'),('337-2339-006','Mercury','2 Years, 9 Months','Cat & Kittens'),('794-7297-001','Maui','7 Years','Dog & Puppies'),('794-7297-002','Kylo','7 Years','Dog & Puppies'),('794-7297-003','Karma','8 Years','Dog & Puppies'),('794-7297-004','Tiny','4 Years','Cat & Kittens'),('794-7297-005','Angelo','1 Year, 11 Months','Cat & Kittens'),('794-7297-006','Emilio','2 Years, 1 Month','Cat & Kittens');
+INSERT INTO `pets` VALUES ('262-2133-001','Huck','3 Months, 1 Week','Dog & Puppies','images/Huck.png'),('262-2133-002','Dewey','10 Weeks','Dog & Puppies','images/Dewey.png'),('262-2133-003','Delta','6 Months, 2 Weeks','Cat & Kittens','images/Delta.png'),('262-2133-004','Kite','5 Months, 4 Weeks','Cat & Kittens','images/Kite.png'),('262-2133-005','Sir Hopsalot','1 Year, 1 Month','Rabbits','images/Hopsalot.png'),('262-2133-006','Tawny','10 Weeks','Dog & Puppies','images/Tawny.png'),('262-2133-093','Hamilton','3 years','Rabbits','images/Hamilton.png'),('262-2133-923','Norris','2 years','Rabbits','images/Norris.png'),('262-2133-939','Lando','4 years','Rabbits','images/Red_Bunny_Petland_Puppy.jpg'),('262-2133-946','Lewis','2 years','Rabbits','images/Lewis.png'),('262-2134-892','Verstappen','4 years','Rabbits','images/Verstappen.png'),('337-2339-001','Galen','2 Years','Cat & Kittens','images/Galen.png'),('337-2339-002','Dora','6 Months','Cat & Kittens','images/Dora.png'),('337-2339-003','Gogo','1 Year','Cat & Kittens','images/Gogo.png'),('337-2339-004','Benedict','7 Years, 7 Months','Cat & Kittens','images/Benedict.png'),('337-2339-005','Foggy','6 Months','Cat & Kittens','images/Foggy.png'),('337-2339-006','Mercury','2 Years, 9 Months','Cat & Kittens','images/Mercury.png'),('794-7297-001','Maui','7 Years','Dog & Puppies','images/Maui.png'),('794-7297-002','Kylo','7 Years','Dog & Puppies','images/Kylo.png'),('794-7297-003','Karma','8 Years','Dog & Puppies','images/Karma.png'),('794-7297-004','Tiny','4 Years','Cat & Kittens','images/Tiny.png'),('794-7297-005','Angelo','1 Year, 11 Months','Cat & Kittens','images/Angelo.png'),('794-7297-006','Emilio','2 Years, 1 Month','Cat & Kittens','images/Emilio.png');
 /*!40000 ALTER TABLE `pets` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -236,7 +237,7 @@ CREATE TABLE `submits` (
 
 LOCK TABLES `submits` WRITE;
 /*!40000 ALTER TABLE `submits` DISABLE KEYS */;
-INSERT INTO `submits` VALUES ('A01','username1', '262-2133-001'),('A010','username10', '262-2133-002'),('A02','username2', '262-2133-003'),('A03','username3', '262-2133-004'),('A04','username4', '262-2133-004'),('A05','username5', '262-2133-002'),('A06','username6', '262-2133-005'),('A07','username7', '262-2133-006'),('A08','username8', '262-2133-010'),('A09','username9', '262-2133-008');
+INSERT INTO `submits` VALUES ('A01','username1','262-2133-001'),('A010','username10','262-2133-002'),('A02','username2','262-2133-003'),('A03','username3','262-2133-004'),('A04','username4','262-2133-004'),('A05','username5','262-2133-002'),('A06','username6','262-2133-005'),('A07','username7','262-2133-006'),('A08','username8','262-2133-010'),('A09','username9','262-2133-008'),('A15','verstappen','262-2133-008'),('A16','verstappen','262-2133-093'),('A17','LEWIS','262-2353-934'),('A18','username2','262-2133-001');
 /*!40000 ALTER TABLE `submits` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -279,4 +280,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-10-14 20:37:01
+-- Dump completed on 2024-12-02 16:45:09

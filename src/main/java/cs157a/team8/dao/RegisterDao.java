@@ -8,10 +8,10 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class RegisterDao {
-	private String dburl = "jdbc:mysql://localhost:3306/petquery";
-	private String dbuname = "root";
-	private String dbpassword = "HaroldChu!00";
-    private String dbdriver = "com.mysql.cj.jdbc.Driver";
+	private String dburl = null;
+	private String dbuname = null;
+	private String dbpassword = null;
+    private String dbdriver = null;
 
 	public void loadDriver(String dbDriver)
 	{
