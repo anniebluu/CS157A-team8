@@ -20,6 +20,8 @@
         <a href="userProfile.jsp" class="active">My Profile</a>
         <a href="userApplications.jsp">Applications</a>
         <a href="userAppointments.jsp">Appointments</a>
+        <a href="displayPetsDashboard.jsp">Find Your Pet</a>
+        <a href="submits.jsp">Adopt a Pet</a>
     </div>
 
     <div class="main-content">

@@ -11,11 +11,16 @@
     <!-- fontswesome cdn link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <style>
+<!--     <style>
     	.apply-color {
     		background-color: lightblue;
     	}
-    </style>
+    </style> -->
+    
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+		rel="stylesheet" 
+		integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
+		crossorigin="anonymous">
     
 
 </head>
@@ -28,20 +33,36 @@
         <a href="userProfile.jsp">My Profile</a>
         <a href="userApplications.jsp">Applications</a>
         <a href="userAppointments.jsp">Appointments</a>
-    </div>
+        <a href="displayPetsDashboard.jsp">Find Your Pet</a>
+        <a href="submits.jsp">Adopt a Pet</a>
+	</div>
+	
+    <div style="
+	    font-size:1.5rem;
+	   	flex: 1;
+	      background-color: #f0f0f0;
+	      justify-content: center;
+	      align-items: center;
+	      padding: 10px;
+	      margin-top: 75px;
+	      overflow: auto;
+	      height: auto;
+	      margin-bottom: 75px;">
 
-    <div class="main-content">
-    	<div>
+<!--     	<div>
     		<h1 style="position: absolute; top: 100px; left: 300px;"> My Appointments </h1>
     	</div>
-    	<table border="1" style="font-size: 20px; position: absolute; top: 150px; left: 300px;">
-    	
+    	<table border="1" style="font-size: 20px; position: absolute; top: 150px; left: 300px;"> -->
+    	 <table class="table table-light table-striped"">
+    	 <thead>
     		<tr>
-    			<td>Appointment ID</td>
-    			<td>Date</td>
-    			<td>Time</td>
-    			<td>Cancel?</td>
+    			<th scope="col">Appointment ID</th>
+    			<th scope="col">Date</th>
+    			<th scope="col">Time</th>
+    			<th scope="col">Cancel?</th>
     		</tr>
+    		</thead>
+    		<tbody>
     		
     		<%
     		try {
@@ -61,7 +82,7 @@
                 	out.println("<tr>" + "<td>" + rs.getString(1) + "</td>" 
                 		+ "<td>" + rs.getString(2) + "</td>" 
                 		+ "<td>" + rs.getString(3) + "</td>"
-                		+ "<td><button type=\"button\" onclick='confirmCancel(" + "\"" + rs.getString(1)  + "\"" + ")'>Cancel</button></td>"
+                		+ "<td><button type=\"button\" class=\"btn btn-outline-danger\" onclick='confirmCancel(" + "\"" + rs.getString(1)  + "\"" + ")'>Cancel</button></td>"
                 		+ "<td></td>" + "</tr>");
              		
                 }
@@ -73,10 +94,10 @@
             }
     		
     		%>
-    		
+    		</tbody>
     	</table>
     	</div>
-    </div>
+<!--     </div> -->
     
     <script>
        function confirmCancel(appointmentID) {
