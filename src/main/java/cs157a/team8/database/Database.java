@@ -7,46 +7,50 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class Database {
-	
-	private String dburl = null;
-	private String dbuname = null;
-	private String dbpassword = null;
-    private String dbdriver = null;
-	
+
+    private String dburl = "jdbc:mysql://localhost:3306/petquery"; // Replace with your database URL
+    private String dbuname = "root"; // Replace with your database username
+    private String dbpassword = "HaroldChu!00"; // Replace with your database password
+    private String dbdriver = "com.mysql.cj.jdbc.Driver"; // JDBC driver for MySQL
+
     public Connection getConnection() {
         Connection con = null;
         try {
-        	Properties prop = new Properties();
-        	String propFilePath = "/db.properties";
-        	InputStream in = getClass().getClassLoader().getResourceAsStream(propFilePath);
+            // Load the JDBC driver
+            Class.forName(dbdriver);
 
-        	prop.load(in);
-        	
-        	dbdriver = prop.getProperty("jdbc.driver");
-        	Class.forName(dbdriver);
-
-        	dburl = prop.getProperty("jdbc.url");
-        	dbuname = prop.getProperty("jdbc.username");
-        	dbpassword = prop.getProperty("jdbc.password");
-        	
+            // Establish the database connection
             con = DriverManager.getConnection(dburl, dbuname, dbpassword);
-            in.close();
             return con;
         } catch (ClassNotFoundException e) {
-			e.printStackTrace();
-			return null;
-		} catch (IOException e) {
             e.printStackTrace();
             return null;
         } catch (Exception e) {
-			e.printStackTrace();
-			return null;
+            e.printStackTrace();
+            return null;
         }
-       
     }
 
-//    public static void main(String[] args) {
-//        System.out.println(new Database().getConnection());
-//    }
+    public static void main(String[] args) {
+        Database db = new Database();
+        Connection conn = null;
+        try {
+            conn = db.getConnection();
+            if (conn != null) {
+                System.out.println("Database successfully connected!");
+            } else {
+                System.out.println("Failed to connect to the database.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 }
-  
