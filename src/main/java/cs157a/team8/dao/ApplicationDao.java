@@ -19,8 +19,7 @@ public class ApplicationDao {
 		Application application = new Application();
 		try {
 			con = new Database().getConnection();
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/pet_query", "root", "Lupineapple#0117");
-	        ps = con.prepareStatement(query);
+			ps = con.prepareStatement(query);
 			rs = ps.executeQuery();
 			if(rs.next()) {
 				application.setApplicationID(rs.getString(1));
@@ -54,8 +53,7 @@ public class ApplicationDao {
 		// String sql = "insert into users values(?,?,?,?,?)";
 
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/pet_query", "root", "Lupineapple#0117");
-	        ps = con.prepareStatement(applicationQuery);
+			ps = con.prepareStatement(applicationQuery);
             ps.setString(1, applicationID);
             ps.setInt(2, 0); // sets AppStatus = 0 (pending)
             ps.executeUpdate();
@@ -122,8 +120,7 @@ public class ApplicationDao {
         String query = "select ApplicationID as maxID from applications order by ApplicationID desc limit 1";
         String nextID = null;
         try {
-        	con = DriverManager.getConnection("jdbc:mysql://localhost:3306/pet_query", "root", "Lupineapple#0117");
-	        ps = con.prepareStatement(query);
+        	ps = con.prepareStatement(query);
             rs = ps.executeQuery();
             if (rs.next()) // if query returned row, find max, get newID
             {

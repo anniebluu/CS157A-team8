@@ -22,8 +22,7 @@ public class PetDao {
 		Pet pet = new Pet();
 		try {
 			con = new Database().getConnection();
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/pet_query", "root", "Lupineapple#0117");
-	        ps = con.prepareStatement(query);
+			ps = con.prepareStatement(query);
 			rs = ps.executeQuery();
 			if(rs.next()) {
 				pet.setPetID(rs.getString(1));
@@ -60,8 +59,7 @@ public class PetDao {
         }
         
         try {
-        	con = DriverManager.getConnection("jdbc:mysql://localhost:3306/pet_query", "root", "Lupineapple#0117");
-	        ps = con.prepareStatement(sql);
+        	ps = con.prepareStatement(sql);
             ps.setString(1, pet.getPetID());
             ps.setString(2, pet.getPetName());
             ps.setString(3, pet.getAge());
