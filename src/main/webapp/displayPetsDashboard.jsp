@@ -30,6 +30,19 @@
 <div class="content1">
 		<h3>Find your new best friend!</h3>
 		<p3>Browse our available pets and Apply to adopt. </p3>
+		
+		<form action="Search" method="Get">
+            <div class="row justify-content-center">
+                
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="Search" placeholder="Search for specific pets..." required>
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+                
+            </div>
+        </form>
 </div>
 		
 <div class="row justify-content-center">
@@ -48,7 +61,7 @@
                  String petName = rs.getString("petName");
                  String imagePath = rs.getString("imagePath");
                  %>
-                 <div class="col-md-3 mb-3">
+                 <div class="col-md-2 mb-3">
                      <div class="card text-center">
                          <div class="row justify-content-center">
                              <img src="<%= imagePath %>" class="img-fluid" alt="<%= petName %>">

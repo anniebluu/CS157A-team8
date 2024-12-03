@@ -49,14 +49,15 @@ public class PetDao {
     
     // method to insert a new Pet
     public String insertPet(Pet pet) {
-        if (checkPetIDExists(pet.getPetID())) {
-            return "Error: petID already exists";
-        }
-
-
+        
         con = new Database().getConnection();
         String result = "Data Entered Successfully";
         String sql = "insert into pets (petID, petName, age, category, imagePath) values (?, ?, ?, ?, ?)";
+        
+        if (checkPetIDExists(pet.getPetID())) {
+            result = "Error: petID already exists";
+            return result;
+        }
         
         try {
         	con = DriverManager.getConnection("jdbc:mysql://localhost:3306/pet_query", "root", "Lupineapple#0117");
