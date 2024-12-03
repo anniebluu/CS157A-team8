@@ -37,6 +37,7 @@
 		<a href="javascript:void(0);" onclick="changeIframeSrc('addPet.jsp')"><i class="bi bi-database-add"> Add Pet</i></a>
 		<a href="javascript:void(0);" onclick="changeIframeSrc('users.jsp')"><i class="bi bi-database"> Users</i></a>
 		<a href="javascript:void(0);" onclick="changeIframeSrc('applications.jsp')"><i class="bi bi-database"> Applications</i></a>
+		<a href="javascript:void(0);" onclick="changeIframeSrc('appointments.jsp')"><i class="bi bi-database"> Appointments</i></a>
     </div>
     
     

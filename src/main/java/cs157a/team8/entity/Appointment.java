@@ -11,6 +11,7 @@ public class Appointment{
 		super();
 		this.appointmentID = appointmentID;
 		this.date = date;
+		this.time = time;
 	}
 
 	public String getAppointmentID() {

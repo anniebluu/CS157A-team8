@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Applications</title>
+    <title>My Appointments</title>
     <!-- fontswesome cdn link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -32,15 +32,15 @@
 
     <div class="main-content">
     	<div>
-    		<button class="apply-color" type="submit" style="font-size: 20px; position:absolute; top: 100px; left: 300px;" onClick="location.href='http://localhost:8080/CS157A-team8/submits.jsp'">Apply to adopt a pet!</button>
+    		<h1 style="position: absolute; top: 100px; left: 300px;"> My Appointments </h1>
     	</div>
-    	<div>
     	<table border="1" style="font-size: 20px; position: absolute; top: 150px; left: 300px;">
     	
     		<tr>
-    			<td>Application ID</td>
-    			<td>Status</td>
-    			<td>Make Appointment</td>
+    			<td>Appointment ID</td>
+    			<td>Date</td>
+    			<td>Time</td>
+    			<td>Cancel?</td>
     		</tr>
     		
     		<%
@@ -51,23 +51,18 @@
                
                 Statement stmt = con.createStatement();
                 
-                // Retrieve userID from session to query this user's applications
+                // Retrieve userID from session to query this user's appointments
                 String userID = (String) session.getAttribute("userID");
-                String query = "SELECT ApplicationID, AppStatus FROM submits NATURAL JOIN applications WHERE UserID = '" + userID + "'";
+                String query = "SELECT AppointmentID, Date, Time FROM creates NATURAL JOIN appointments WHERE UserID = '" + userID + "'";
                 
                 ResultSet rs = stmt.executeQuery(query);
                 
-                // Third column is for conditional button to make appointment based on whether application is accepted
                 while (rs.next()) {
-                	if (rs.getString(2).equals("2")) {
-                		out.println("<tr>" + "<td>" + rs.getString(1) + "</td>" + "<td>" + rs.getString(2) + "</td>" + "<td><a href=\"creates.jsp\">Approved - Make Appointment</a></td>" + "</tr>");
-                	}
-                	else if (rs.getString(2).equals("1")) {
-                		out.println("<tr>" + "<td>" + rs.getString(1) + "</td>" + "<td>" + rs.getString(2) + "</td>" + "<td>Rejected</td>" + "</tr>");
-                	}
-                	else {
-                		out.println("<tr>" + "<td>" + rs.getString(1) + "</td>" + "<td>" + rs.getString(2) + "</td>" + "<td>Pending</td>" + "</tr>");
-                	}
+                	out.println("<tr>" + "<td>" + rs.getString(1) + "</td>" 
+                		+ "<td>" + rs.getString(2) + "</td>" 
+                		+ "<td>" + rs.getString(3) + "</td>"
+                		+ "<td><button type=\"button\" onclick='confirmCancel(" + "\"" + rs.getString(1)  + "\"" + ")'>Cancel</button></td>"
+                		+ "<td></td>" + "</tr>");
              		
                 }
                 rs.close();
@@ -82,6 +77,15 @@
     	</table>
     	</div>
     </div>
+    
+    <script>
+       function confirmCancel(appointmentID) {
+           if (confirm("Cancel?")) {
+               // If confirmed, call delete function
+               window.location.href = "CancelAppointment?id=" + String(appointmentID);
+           }
+       }
+   </script>
 
 </body>
 </html>

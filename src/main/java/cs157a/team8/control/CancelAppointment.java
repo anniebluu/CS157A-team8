@@ -1,6 +1,6 @@
 package cs157a.team8.control;
 
-import cs157a.team8.dao.ApplicationDao;
+import cs157a.team8.dao.AppointmentDao;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class DeleteApplication
+ * Servlet implementation class DeleteOrganization
  */
-@WebServlet("/DeleteApplication")
-public class DeleteApplication extends HttpServlet {
+@WebServlet("/CancelAppointment")
+public class CancelAppointment extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteApplication() {
+    public CancelAppointment() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,16 +35,16 @@ public class DeleteApplication extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Get the record ID from the URL parameter
     	
-        String applicationID = request.getParameter("id");
+        String appointmentID = request.getParameter("id");
         
-        ApplicationDao applicationDao = new ApplicationDao();
+        AppointmentDao appointmentDao = new AppointmentDao();
 
-        if (applicationID != null) {
+        if (appointmentID != null) {
             // Delete the record from the database
-        	applicationDao.deleteApplication(applicationID);
-        	request.getRequestDispatcher("applications.jsp").forward(request, response);
+        	appointmentDao.cancelAppointment(appointmentID);
+        	request.getRequestDispatcher("userAppointments.jsp").forward(request, response);
         } else {
-            response.getWriter().println("Invalid Application ID");
+            response.getWriter().println("Invalid Appointment ID");
         }
     }
 }
