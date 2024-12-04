@@ -53,7 +53,7 @@
                                 "<td>" + rs2.getString(3) + "</td>" + 
                                 "<td>" + category + "</td>" + 
                                 "<td>" + 
-                                "<button type=\"button\" class=\"btn btn-outline-primary\" onclick='redirectToAdopt(" + "\"" + rs2.getString(1)  + "\"" + ")'>" + 
+                                "<button type=\"button\" class=\"btn btn-outline-primary\" onclick='redirectToSubmits(\"" + rs2.getString(1)  + "\")'>" + 
                                 "<i class=\"fas fa-arrow-right\"></i></button>" + 
                                 "</td>" + 
                                 "</tr>");
@@ -78,9 +78,9 @@
     </script>
 
     <script>
-        function redirectToAdopt(petID) {
-            // Redirect to the Adopt action without confirmation
-            window.location.href = "AdoptPet?id=" + String(petID);
+        function redirectToSubmits(petID) {
+            // Redirect to submits.jsp with the petID as a query parameter
+            window.location.href = "submits.jsp?petID=" + petID;
         }
     </script>
 </body>
