@@ -57,7 +57,7 @@
                             "<th scope=\"col\">Name</th>" +
                             "<th scope=\"col\">Age</th>" +
                             "<th scope=\"col\">Category</th>" +
-                            "<th scope=\"col\">Information</th>" +
+                            "<th scope=\"col\">Adopt?</th>" +
                             "</tr>" +
                             "</thead>" +
                             "<tbody>");
@@ -70,8 +70,8 @@
                                 "<td>" + rs.getString(3) + "</td>" +
                                 "<td>" + rs.getString(4) + "</td>" +
                                 "<td>" + 
-                                "<button type=\"button\" class=\"btn btn-outline-primary\" onclick='redirectToPetInfo(\"" + rs.getString(1)  + "\")'>" +
-                                "<i class=\"fas fa-arrow-right\"></i></button>" +
+                                "<button type=\"button\" class=\"btn btn-outline-primary\" onclick='redirectToSubmits(\"" + rs.getString(1)  + "\")'>" +
+                                "<i class=\"fas fa-arrow-right\"></i> View Pet</button>" +
                                 "</td>" +
                                 "</tr>");
                 } while (rs.next());  // Continue iterating through results
@@ -93,9 +93,9 @@
     </script>
 
     <script>
-        function redirectToPetInfo(petID) {
-            // Redirect to the Pet Information page without confirmation
-            window.location.href = "PetInformation.jsp?id=" + String(petID);
+        function redirectToSubmits(petID) {
+            // Redirect to submits.jsp with the petID as a query parameter
+            window.location.href = "submits.jsp?petID=" + petID;
         }
     </script>
 </body>
