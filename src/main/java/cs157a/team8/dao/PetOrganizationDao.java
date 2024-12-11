@@ -45,7 +45,7 @@ public class PetOrganizationDao {
 	// method insert new PetOrganization into database
 	public String insert(PetOrganization petOrganization) {
 		con = new Database().getConnection();
-		String sql = "insert into users values(?,?,?,?,?)";
+		String sql = "insert into petorganizations values(?,?,?,?)";
 		String result="Data Entered Successfully";
 
 		try {

@@ -38,7 +38,7 @@ public class AddOrganization extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String orgID = request.getParameter("orgID");
         String orgName = request.getParameter("orgName");
-        String orgEmail = request.getParameter("orgEmai");
+        String orgEmail = request.getParameter("orgEmail");
         String address = request.getParameter("address");
 
         PetOrganization petOrganization = new PetOrganization(orgID, orgName, orgEmail, address);

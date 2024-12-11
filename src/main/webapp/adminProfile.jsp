@@ -25,16 +25,19 @@
    <!-- header section starts -->
 	<jsp:include page="header.jsp"/>
 	<!-- header section ends -->
-	<div class="sidebar">
-	    <div class="sidebar-menu">
-	        <a href="userProfile.jsp" class="active">My Profile</a>
-	        <a href="userApplications.jsp">Applications</a>
-	        <a href="userAppointments.jsp">Appointments</a>
-	        <a href="userOrganizations.jsp">Pet Organizations</a>
-	        <a href="userPets.jsp">Find Your Pet</a>
-	        <a href="submits.jsp">Adopt a Pet</a>
-	    </div>
-	    <div class="logout">
+	
+    <div class="sidebar">
+    	<div class="sidebar-menu">
+	 		<a href="adminProfile.jsp" class="active">My Profile</a>
+			<a href="organizations.jsp">Organizations</a>
+			<a href="addOrganization.jsp">Add Organization</a>
+			<a href="pets.jsp">Pets</a>
+			<a href="addPet.jsp">Add Pet</a>
+			<a href="users.jsp">Users</a>
+			<a href="applications.jsp">Applications</a>
+			<a href="appointments.jsp">Appointments</a>
+		</div>
+		<div class="logout">
 		    <form action="Logout" method="POST">
 		    	<div class="info-row">
 					<button type="submit" class="btn btn-secondary btn-lg">Log Out</button>

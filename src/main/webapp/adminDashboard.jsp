@@ -39,11 +39,7 @@
 		<a href="javascript:void(0);" onclick="changeIframeSrc('applications.jsp')"><i class="bi bi-database"> Applications</i></a>
 		<a href="javascript:void(0);" onclick="changeIframeSrc('appointments.jsp')"><i class="bi bi-database"> Appointments</i></a>
     </div>
-    
-    
-    
-    
-  
+
 	<div class="main-content">
 				
 		<iframe id="frameContent" height=100% width=100% style="border:none;" title="tables"></iframe>

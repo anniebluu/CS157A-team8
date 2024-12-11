@@ -70,13 +70,15 @@ public class Login extends HttpServlet {
 				session.setAttribute("password", user.getPassword());
 				session.setAttribute("userName", user.getUserName());
 				session.setAttribute("userEmail", user.getUserEmail());
-				response.sendRedirect("adminDashboard.jsp");
+				session.setAttribute("isAdmin", user.getAccountType());
+				response.sendRedirect("organizations.jsp");
 			} else if (user != null && user.getAccountType() == 0) {
 				HttpSession session = request.getSession();
 				session.setAttribute("userID", user.getUserID());
 				session.setAttribute("password", user.getPassword());
 				session.setAttribute("userName", user.getUserName());
 				session.setAttribute("userEmail", user.getUserEmail());
+				session.setAttribute("isAdmin", user.getAccountType());
 				response.sendRedirect("petQueryHome.jsp");
 			} else {
 				// An alert to send to login page.

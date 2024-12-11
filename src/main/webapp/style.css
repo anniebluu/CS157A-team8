@@ -1,128 +1,459 @@
 @charset "UTF-8";
-*{
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0; padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    text-transform: uppercase; 
-    transition: .2s linear;
-  }
-  
-  html{
-    font-size: 62.5%;
-  }
-  body{
-  	
-    background: linear-gradient(45deg, #28204e 37.47%, #3a0ca3 93.82%);
-    overflow: hidden;
-    display: flex;
 
-  }
-  
-  .header{
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 2rem 2rem;
-  }
-  
-  .header .logo{
-  	text-decoration: none;
-    font-size: 2.5rem;
-    color: #fff;
-    font-weight: bolder;
-  }
-  
-  .header .logo i{
-  	text-decoration: none;
-    color: #13bcf1;
-  }
-  
-  .header nav ul{
-    list-style: none;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-  }
-  
-  .header nav ul li{
-    margin: 0 1rem;
-  }
-  
-  .header nav ul li a{
-    font-size: 1.7rem;
-    color: #fff;
-    padding: .5rem 2rem;
-  }
-  
-  .header nav ul li a:hover{
-    color: #13bcf1;
-  }
-  
-  .header .icons div{
-    font-size: 3rem;
-    margin-left: 2rem;
-    color: #3a0ca3;
-    cursor: pointer;
-    -webkit-text-stroke: .1rem #fff;
-  }
-  
-  .header .icons div:hover{
-    -webkit-text-stroke: .1rem #13bcf1;
-  }
-  
-  /* end */
-  
-  .container{
-    min-height: 100vh;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-  }
-  .login-container {
-    max-width: 400px;
-    padding: 20px;
-    background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding-top: 10rem;
-    animation: content .5s linear;
+* {
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	text-decoration: none;
+	transition: .2s linear;
+}
+
+html {
+	font-size: 100%;
+}
+
+body {
+	display: flex;
+	--sidebar-size: 260px;
+	--header-size: 80px;
+}
+
+/* header */
+.header {
+	height: var(--header-size);
+	background-color: #28204e;
+	text-transform: uppercase;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1rem;
+	font-size: 2rem;
+	z-index: 1;
+	transition: .2s linear;
+}
+
+.header .logo {
+	text-decoration: none;
+	color: #fff;
+	font-weight: bolder;
+}
+
+.header .logo i {
+	text-decoration: none;
+	color: #13bcf1;
+}
+
+.header nav ul {
+	list-style: none;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	margin: 0;
+}
+
+.header nav ul li {
+	margin: 0 1rem;
+}
+
+.header nav ul li a {
+	font-size: 1.7rem;
+	color: #fff;
+	padding: .5rem 2rem;
+	text-decoration: none;
+}
+
+.header nav ul li a:hover {
+	color: #13bcf1;
+}
+
+.header .icons div {
+	font-size: 2.5rem;
+	margin-left: 2rem;
+	color: #fff;
+	cursor: pointer;
+	-webkit-text-stroke: .1rem #fff;
+}
+
+.header .icons div:hover {
+	-webkit-text-stroke: .1rem #13bcf1;
+	color: #13bcf1;
+}
+
+/* header end */
+
+/* sidebar */
+.sidebar {
+	width: var(--sidebar-size);
+	position: fixed;
+	top: var(--header-size);
+	background-color: #333;
+	color: #fff;
+	padding: 2rem 2rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: calc(100% - var(--header-size));
+	z-index: 1;
+}
+.sidebar-menu {
+	width: var(--sidebar-size);
+	/* position: fixed;
+	top: var(--header-size); */
+	background-color: #333;
+	color: #fff;
+	padding: 0rem 2rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+/* 	height: calc(100% - var(--header-size));
+ */	z-index: 1;
+}
+
+.sidebar-menu a {
+	color: #fff;
+	padding: 10px;
+	text-decoration: none;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 15px;
+	border-radius: 5px;
+	font-size: 1.5rem;
+}
+
+.sidebar-menu a:hover {
+	background-color: #444;
+	color: #13bcf1;
+}
+
+.sidebar-menu a.active {
+	background-color: #555;
+	color: #13bcf1;
+}
+
+	/* logout button */
+	
+   /* Position the button at the bottom left */
+	.logout {
+	    width: var(--sidebar-size);
+	    	padding: 0rem 2rem;
+	    align-items: center;
+	    margin-top: auto;
+	    margin-bottom: 0;
+/* 		top: var(--header-size);
+ */		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		z-index: 1; 
+	    
 	}
-	.header-title {
-	    font-size: 28px;
-	    text-align: center;
-	    margin-bottom: 5px;
+
+/* sidebar end */
+
+/* dashboard */
+.main-content {
+	font-size: 1rem;
+	display: flex;
+	flex: 1;
+	background-color: #f0f0f0;
+	justify-content: flex-start;
+	align-items: stretch;
+	padding: 1rem;
+	overflow: auto;
+	height: calc(100% - var(--header-size));
+	position: fixed;
+	top: var(--header-size);
+	left: var(--sidebar-size);
+	width: calc(100% - var(--sidebar-size));
+	flex-direction: column;
+}
+
+.content-table {
+	font-size: 1.5rem;
+	margin: 10px;
+	
+}
+
+.content-box {
+	background-color: #28204e;
+	border-radius: 10px;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	display: flex;
+	color: #fff;
+	margin-top: 30px;
+	min-width: fit-content;
+	max-width: 100%;
+}
+
+.content-box .content-form {
+	width: 100%;
+	padding: 20px;
+	background-color: #e0e0e0;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	color: #fff;
+}
+
+.input-group-text{
+	font-size: 1.5rem;
+	padding: 8px;
+	font-weight: bold;
+	background-color: #e0e0e0; /* Greyed out background */
+	
+}
+
+.input-group > .form-control, .input-group > .form-select{
+	padding: 8px;
+	font-size: 1.5rem;	
+	width: 100%;
+	
+}
+
+.input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+	border-radius: 10px;
+}
+
+.info-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 15px;
+}
+
+.info-row label {
+	flex: 1;
+	margin-right: 10px;
+	color: #fff;
+	font-weight: bold;
+	font-size: 1.5rem;
+}
+
+.info-row input {
+	flex: 2;
+	padding: 8px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	background-color: #e0e0e0; /* Greyed out background */
+	pointer-events: none; /* Makes the input unclickable */
+	font-size: 1.5rem;
+	color: #28204e;
+	width: fit-content;
+}
+
+.info-row button {
+	padding: 8px 12px;
+/* 	background-color: #13bcf1; */
+	background-color: #28204e;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 1.5rem;
+}
+
+.info-row buttongrey {
+	background-color: #555; /* Dark grey background */
+	color: white; /* White text color */
+	border: none; /* No border */
+	padding: 8px 12px; /* Padding for size */
+	border-radius: 5px; /* Rounded corners */
+	cursor: not-allowed; /* Change cursor to indicate non-clickable */
+	opacity: 0.6; /* Slightly transparent to indicate it's disabled */
+	font-weight: bold;
+	font-size: 1.5rem;
+}
+
+.info-row buttongrey:disabled {
+	background-color: #555; /* Keep the same dark grey when disabled */
+	color: white; /* White text color */
+}
+
+.info-row button:hover {
+/* 	background-color: #3a0ca3; */
+	background-color: #13bcf1;
+	color: #fff;
+}
+
+/* dashboard end*/
+
+/* pets */
+.card-holder {
+	margin: 5px 0px;
+	padding: 0;
+}
+
+.card {
+	margin: 5px;
+	padding: 10px;
+	align-items: center;
+	text-align: center;
+}
+
+.card-img-top {
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	align-self: center;
+}
+
+/* pets end */
+
+/* home */
+.container {
+	display: flex;
+	align-items: center;
+	min-height: 100vh;
+	background: url('images/login.png') repeat;
+	background-size: cover;
+	background-position: center;
+	width: 100%;
+	justify-content: space-around;
+	flex-direction: column;
+	max-width: unset;
+	position: fixed;
+	top: var(--header-size);
+}
+
+.home {
+	width: 500px;
+	color: #fff;
+	padding: 30px 40px;
+	margin-top: -40px;
+	/* padding-bottom: 20rem; */ /* commented out to remove excess space at bottom */
+	font-style: italic;
+	animation: content .5s linear;
+	/* height: 450px; */
+ 	background-color: rgba(40, 32, 78, 0.4);  /* Semi-transparent header color */
+	border-radius: 10px;          /* Rounded corners */
+	backdrop-filter: blur(10px);  /* Apply a blur to the background behind the card */
+	box-shadow: 0 4px 6px rgba(40, 32, 78, 0.1); /* Slight shadow for depth */
+	overflow: hidden;             /* Hide any overflow */
+}
+
+.home h1 {
+	font-size: 5.5rem;
+}
+/* home end */
+
+/* login */
+.wrapper {
+	width:420px;
+	background: transparent;
+	border: 2px solid rgba(255, 255, 255, .2);
+	backdrop-filter: blur(20px);
+	box-shadow: 0 0 10px rgba(0,0,0,.2);
+	color: #fff;
+	border-radius: 10px;
+	padding: 30px 40px;
+}
+
+.wrapper h1{
+	font-size: 36px;
+	text-align: center;
+}
+
+.wrapper .input-box{
+	position: relative;
+	width:100%;
+	height: 50px;
+	margin: 30px 0;
+}
+
+.input-box input{
+	width: 100%;
+	height: 100%;
+	background: transparent;
+	border: none;
+	outline: none;
+	border: 2px solid rgba(255, 255, 255, .2);
+	border-radius: 40px;
+	font-size: 16px;
+	color: #fff;
+	padding: 20px 45px 20px 20px;
+
+}
+
+.input-box input::placeholder {
+	color: #fff;
+}
+
+.input-box i{
+	position: absolute;
+	right: 20px;
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 20px;
+}
+
+.wrapper .remember-forgot {
+	display: flex;
+	justify-content: space-between;
+	font-size: 14.5px;
+	margin: -15px 0 15px;
+}
+
+.remember-forgot label input{
+	accent-color: #fff;
+	margin-right: 3px;
+}
+
+.remember-forgot a {
+	color: #fff;
+	text-decoration: none;
+}
+
+.remember-forgot a:hover {
+	text-decoration: underline;
+}
+/* login style */
+
+.wrapper .btn {
+	width: 100%;
+	height: 45px;
+	background: #fff;
+	border: none;
+	outline: none;
+	border-radius: 40px;
+	box-shadow: 0 0 10px rgba(0,0,0,.1);
+	cursor: pointer;
+	font-size: 16px;
+	color: #333;
+	font-weight: 600;
+}
+
+.wrapper .register-link {
+	font-size: 14.5px;
+	text-align: center;
+	margin: 20px 0 15px;
+}
+
+.register-link p a{
+	color: #fff;
+	text-decoration: none;
+	font-weight: 600;
+}
+
+.register-linke p a:hover {
+	text-decoration:underline;
+}
+
+/* login end */
+
+/* landing page */
+
+	.home .button{
+		display: flex;
+    	justify-content: center;
 	}
-	.header-subtitle {
-	    font-size: 18px;
-	    text-align: center;
-	    margin-bottom: 20px;
-	    color: #6c757d;
-	}
   
-  .content{
-    color: #fff;
-    width: 40vw;
-    padding-top: 10rem;
-    font-style: italic;
-    animation: content .5s linear;
-  }
-  
-  .content h1{
-    font-size: 5.5rem;
-  }
-  
-  .content p{
-    font-size: 1.5rem;
-    margin: 2rem 0;
-    line-height: 2;
-  }
-  
-  .content .button button{
-    width: 15rem;
+  .home .button button{
+  	margin: 5px;
+    width: 12rem;
     height: 4rem;
     color: #13bcf1;
     font-weight: bold;
@@ -132,195 +463,70 @@
     border: none;
   }
   
-  .content .button .btn1:hover{
+  .home .button .btn1{
+	color: #fff;
     background: none;
-    border: .2rem solid #13bcf1;
+    border: .2rem solid #fff;
   }
   
-  .content .button .btn2{
-    background: none;
-    border: .2rem solid #13bcf1;
-  }
-  
-  .content .button .btn2:hover{
-    background: #fff;
+  .home .button .btn1:hover{
+    background: #13bcf1;
     border: none;
   }
   
-  .content .button a:nth-child(2){
-    margin-left: 2rem;
+  .home .button .btn2{
+	color: #fff;
+    background: none;
+    border: .2rem solid #fff;
   }
   
-  .image img{
-    margin-top: 8rem;
-    width: 36vw;
-    animation: image .5s linear;
+  .home .button .btn2:hover{
+    background: #13bcf1;
+    border: none;
   }
   
+  /* landing page end */
   
-  @keyframes image{
-    0%{
-      transform: translateY(-10rem);
-    }
-  }
-  
-  @keyframes content{
-    0%{
-      transform: translateX(-10rem);
-    }
-  }
-  
-  
-/* Sidebar */
-  .sidebar {
-      width: 210px;
-      background-color: #333;
-      color: #fff;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      height: 100vh;
-      margin-top: 75px;
-      
-  }
+	/* registration password */
+	
+	.password-validation {
+		display: none;
+		position: absolute;
+		top: 130px; /* Adjust to move the bubble closer to the password field */
+		left: 100%;
+		margin-left: 20px;
+		padding: 15px;
+		background: rgba(255, 255, 255, 0.9); /* Less transparent background */
+		
+		color: #333;
+		border: 2px solid rgba(255, 255, 255, 0.7); /* Lighter border to match the form */
+		border-radius: 10px;
+		width: 250px;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+		font-size: 14px;
+		z-index: 10;
+		backdrop-filter: blur(20px); /* Blurs the background behind the bubble */
+	}
 
-  .sidebar a {
-      color: #fff;
-      padding: 10px;
-      text-decoration: none;
-      width: 100%;
-      text-align: center;
-      margin-bottom: 10px;
-      border-radius: 5px;
-      font-size: 1.5rem;
-  }
+       .password-validation::before {
+           content: "";
+           position: absolute;
+           top: 50%;
+           left: -10px;
+           margin-top: -5px;
+           border-width: 5px;
+           border-style: solid;
+           border-color: transparent rgba(255, 255, 255, 0.9) transparent transparent; /* Arrow with the same background color */
+       }
 
-  .sidebar a:hover {
-      background-color: #444;
-      color: #13bcf1;
-  }
+       .invalid {
+           color: #e74c3c; /* Red for invalid items */
+       }
 
-  .sidebar a.active {
-      background-color: #555;
-      color: #13bcf1;
-  }
+       .valid {
+           color: #2ecc71; /* Green for valid items */
+       }
+	
+	/* registration password end */
 
-  .main-content {
-      flex: 1;
-      background-color: #f0f0f0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      margin-top: 75px;
-      overflow: auto;
-      height: auto;
-      margin-bottom: 75px;
-  }
-
-  .content-box {
-      width: 70%;
-      background-color: #28204e;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-      padding: 20px;
-      display: flex;
-      color: #fff;
-  }
-
-  .tabs {
-      flex-shrink: 0;
-      background-color: #3a0ca3;
-      border-top-left-radius: 10px;
-      border-bottom-left-radius: 10px;
-      padding: 10px;
-  }
-
-  .tabs a {
-      display: block;
-      padding: 10px;
-      text-align: left;
-      color: #fff;
-      text-decoration: none;
-      margin-bottom: 10px;
-      border-radius: 5px;
-      font-size: 1.5rem;
-  }
-
-  .tabs a:hover {
-      background-color: #28204e;
-      color: #13bcf1;
-  }
-
-  .tabs a.active {
-      background-color: #28204e;
-      color: #13bcf1;
-  }
-
-  .user-info {
-      flex: 1;
-      padding: 20px;
-      background-color: #e0e0e0;
-      border-top-right-radius: 10px;
-      border-bottom-right-radius: 10px;
-      color: #fff;
-  }
-
-  .info-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 15px;
-  }
-
-  .info-row label {
-      flex: 1;
-      margin-right: 10px;
-      color: #fff;
-      font-weight: bold;
-      font-size: 1.5rem;
-  }
-
-  .info-row input {
-      flex: 2;
-      padding: 8px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      background-color: #e0e0e0; /* Greyed out background */
-      pointer-events: none; /* Makes the input unclickable */
-      font-size: 1.5rem;
-      color: #28204e;
-  }
-
-  .info-row button {
-      padding: 8px 12px;
-      background-color: #13bcf1;
-      color: #28204e;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 1.5rem;
-  }
-  
-    .info-row buttongrey {
-    background-color: #555; /* Dark grey background */
-    color: white;           /* White text color */
-    border: none;          /* No border */
-    padding: 8px 12px;    /* Padding for size */
-    border-radius: 5px;    /* Rounded corners */
-    cursor: not-allowed;    /* Change cursor to indicate non-clickable */
-    opacity: 0.6;          /* Slightly transparent to indicate it's disabled */
-    font-weight: bold;
-    font-size: 1.5rem;
-  }
-  .info-row buttongrey:disabled {
-    background-color: #555; /* Keep the same dark grey when disabled */
-    color: white;           /* White text color */
-}
-
-  .info-row button:hover {
-      background-color: #3a0ca3;
-      color: #fff;
-  }  
+	
