@@ -4,12 +4,9 @@ import cs157a.team8.entity.Pet;
 import cs157a.team8.database.Database;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class PetDao {
 	
@@ -29,6 +26,7 @@ public class PetDao {
 				pet.setPetName(rs.getString(2));
 				pet.setAge(rs.getString(3));
 				pet.setCategory(rs.getString(4));
+				pet.setImagePath(rs.getString(5));
 				
 				return pet;
 			}
@@ -50,8 +48,8 @@ public class PetDao {
     public String insertPet(Pet pet) {
         
         con = new Database().getConnection();
+        String sql = "insert into pets values(?, ?, ?, ?, ?)";
         String result = "Data Entered Successfully";
-        String sql = "insert into pets (petID, petName, age, category, imagePath) values (?, ?, ?, ?, ?)";
         
         if (checkPetIDExists(pet.getPetID())) {
             result = "Error: petID already exists";
@@ -59,6 +57,7 @@ public class PetDao {
         }
         
         try {
+            con = new Database().getConnection();
         	ps = con.prepareStatement(sql);
             ps.setString(1, pet.getPetID());
             ps.setString(2, pet.getPetName());

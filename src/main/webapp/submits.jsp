@@ -1,58 +1,98 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pet Query</title>
+    
+    <title>Pet Query - Adopt A Pet</title>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="test.css">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+		rel="stylesheet" 
+		integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
+		crossorigin="anonymous">
+		
+	<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
    <!-- header section starts -->
 	<jsp:include page="header.jsp"/>
 	<!-- header section ends -->
 
-<!-- container -->
-
-<div class="container">
-
-<div class="content">
-            <h2>Apply to Adopt!</h2>
-            <p>Please provide your Username as well as the unique Pet ID (XXX-XXXX-XXX) of the pet you'd like to adopt.</p>
-
-            <!-- check alert msg -->
-            <%
-                String alert = (String) request.getAttribute("alert");
-                if (alert != null) {
-            %>
-                <div class="alert alert-danger" role="alert">
-                    <%= alert %>
-                </div>
-            <%
-                }
-            %>
-            
-            <form action="Submits" method="post">
-		
-			<div class="mb-3">
-				<label for="username" class="form-label"> UserName</label>
-				<input type="text" class="form-control" id="username" name="username" placeholder="Enter Username" required>
-			</div>
-			<div class="mb-3">
-				<label for="petID" class="form-label">Pet ID</label>
-				<input type="text" class="form-control" id="petID" name="petID" placeholder="Enter Desired Pet's ID" required>
-			</div>   
-			<div class="button">
-				<a href="#"><button type="submit" class="btn1">Submit Application</button></a>
-				<a href="#"><button class="btn2" onclick="location.href='http://localhost:8080/CS157A-team8/displayPetsDashboard.jsp'">Return to Pets</button></a>
-			</div>
+	<div class="sidebar">
+	    <div class="sidebar-menu">
+	        <a href="userProfile.jsp">My Profile</a>
+	        <a href="userApplications.jsp">Applications</a>
+	        <a href="userAppointments.jsp">Appointments</a>
+	        <a href="userOrganizations.jsp">Pet Organizations</a>
+	        <a href="userPets.jsp">Find Your Pet</a>
+	        <a href="submits.jsp" class="active">Adopt a Pet</a>
+	    </div>
+	    <div class="logout">
+		    <form action="Logout" method="POST">
+		    	<div class="info-row">
+					<button type="submit" class="btn btn-secondary btn-lg">Log Out</button>
+				</div>
 			
-		</form>
-</div>
-</div>
-</div>
+		    </form>
+	    </div>
+    </div>
+    
+	<div class="main-content">
+		<h2>Apply to Adopt!</h2>
+		
+		<div class=content-box>
+			<div class="content-form">
+	
+	            <!-- check alert msg -->
+	            <%
+	                String alert = (String) request.getAttribute("alert");
+	                if (alert != null) {
+	            %>
+	                <div class="alert alert-danger" role="alert">
+	                    <%= alert %>
+	                </div>
+	            <%
+	                }
+	            %>
+	            
+				<form action="Submits" method="post">
+					<div class="input-group mb-3">
+						<span class="input-group-text" id="inputGroup-sizing-default" for="userID">Username</span>
+						<input type="text" class="form-control" id="userID" name="username"
+						value="<%= (session.getAttribute("userID") != null) ? session.getAttribute("userID") : "guest" %>" readonly>
+					</div>
+					<div class="input-group mb-3">
+						<span class="input-group-text" id="inputGroup-sizing-default" for="petID">Pet ID</span>
+						<!-- <input type="text" class="form-control" id="petID" name="petID" placeholder="Enter Desired Pet's ID" required> -->
+						<input type="text" class="form-control" id="petID" name="petID"
+						value="<%
+							    // Get the petID from the request parameters
+							    String petID = request.getParameter("petID");
+							
+							    // Check if petID is null or empty (optional)
+							    if (petID != null && !petID.isEmpty()) {
+							        // You can now use petID in your JSP page
+							        out.println(petID);
+							    } else {
+							        out.println("No pet selected");
+							    }
+							%>" readonly>
+					</div>   
+					<div class="info-row">
+						<a href="#"><button type="submit" class="btn btn-primary">Submit Application</button></a>
+<!-- 					<a href="#"><button class="btn btn-primary" onclick="userPets.jsp">Return to Pets</button></a> -->
+					</div>
+					
+				</form>
+			</div>
+		</div>
+	</div>
 
 </body>
 </html>

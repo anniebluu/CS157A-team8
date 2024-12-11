@@ -1,88 +1,73 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pet Query - Login</title>
+    
+    <title>Pet Query - Registration</title>
+    
     <!-- fontswesome cdn link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="test.css">
-        <style>
-        /* Style the password validation message */
-        .password-validation {
-            display: none;
-            position: absolute;
-            top: 130px; /* Adjust to move the bubble closer to the password field */
-            left: 100%;
-            margin-left: 20px;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.9); /* Less transparent background */
-            color: #333;
-            border: 2px solid rgba(255, 255, 255, 0.7); /* Lighter border to match the form */
-            border-radius: 10px;
-            width: 250px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-            font-size: 14px;
-            z-index: 10;
-            backdrop-filter: blur(20px); /* Blurs the background behind the bubble */
-        }
-
-        .password-validation::before {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: -10px;
-            margin-top: -5px;
-            border-width: 5px;
-            border-style: solid;
-            border-color: transparent rgba(255, 255, 255, 0.9) transparent transparent; /* Arrow with the same background color */
-        }
-
-        .invalid {
-            color: #e74c3c; /* Red for invalid items */
-        }
-
-        .valid {
-            color: #2ecc71; /* Green for valid items */
-        }
-
-        .input-box {
-            position: relative;
-        }
-    </style>
+    
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+		rel="stylesheet" 
+		integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
+		crossorigin="anonymous">
+		
+    <link rel="stylesheet" href="style.css">   
 </head>
 <body>
 	<!-- header section starts -->
-		<jsp:include page="header.jsp"/>
+   <header class="header">
+
+    <a href="petQueryHome.jsp" class="logo"><i class="fas fa-paw"></i> Pet Query</a>
+		<nav>
+			<ul>
+				<li><a href="userOrganizations.jsp">Organizations</a></li>
+				<li><a href="userPets.jsp">Pets</a></li>
+			</ul>
+		</nav>
+
+		<div class="icons" onclick="profile()"><div class="fas fa-user"></div></div>
+
+	</header>
 	<!-- header section ends -->
 	
-	${alert}
 	<div class="container">
 	    <div class="wrapper">
-			<form class="registration" action="Register" method="post">
+			<form action="Register" method="post">
 					<h1>Register</h1>
+					
+					<div class="alert alert-danger" role="alert">
+						${alert}
+					</div>
+	            
+	            
 					<div class="input-box">
-						<label for="userID" class="form-label">Username</label>
+						<!-- <label for="userID" class="form-label">Username</label> -->
 						<input type="text" class="form-control" id="userID" name="userID" placeholder="Enter your username" required>
 					</div>
 					<div class="input-box">
-						<label for="userEmail" class="form-label">Email</label>
+						<!-- <label for="userEmail" class="form-label">Email</label> -->
 						<input type="email" class="form-control" id="userEmail" name="userEmail" placeholder="Enter your email" required>
 					</div>
 					<div class="input-box">
-						<label for="userName" class="form-label">Name</label>
+						<!-- <label for="userName" class="form-label">Name</label> -->
 						<input type="text" class="form-control" id="userName" name="userName" placeholder="Enter your name" required>
 					</div>
 					<div class="input-box">
-						<label for="password" class="form-label">Password</label>
+						<!-- <label for="password" class="form-label">Password</label> -->
 						<input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
 					</div>
 					<div class="input-box">
-						<label for="repeatPassword" class="form-label">Repeat Password</label>
+						<!-- <label for="repeatPassword" class="form-label">Repeat Password</label> -->
 						<input type="password" class="form-control" id="repeatPassword" name="repeatPassword" placeholder="Enter your password again" required>
 					</div>
+					
 					<div class="password-validation" id="message">
 					  <h5>Password must contain the following:</h4>
 					  <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
@@ -90,17 +75,18 @@
 					  <p id="number" class="invalid">A <b>number</b></p>
 					  <p id="length" class="invalid">Minimum <b>8 characters</b></p>
 					</div>
-					<div class="d-flex justify-content-between">
+					
 						<button type="submit" class="btn btn-primary">Register</button>
 							            <div class="register-link">
 	                <p>Already have an account? 
-	                   <a href="http://localhost:8080/CS157A-team8/userLogin.jsp">Login</a>
+	                   <a href="userLogin.jsp">Login</a>
 	                </p>
 	            </div>
 					</div>
 				</form>
 		</div>
 	</div>
+	
     <script>
         var myInput = document.getElementById("password");
         var letter = document.getElementById("letter");
@@ -176,5 +162,6 @@
                    length.classList.contains("valid");
         }
     </script>
+    
 </body>
 </html>

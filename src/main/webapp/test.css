@@ -4,20 +4,23 @@
     margin: 0; padding: 0;
     box-sizing: border-box;
     text-decoration: none;
-    text-transform: uppercase; 
     transition: .2s linear;
   }
   
   html{
-    font-size: 62.5%;
+    font-size: 100%;
   }
+  
   body{
     background: linear-gradient(45deg, #28204e 37.47%, #3a0ca3 93.82%);
     display: flex;
 
   }
   
+    /* header */
+  
   .header{
+  	text-transform: uppercase;
     position: fixed;
     top: 0; left: 0; right: 0;
     display: flex;
@@ -71,7 +74,7 @@
     -webkit-text-stroke: .1rem #13bcf1;
   }
   
-  /* end */
+  /* header end */
   
   .container{
     display:flex;
@@ -81,8 +84,8 @@
 	background: url('images/login.png') repeat;
 	background-size: cover;
 	background-position: center;
-	margin-top: 75px;
-    width: 100%;
+/* 	margin-top: 75px;
+ */    width: 100%;
     justify-content: space-around;
     flex-direction: column;
   }
@@ -238,8 +241,9 @@
   }
   
 /* Sidebar */
+
   .sidebar {
-      width: 210px;
+      width: 250px;
       background-color: #333;
       color: #fff;
       padding: 20px;
@@ -248,6 +252,7 @@
       align-items: center;
       height: 100vh;
       margin-top: 75px;
+      font-size: .25rem;
       
   }
 
@@ -271,6 +276,8 @@
       background-color: #555;
       color: #13bcf1;
   }
+  
+  /* Sidebar */
 
   .main-content {
       flex: 1;
