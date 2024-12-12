@@ -1,18 +1,19 @@
 package cs157a.team8.entity;
 
 public class PetOrganization{
-	private String organizationID, organizationName, organizationEmail, address;
+	private String organizationID, organizationName, organizationEmail, address, url;
 	
 	public PetOrganization() {
 		super();
 	}
 	
-	public PetOrganization(String organizationID, String organizationName, String organizationEmail, String address) {
+	public PetOrganization(String organizationID, String organizationName, String organizationEmail, String address, String url) {
 		super();
 		this.organizationID = organizationID;
 		this.organizationName = organizationName;
 		this.organizationEmail = organizationEmail;
 		this.address = address;
+		this.url = url;
 	}
 
 	public String getOrganizationID() {
@@ -48,5 +49,12 @@ public class PetOrganization{
 		this.address = address;
 	}
 	
+	public String getUrl() {
+		return this.url;
+	}
+	
+	public void setUrl(String url) {
+		this.url = url;
+	}
 	
 }

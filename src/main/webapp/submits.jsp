@@ -23,30 +23,12 @@
    <!-- header section starts -->
 	<jsp:include page="header.jsp"/>
 	<!-- header section ends -->
-
-	<div class="sidebar">
-	    <div class="sidebar-menu">
-	        <a href="userProfile.jsp">My Profile</a>
-	        <a href="userApplications.jsp">Applications</a>
-	        <a href="userAppointments.jsp">Appointments</a>
-	        <a href="userOrganizations.jsp">Pet Organizations</a>
-	        <a href="userPets.jsp">Find Your Pet</a>
-	        <a href="submits.jsp" class="active">Adopt a Pet</a>
-	    </div>
-	    <div class="logout">
-		    <form action="Logout" method="POST">
-		    	<div class="info-row">
-					<button type="submit" class="btn btn-secondary btn-lg">Log Out</button>
-				</div>
-			
-		    </form>
-	    </div>
-    </div>
     
-	<div class="main-content">
-		<h2>Apply to Adopt!</h2>
+	<div class="container">
 		
-		<div class=content-box>
+		
+		<div class="home home-form">
+		<h1>Apply to Adopt!</h1>
 			<div class="content-form">
 	
 	            <!-- check alert msg -->
@@ -63,12 +45,12 @@
 	            
 				<form action="Submits" method="post">
 					<div class="input-group mb-3">
-						<span class="input-group-text" id="inputGroup-sizing-default" for="userID">Username</span>
+						<span class="input-group-text submits-input-group-text" id="inputGroup-sizing-default" for="userID">Username</span>
 						<input type="text" class="form-control" id="userID" name="username"
 						value="<%= (session.getAttribute("userID") != null) ? session.getAttribute("userID") : "guest" %>" readonly>
 					</div>
 					<div class="input-group mb-3">
-						<span class="input-group-text" id="inputGroup-sizing-default" for="petID">Pet ID</span>
+						<span class="input-group-text submits-input-group-text" id="inputGroup-sizing-default" for="petID">Pet ID</span>
 						<!-- <input type="text" class="form-control" id="petID" name="petID" placeholder="Enter Desired Pet's ID" required> -->
 						<input type="text" class="form-control" id="petID" name="petID"
 						value="<%
@@ -84,8 +66,8 @@
 							    }
 							%>" readonly>
 					</div>   
-					<div class="info-row">
-						<a href="#"><button type="submit" class="btn btn-primary">Submit Application</button></a>
+					<div class="info-row apply-button-container">
+						<button type="submit" class="btn btn-primary">Submit Application</button>
 <!-- 					<a href="#"><button class="btn btn-primary" onclick="userPets.jsp">Return to Pets</button></a> -->
 					</div>
 					

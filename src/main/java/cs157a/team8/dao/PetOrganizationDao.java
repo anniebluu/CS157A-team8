@@ -25,6 +25,7 @@ public class PetOrganizationDao {
 				organization.setOrganizationName(rs.getString(2));
 				organization.setOrganizationEmail(rs.getString(3));
 				organization.setAddress(rs.getString(4));
+				organization.setUrl(rs.getString(5));
 				
 				return organization;
 			}
@@ -54,6 +55,7 @@ public class PetOrganizationDao {
 			ps.setString(2, petOrganization.getOrganizationName());
 			ps.setString(3, petOrganization.getOrganizationEmail());
 			ps.setString(4, petOrganization.getAddress());
+			ps.setString(5, petOrganization.getUrl());
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

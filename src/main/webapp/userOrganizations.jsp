@@ -19,69 +19,11 @@
 		
 	<link rel="stylesheet" href="style.css">
 
-	<!-- 	<style>
-	/* Set the background image for the page with vertical repeating */
-	/* Reset body and html margins and padding to prevent white space on the sides */
-	html, body {
-	  margin: 0;
-	  padding: 0;
-	  width: 100%;  /* Ensure body takes the full width of the viewport */
-	  height: 100%;  /* Ensure body takes the full height of the viewport */
-	  overflow-x: hidden; /* Prevent horizontal scrolling */
-	}
 	
-	body {
-	  background-image: url('images/login.png');
-	  background-repeat: repeat; /* Repeat the image both horizontally and vertically */
-	  background-position: center;
-	  color: white; /* Set the font color to white */
-	  font-family: Arial, sans-serif; /* Set a clean font */
-	  display: flex;
-	  justify-content: center;
-	  align-items: flex-start; /* Align the content to the top of the page */
-	  flex-direction: column; /* Ensure content stacks vertically */
-	}
-	
-	.org-container {
-	  display: flex;
-	  flex-wrap: wrap; /* Allow items to wrap onto the next row */
-	  justify-content: center; /* Center the buttons horizontally */
-	  gap: 20px; /* Space between the buttons */
-	  max-width: 1200px; /* Limit the container width */
-	  width: 100%;
-	  margin-top: 100px; /* Space before the buttons start */
-	  padding: 30px 20px 0; /* Padding on the top of the container, with padding on left/right */
-	}
-	
-	.org-button {
-	  display: flex;
-	  justify-content: center;
-	  align-items: center;
-	  width: 200px; /* Fixed width for all buttons */
-	  height: 200px; /* Fixed height for all buttons */
-	  margin: 10px;
-	  background-color: rgba(105, 105, 105, 0.8); /* Darker grey with some transparency */
-	  border-radius: 15px; /* Rounded corners */
-	  text-align: center;
-	  line-height: 1.2;
-	  font-size: 18px;
-	  color: white;
-	  font-weight: bold;
-	  cursor: pointer;
-	  text-decoration: none; /* Remove underline from links */
-	  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
-	}
-	
-	.org-button:hover {
-	  background-color: rgba(105, 105, 105, 1); /* Darker grey on hover */
-	}
-	
-	/* Ensures that the buttons are properly aligned in rows */
-	.org-container .org-button:nth-child(4n+1) {
-	  margin-left: 0; /* Align the first button in each row to the left */
-	}
-	</style> -->
 </head>
+
+<% request.setAttribute("userOrganizationsActive", "active"); %>
+
 
 <body>
 
@@ -89,26 +31,10 @@
 	<jsp:include page="header.jsp"/>
 	<!-- header section ends -->
 
-	<div class="sidebar">
-	    <div class="sidebar-menu">
-	        <a href="userProfile.jsp">My Profile</a>
-	        <a href="userApplications.jsp">Applications</a>
-	        <a href="userAppointments.jsp">Appointments</a>
-	        <a href="userOrganizations.jsp" class="active">Pet Organizations</a>
-	        <a href="userPets.jsp">Find Your Pet</a>
-	        <a href="submits.jsp">Adopt a Pet</a>
-	    </div>
-	    <div class="logout">
-		    <form action="Logout" method="POST">
-		    	<div class="info-row">
-					<button type="submit" class="btn btn-secondary btn-lg">Log Out</button>
-				</div>
-			
-		    </form>
-	    </div>
-    </div>
+<%-- 	<jsp:include page="sidebar.jsp"/>
+ --%>	
 
-	<div class="main-content">
+	<div class="main-content no-sidebar">
     	<div class="content-table">
 	    	<h2>Pet Organizations</h2>
 	    
@@ -119,7 +45,7 @@
 		                <th scope="col">Name</th>
 		                <th scope="col">Email</th>
 		                <th scope="col">Address</th>
-		                <th scope="col">Pets</th>
+		                <th scope="col">URL</th>
 		            </tr>
 		        </thead>
 		        <tbody>
@@ -136,7 +62,7 @@
 		                            "<td>" + rs.getString(3) + "</td>" + 
 		                            "<td>" + rs.getString(4) + "</td>" + 
 		                            "<td>" + 
-		                            "<button type=\"button\" class=\"btn btn-outline-primary\" onclick='redirectToPets(\"" + rs.getString(1)  + "\")'>" + 
+		                            "<button type=\"button\" class=\"btn btn-outline-primary\" onclick='openURL(\"" + rs.getString(5)  + "\")'>" + 
 		                            "<i class=\"fas fa-arrow-right\"></i></button>" + 
 		                            "</td>" + 
 		                            "</tr>");
@@ -160,9 +86,9 @@
     </script>
 
     <script>
-        function redirectToPets(organizationID) {
+        function openURL(url) {
             // Redirect to the organization redirect page with the organization ID
-            window.location.href = "organizationsRedirect.jsp?id=" + String(organizationID);
+        	window.open(url, '_blank').focus();
         }
     </script>
     

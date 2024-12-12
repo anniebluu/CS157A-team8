@@ -18,20 +18,9 @@
 
 <body>
 	<!-- header section starts -->
-   <header class="header">
-
-    <a href="petQueryHome.jsp" class="logo"><i class="fas fa-paw"></i> Pet Query</a>
-		
-		<nav>
-			<ul>
-				<li><a href="guestOrganizations.jsp">Organizations</a></li>
-				<li><a href="guestPets.jsp">Pets</a></li>
-			</ul>
-		</nav>
-
-		<div class="icons" onclick="profile()"><div class="fas fa-user"></div></div>
-
-	</header>
+	<header class="header">
+   		<jsp:include page="header.jsp"></jsp:include>
+	</header> 
 	<!-- header section ends -->
 
 <div class="container">

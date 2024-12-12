@@ -68,6 +68,10 @@
 						<span class="input-group-text" id="inputGroup-sizing-default" for="address">Address</span>
 						<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="address" name="address" placeholder="Enter Organization Address" required>
 					</div>
+					<div class="input-group mb-3">
+						<span class="input-group-text" id="inputGroup-sizing-default" for="url">URL</span>
+						<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="url" name="url" placeholder="Enter Organization URL" required>
+					</div>
 		                    
 					<div class="info-row">
 						<button type="submit">Add Organization</button>
