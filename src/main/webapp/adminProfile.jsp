@@ -4,6 +4,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,7 +56,7 @@
 	                <div class="info-row">
 	                	<span class="input-group-text input-group-text-profile" id="inputGroup-sizing-default" for="userID">Username</span>
 	                	<input type="text" id="user id" 
-						value="<%= (session.getAttribute("userID") != null) ? session.getAttribute("userID") : session.getAttribute("userID") %>" readonly>
+						value="<%= (session.getAttribute("userID") != null) ? session.getAttribute("userID") : "" %>" readonly>
 						<buttongrey>Edit</buttongrey>
 	                    <buttongrey>Save</buttongrey>
 	                </div>

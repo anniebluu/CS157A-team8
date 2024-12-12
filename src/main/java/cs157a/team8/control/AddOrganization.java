@@ -40,8 +40,9 @@ public class AddOrganization extends HttpServlet {
         String orgName = request.getParameter("orgName");
         String orgEmail = request.getParameter("orgEmail");
         String address = request.getParameter("address");
+        String url = request.getParameter("url");
 
-        PetOrganization petOrganization = new PetOrganization(orgID, orgName, orgEmail, address);
+        PetOrganization petOrganization = new PetOrganization(orgID, orgName, orgEmail, address, url);
         PetOrganizationDao petOrganizationDao = new PetOrganizationDao();
 
         String result = petOrganizationDao.insert(petOrganization);

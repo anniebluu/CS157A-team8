@@ -17,6 +17,7 @@
 		rel="stylesheet" 
 		integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
 		crossorigin="anonymous">
+		
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -105,12 +106,12 @@
 	                </div>
 	
 	                <div class="input-group mb-3">
-	                	<span class="input-group-text" id="inputGroup-sizing-default" for="petName">Pet Image</span>
+	                	<span class="input-group-text" id="inputGroup-sizing-default" for="petImage">Pet Image</span>
 	                    <input type="file" class="form-control" id="image" name="image" accept="image/*" placeholder="Upload an image" required>
 	                </div>
 	                                
 	                <div class="info-row">
-	                    <button type="submit" class="btn btn-primary">Add Pet</button>
+	                    <button type="submit">Add Pet</button>
 	                </div>
 	            </form>
             </div>

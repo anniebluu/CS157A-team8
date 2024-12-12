@@ -143,6 +143,7 @@ public class UserDao {
 
 		return result;
 	}
+	
 	public boolean updateUser(User user) {
 	    con = new Database().getConnection();
 	    String sql = "UPDATE users SET password = ? WHERE userID = ?";

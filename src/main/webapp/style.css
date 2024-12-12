@@ -172,6 +172,17 @@ body {
 	flex-direction: column;
 }
 
+.image{
+	width:100%;
+	display: flex;
+	justify-content: center;
+}
+
+#pet-image{
+	width: 50%;
+	padding: 20px;
+}
+
 .no-sidebar {
 	left: 0;
 	width: 100%;
@@ -442,7 +453,7 @@ body {
 	margin-right: 3px;
 }
 
-input:read-only {
+input[type="text"]:read-only, form.updatePet > .info-row > input[type="file"]:read-only{
 	background: transparent; /* helps user know it cannot be edited */
 	pointer-events: none; /* prevent the user from clicking to edit */
 }
