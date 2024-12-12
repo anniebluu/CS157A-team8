@@ -56,6 +56,7 @@
 						<th scope="col">Name</th>
 						<th scope="col">Age</th>
 						<th scope="col">Category</th>
+						<th scope="col">Edit</th>
 						<th scope="col">Delete?</th>
 					</tr>
 				</thead>
@@ -67,11 +68,16 @@
 					    Statement stmt = con.createStatement();
 					    ResultSet rs = stmt.executeQuery("SELECT * FROM pets");
 					    while (rs.next()) {
-					 out.println("<tr>" + 
+					    	String petID = rs.getString("petID");
+							 out.println("<tr>" + 
 					    "<td>" + rs.getString(1) + "</td>" + 
 							 "<td>" + rs.getString(2) + "</td>" + 
 					    "<td>" + rs.getString(3) + "</td>" + 
 							 "<td>" + rs.getString(4) + "</td>" + 
+						"<td>" + 
+	                          "<button type=\"button\" class=\"btn btn-outline-primary\" onclick=\"window.location.href='editPets.jsp?petID=" + petID + "'\">" + 
+	                            "<i class=\"fas fa-arrow-right\"></i></button>" + 
+	                    "</td>" + 
 						"<td>" + "<button type=\"button\" class=\"btn btn-outline-danger\" onclick='confirmDelete(" + "\"" + rs.getString(1)  + "\"" + ")'>Delete</button>" + "</td>" + 
 					    	"</tr>");
 					    }
