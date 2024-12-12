@@ -24,15 +24,7 @@
 	<!-- header section starts -->
    <header class="header">
 
-    <a href="petQueryHome.jsp" class="logo"><i class="fas fa-paw"></i> Pet Query</a>
-		<nav>
-			<ul>
-				<li><a href="userOrganizations.jsp">Organizations</a></li>
-				<li><a href="userPets.jsp">Pets</a></li>
-			</ul>
-		</nav>
-
-		<div class="icons" onclick="profile()"><div class="fas fa-user"></div></div>
+   	<jsp:include page="header.jsp"/>
 
 	</header>
 	<!-- header section ends -->
@@ -42,7 +34,7 @@
 			<form action="Register" method="post">
 					<h1>Register</h1>
 					
-					<div class="alert alert-danger" role="alert">
+					<div role="alert">
 						${alert}
 					</div>
 	            

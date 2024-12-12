@@ -18,24 +18,28 @@
 <!-- container -->
 
 <div class="container">
+<div class="home home-form">
+	<h1>Create an appointment!</h1>
 
-<div class="content">
-	<div class="header-title">Create an appointment!</div>
-<div class="login-container">
-	<div class="header-subtitle">Please provide your Username as well as the desired Date and Time of your appointment.</div>
-		<form action="Creates" method="post">
+<!-- 	<div class="header-title">Create an appointment!</div>
+ --><div class="login-container">
+<!-- 	<div class="header-subtitle">Please provide your Username as well as the desired Date and Time of your appointment.</div>
+ -->		<form action="Creates" method="post">
 		
-			<div class="mb-3">
-				<label for="username" class="form-label"> UserName</label>
-				<input type="text" class="form-control" id="username" name="username" placeholder="Enter Username" required>
-			</div>
-			<div class="mb-3">
-				<label for="date" class="form-label">Date</label>
+			<div class="input-group mb-3">
+				<span class="input-group-text apt-input-group-text" id="inputGroup-sizing-default" for="username">Username</span>
+				<input type="text" class="form-control" id="username" name="username"
+						value="<%= (session.getAttribute("userID") != null) ? session.getAttribute("userID") : "guest" %>" readonly>
+<!-- 				<input type="text" class="form-control" id="username" name="username" placeholder="Enter Username" required>
+ -->			</div>
+			<div class="input-group mb-3">
+				<span class="input-group-text apt-input-group-text" id="inputGroup-sizing-default" for="date">Date</span>
+			
 				<input type="date" class="form-control" id="date" name="date" required>
 			</div>
-			<div class="mb-3">
-				<label for="time" class="form-label">Time</label>
-				
+			<div class="input-group mb-3">
+				<span class="input-group-text apt-input-group-text" id="inputGroup-sizing-default" for="time">Time</span>
+						
 				<select class="form-control" id="time" name="time" required>
 					<option value="" disabled selected>Select Desired Time</option>
 					<%
@@ -53,7 +57,7 @@
 				<!--<input type="text" class="form-control" id="time" name="time" placeholder="Enter Desired Time" required>-->
 			</div>
                     
-			<div class="d-flex justify-content-end">
+			<div class="info-row apt-button-container">
 				<button type="submit" class="btn btn-primary">Create Appointment</button>
 			</div>
 		</form>

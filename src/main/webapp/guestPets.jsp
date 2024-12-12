@@ -24,21 +24,13 @@
    	<!-- header section starts -->
    <header class="header">
 
-    <a href="petQueryHome.jsp" class="logo"><i class="fas fa-paw"></i> Pet Query</a>
-		<nav>
-			<ul>
-				<li><a href="guestOrganizations.jsp">Organizations</a></li>
-				<li><a href="guestPets.jsp">Pets</a></li>
-			</ul>
-		</nav>
-
-		<div class="icons" onclick="profile()"><div class="fas fa-user"></div></div>
+   		<jsp:include page="header.jsp"/>
 
 	</header>
 	<!-- header section ends -->
 	
-	<div class="main-content">
-		<h2>Find Your New Best Friend</h2>
+	<div class="container">
+		
 <!-- 			<div class="content1">
 					
 					<p3>Browse our available pets and Apply to adopt. </p3>
@@ -57,8 +49,8 @@
 			        </form>
 			</div> -->
 			
-
-				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-xl-5 justify-content-center">
+			<div class="guest-container">
+				<div class="row row-cols-1 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 row-cols-xxl-7 justify-content-center">
 					<%
 						try {
 							java.sql.Connection con;
@@ -75,31 +67,16 @@
 					                 <!-- <div class="col-md-2 mb-3"> -->
 					                 <div class="card-holder">
 					                 	<div class="card h-100">
-						                 	<%-- <div class="card-img-top">
-						                    	<img src="<%= imagePath %>" class="img-fluid" alt="<%= petName %>">
-						                    </div> --%>
 						                    <img src="<%= imagePath %>" class="card-img-top" alt="<%= petName %>">
-					                     <!-- <div class="card text-center"> -->
-					                         <%-- <div class="row justify-content-center">
-					                             <img src="<%= imagePath %>" class="img-fluid" alt="<%= petName %>">
-					                         </div> --%>
 					                         <div class="card-body">
 					                             <h3 class="card-title"><%= petName %></h3>
 					                             <p class="card-text"><%= petAge %></h5>
 					                             <p class="card-text"><small class="text-body-secondary"><%= category %></small></h5>
-					                             <%-- <p class="card-text">Pet ID: <%= petID %></p> --%>
-					                             <%-- <div class="button">
-					                                 <button type="button" class="btn btn-primary"
-					                                     onclick="submits.jsp?petID=<%= petID %>'">Adopt</button>
-					                             </div> --%>
 					                         </div>
 					                         <div class="info-row">
 					                                 <button type="button" class="btn btn-primary"
-					                                     onclick="submits.jsp?petID=<%= petID %>'">Adopt</button>
+					                                     onclick="window.location = 'userLogin.jsp'"<%= petID %>'">Adopt</button>
 					                         </div>
-					                          
-					                         
-					                    <!--  </div> -->
 					                     </div>
 					                 </div>
 					                 <%
@@ -112,6 +89,8 @@
 								}
 					%>
 				</div>
+			</div>
+		</div>
 	</div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

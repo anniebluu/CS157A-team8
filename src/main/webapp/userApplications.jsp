@@ -26,29 +26,14 @@
     
 
 </head>
+
+<% request.setAttribute("userApplicationsActive", "active"); %>
+
 <body>
    <!-- header section starts -->
 	<jsp:include page="header.jsp"/>
 	<!-- header section ends -->
-	
-	<div class="sidebar">
-	    <div class="sidebar-menu">
-	        <a href="userProfile.jsp">My Profile</a>
-	        <a href="userApplications.jsp" class="active">Applications</a>
-	        <a href="userAppointments.jsp">Appointments</a>
-	        <a href="userOrganizations.jsp">Pet Organizations</a>
-	        <a href="userPets.jsp">Find Your Pet</a>
-	        <a href="submits.jsp">Adopt a Pet</a>
-	    </div>
-	    <div class="logout">
-		    <form action="Logout" method="POST">
-		    	<div class="info-row">
-					<button type="submit" class="btn btn-secondary btn-lg">Log Out</button>
-				</div>
-			
-		    </form>
-	    </div>
-    </div>
+	<jsp:include page="sidebar.jsp"/>
 
     <div class="main-content">
     	<div class="content-table">
