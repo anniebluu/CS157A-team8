@@ -45,7 +45,6 @@
 
     
 	<div class="main-content">
-		<h2>Add A New Pet</h2>
            
 		<div class=content-box>
 			<div class="content-form">
@@ -135,9 +134,9 @@
 						            java.sql.Connection con;
 						            con = new Database().getConnection();
 						            Statement stmt = con.createStatement();
-						            ResultSet rs = stmt.executeQuery("SELECT DISTINCT OrgName FROM petorganizations");
+						            ResultSet rs = stmt.executeQuery("SELECT DISTINCT OrgID, OrgName FROM petorganizations");
 						            while (rs.next()) {
-						            	out.println("<option>" + rs.getString(1) + "</option>");
+						            	out.println("<option value=" + rs.getString(1) + ">" + rs.getString(2) + "</option>");
 						            }
 						            rs.close();
 						            stmt.close();

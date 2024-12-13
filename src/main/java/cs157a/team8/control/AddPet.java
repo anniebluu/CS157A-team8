@@ -54,6 +54,12 @@ public class AddPet extends HttpServlet {
         String category = request.getParameter("category");
         String imagePath = null;
         String petOrg = request.getParameter("petOrg");
+        
+        System.out.println(petOrg);
+        System.out.println(petID);
+        System.out.println(petName);
+        System.out.println(age);
+        System.out.println(category);
 
         // for file upload
         Part filePart = request.getPart("image"); // gets <input type="file" name="image">
@@ -69,20 +75,22 @@ public class AddPet extends HttpServlet {
             // sets new under images directory
             imagePath = "images/" + fileName;
         }
-
+        	
+        System.out.println(imagePath);
+        
         PetDao pdao = new PetDao();
 
         // Check if petID already exists
-        if (pdao.checkPetIDExists(petID)) {
-            String alert = "Pet ID already exists. Please use a different ID."; // alert if error
-            request.setAttribute("alert", alert); // sends to jsp
-            request.getRequestDispatcher("addPet.jsp").forward(request, response); // stays in same page
-            return;
-        }
+//        if (pdao.checkPetIDExists(petID)) {
+//            String alert = "Pet ID already exists. Please use a different ID."; // alert if error
+//            request.setAttribute("alert", alert); // sends to jsp
+//            request.getRequestDispatcher("addPet.jsp").forward(request, response); // stays in same page
+//            return;
+//        }
 
         // Insert the new pet
         Pet pet = new Pet(petID, petName, age, category, imagePath);
-        String result = pdao.insertPet(pet);
+        String result = pdao.insertPet(pet, petOrg);
         
         
         // Send response back to user
