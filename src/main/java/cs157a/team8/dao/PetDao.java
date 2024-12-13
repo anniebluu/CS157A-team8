@@ -45,10 +45,11 @@ public class PetDao {
 	}
     
     // method to insert a new Pet
-    public String insertPet(Pet pet) {
+    public String insertPet(Pet pet, String orgID) {
         
         con = new Database().getConnection();
-        String sql = "insert into pets values(?, ?, ?, ?, ?)";
+        String sql = "insert into pets values(?, ?, ?, ?, ?);";
+        String sql2 = "insert into owns values(?,?)";
         String result = "Data Entered Successfully";
         
         if (checkPetIDExists(pet.getPetID())) {
@@ -64,6 +65,10 @@ public class PetDao {
             ps.setString(3, pet.getAge());
             ps.setString(4, pet.getCategory());
             ps.setString(5, pet.getImagePath());
+            ps.executeUpdate();
+            ps = con.prepareStatement(sql2);
+            ps.setString(1, orgID);
+            ps.setString(2, pet.getPetID());
             ps.executeUpdate();
         } catch (SQLException e) {
             result = "Data Not Entered Successfully";
