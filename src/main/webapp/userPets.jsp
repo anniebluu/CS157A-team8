@@ -88,7 +88,7 @@
 				                             <p class="card-text"><small class="text-body-secondary"><%= category %></small></h5>
 				                         </div>
 				                         <div class="info-row">
-				                             <button type="button" onclick="window.location.href='submits.jsp?petID=<%= petID %>'">Adopt</button>
+				                             <button class="adopt-button" type="button" onclick="adopt(<%= petID %>)">Adopt</button>
 				                         </div>
 				                     </div>
 				                 </div>
@@ -112,6 +112,33 @@
 	    window.onload = function() {
 	    	filterSelection('all');
 	  	  	document.getElementById("category").value = 'all';
+	  	  	
+	  	  	// disable buttons for admin
+	  	  <% if (session.getAttribute("userName") != null){ 
+	  	  		if ((Integer) session.getAttribute("isAdmin") == 1) {%>
+			  	  	var elems = document.getElementsByClassName('adopt-button');
+				  	for(var i = 0; i < elems.length; i++) {
+				  	    elems[i].disabled = true;
+				  	}
+		  	<% 	}
+	  	  	} %>
+	    }
+	    
+	    // handle adopt button
+	    function adopt(petID) {
+	    	<% if (session.getAttribute("userName") != null ) { %>
+			    // logged in
+	    	 	<% if ((Integer) session.getAttribute("isAdmin") == 0) {%>
+			    	 	// is a regular user
+				    	window.location.href='submits.jsp?petID='+ petID;
+	    	 	<%} else {%>
+	    	 			// admin
+	    	 			window.location.href='userPets.jsp'; // it should not get here, but just in case
+	    	 	<%} %>
+    		<%} else {%>
+		    		// not logged in 
+			    	window.location = 'userLogin.jsp';
+	    	<%}  %>
 	    }
 	    
 	    // filter the selection

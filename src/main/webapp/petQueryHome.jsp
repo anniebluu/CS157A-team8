@@ -3,6 +3,16 @@
     
 <!DOCTYPE html>
 <html lang="en">
+<script type="text/javascript">
+
+	window.onload = function (){
+		<% 
+		if (session.getAttribute("userName") == null){
+            response.sendRedirect("landingPage.jsp");  // Redirect to the landing page
+        } %>	
+	}
+	
+</script>
 
 <head>
     <meta charset="UTF-8">
@@ -37,13 +47,5 @@
 </div>
 
 </body>
-<script>
-function profile(){
-	<% if (session.getAttribute("userName") != null) { %>
-		window.location = 'userProfile.jsp';
-	<%} else {%>
-		window.location = 'userLogin.jsp';
-	<%}%>
-}
-</script>
+
 </html>

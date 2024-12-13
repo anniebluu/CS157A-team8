@@ -3,6 +3,16 @@
     
 <!DOCTYPE html>
 <html lang="en">
+<script type="text/javascript">
+
+	window.onload = function (){
+		<% 
+		if (session.getAttribute("userName") == null){
+            response.sendRedirect("landingPage.jsp");  // Redirect to the landing page
+        } %>		
+	}
+	
+</script>
 
 <head>
     <meta charset="UTF-8">
@@ -83,6 +93,11 @@
             alert(fieldId + " has been saved.");
             // Add your code here to handle saving the updated information
         }
+        
+        window.addEventListener('popstate', function (event) {
+            // This will reload the page when the back button is clicked
+            location.reload();
+        });
     </script>
 </body>
 </html>

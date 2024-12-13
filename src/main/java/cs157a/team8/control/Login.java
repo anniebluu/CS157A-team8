@@ -64,15 +64,7 @@ public class Login extends HttpServlet {
 			// check that the userID and password match entry in database
 			User user = userDao.checkPassword(userID, password);
 			System.out.print(user);
-			if(user != null && user.getAccountType() == 1) {
-				HttpSession session = request.getSession();
-				session.setAttribute("userID", user.getUserID());
-				session.setAttribute("password", user.getPassword());
-				session.setAttribute("userName", user.getUserName());
-				session.setAttribute("userEmail", user.getUserEmail());
-				session.setAttribute("isAdmin", user.getAccountType());
-				response.sendRedirect("organizations.jsp");
-			} else if (user != null && user.getAccountType() == 0) {
+			if (user != null) {
 				HttpSession session = request.getSession();
 				session.setAttribute("userID", user.getUserID());
 				session.setAttribute("password", user.getPassword());

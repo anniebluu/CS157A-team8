@@ -19,7 +19,18 @@
 		
     <link rel="stylesheet" href="style.css">
 </head>
+<script type="text/javascript">
 
+	window.onload = function (){
+		<% 
+		if (session.getAttribute("userName") != null){
+            response.sendRedirect("petQueryHome.jsp");  // Redirect to the landing page
+        } 
+        %>	
+
+	}
+	
+</script>
 <body>
 	<!-- header section starts -->
    

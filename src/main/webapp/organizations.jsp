@@ -2,6 +2,20 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<script type="text/javascript">
+
+	window.onload = function (){
+		<% 
+		if (session.getAttribute("userName") == null){
+            response.sendRedirect("landingPage.jsp");  // Redirect to the landing page
+        } else {%>	
+		<% 
+		if ((Integer) session.getAttribute("isAdmin") == 0){
+            response.sendRedirect("petQueryHome.jsp");  // Redirect to the landing page
+        } }%>	
+	}
+	
+</script>
 
 <head>
 	<meta charset="UTF-8">
@@ -18,31 +32,15 @@
 		crossorigin="anonymous">
 </head>
 
+<% request.setAttribute("adminOrganizationsActive", "active"); %>
+
 <body>
 	<!-- header section starts -->
 	<jsp:include page="header.jsp"/>
 	<!-- header section ends -->
 	
-    <div class="sidebar">
-    	<div class="sidebar-menu">
-	 		<a href="adminProfile.jsp">My Profile</a>
-			<a href="organizations.jsp" class="active">Organizations</a>
-			<a href="addOrganization.jsp">Add Organization</a>
-			<a href="pets.jsp">Pets</a>
-			<a href="addPet.jsp">Add Pet</a>
-			<a href="users.jsp">Users</a>
-			<a href="applications.jsp">Applications</a>
-			<a href="appointments.jsp">Appointments</a>
-		</div>
-		<div class="logout">
-		    <form action="Logout" method="POST">
-		    	<div class="info-row">
-					<button type="submit" class="btn btn-secondary btn-lg">Log Out</button>
-				</div>
-			
-		    </form>
-	    </div>
-    </div>
+    <jsp:include page="sidebar.jsp"/>
+    
     
      <div class="main-content">
      	<div class="content-table">
@@ -54,6 +52,7 @@
 						<th scope="col">Phone Number</th>
 						<th scope="col">Email</th>
 						<th scope="col">Address</th>
+						<th scope="col">URL</th>
 						<th scope="col">Delete?</th>
 					</tr>
 				</thead>
@@ -71,6 +70,10 @@
 				        		 "<td>" + rs.getString(2) + "</td>" + 
 				            "<td>" + rs.getString(3) + "</td>" + 
 				        		 "<td>" + rs.getString(4) + "</td>" + 
+				        		 "<td>" + 
+		                            "<button type=\"button\" class=\"btn btn-outline-primary\" onclick='openURL(\"" + rs.getString(5)  + "\")'>" + 
+		                            "<i class=\"fas fa-arrow-right\"></i></button>" + 
+		                            "</td>" + 
 				        	"<td>" + "<button type=\"button\" class=\"btn btn-outline-danger\" onclick='confirmDelete(" + "\"" + rs.getString(1)  + "\"" + ")'>Delete</button>" + "</td>" + 
 				        		 "</tr>");
 				            }
@@ -97,6 +100,11 @@
                // If confirmed, call delete function
                window.location.href = "DeleteOrganization?id=" + String(organizationID);
            }
+       }
+       
+       function openURL(url) {
+           // Redirect to the organization redirect page with the organization ID
+       	window.open(url, '_blank').focus();
        }
    </script>
 </body>

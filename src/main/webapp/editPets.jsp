@@ -1,8 +1,19 @@
-<%@ page import="java.sql.*"%>
+<%@ page import="java.sql.*, javax.servlet.http.HttpSession "%>
 <%@ page import="cs157a.team8.database.Database"%>
 
 <!DOCTYPE html>
 <html lang="en">
+<script type="text/javascript">
+
+	window.onload = function (){
+		<% 
+		if ((Integer) session.getAttribute("isAdmin") == 0){
+            response.sendRedirect("petQueryHome.jsp");  // Redirect to the landing page
+        } %>	
+	}
+	
+</script>
+
 
 <head>
 	<meta charset="UTF-8">
@@ -74,89 +85,121 @@
     <div class="main-content">
         <div class="content-box">
             <div class="content-form">
-				<form class="updatePet" action="updatePet" method="post">
-					<div class="image">
-						<img src="<%=petImage%>" class="card-img-top" id="pet-image">
+				<div class="image">
+					<img src="<%=petImage%>" class="card-img-top" id="pet-image">
+				</div>
+
+				<div class="info-row">
+					<span class="input-group-text input-group-text-profile"
+						id="inputGroup-sizing-default" for="petID">Pet ID</span> 
+						<input
+						type="text" id="petID" name="petID" value="<%=petID%>" readonly>
+					<buttongrey>Edit</buttongrey>
+					<buttongrey>Save</buttongrey>
+				</div>
+
+				<form class="updatePet" action="UpdatePetName" method="post">
+					<div style="display: none">
+						<input type="text" id="petID" name="petID" value="<%=petID%>" readonly>
 					</div>
-	                <div class="info-row">
-	                	<span class="input-group-text input-group-text-profile" id="inputGroup-sizing-default" for="petID">Pet ID</span>
-	                	<input type="text" id="petID" value="<%=petID%>" readonly>
-						<buttongrey>Edit</buttongrey>
-	                    <buttongrey>Save</buttongrey>
-	                </div>
-                    <div class="info-row">
-                    	<span class="input-group-text input-group-text-profile" id="inputGroup-sizing-default" for="name">Pet Name</span>
-                        <input type="name" id="name" name="name" 
-                               value="<%=petName%>" readonly>
-                        <button type="button" onclick="enableEdit('name')">Edit</button>
-                        <button type="submit">Save</button>
-                    </div>
-	                <div class="info-row">
-                    	<span class="input-group-text input-group-text-profile" id="inputGroup-sizing-default" for="age">Pet Age</span>
-                        <input type="text" id="age" name="age" 
-                               value="<%=petAge%>" readonly>
-                        <button type="button" onclick="enableEdit('age')">Edit</button>
-                        <button type="submit">Save</button>
-                    </div>
-	                <div class="info-row">
-                    	<span class="input-group-text" id="inputGroup-sizing-default" for="category">Pet Category</span>
-                        	<select class="form-select" id="category" name="category" aria-label="Default select example" style="font-size:1.5rem; background-color:#e0e0e0; border: 1px solid #ccc;" disabled>
-							  <option selected ><%=petCategory%></option>
-							  	<%
-							        try {
-							            java.sql.Connection con;
-							            con = new Database().getConnection();
-							            Statement stmt = con.createStatement();
-							            ResultSet rs = stmt.executeQuery("SELECT DISTINCT Category FROM pets");
-							            while (rs.next()) {
-							            	out.println("<option>" + rs.getString(1) + "</option>");
-							            }
-							            rs.close();
-							            stmt.close();
-							            con.close();
-							        } catch(SQLException e) {
-							            out.println("SQLException caught: " + e.getMessage());
-							        }
-							    %>
-							</select>
-                        <button type="button" onclick="enableEdit('category')">Edit</button>
-                        <button type="submit">Save</button>
-                    </div>
-					 <div class="info-row">
-	                	<span class="input-group-text input-group-text-profile" id="inputGroup-sizing-default" for="image">Pet Image</span>
-	                    <input type="file" class="form-control" id="image" name="image" accept="image/*" placeholder="Upload an image" readonly>
-	                    <button type="button" onclick="enableEdit('image')">Edit</button>
-                        <button type="submit">Save</button>
-	                </div>
-                </form>
-            </div>
+
+					<div class="info-row">
+						<span class="input-group-text input-group-text-profile"
+							id="inputGroup-sizing-default" for="name">Pet Name</span> 
+							<input type="text" id="name" name="name" value="<%=petName%>" readonly>
+						<button type="button" onclick="enableEdit('name')">Edit</button>
+						<button type="submit">Save</button>
+					</div>
+				</form>
+
+				<form class="updatePet" action="UpdatePetAge" method="post">
+					<div style="display: none">
+						<input type="text" id="petID" name="petID" value="<%=petID%>" readonly>
+					</div>
+					<div class="info-row">
+						<span class="input-group-text input-group-text-profile"
+							id="inputGroup-sizing-default" for="age">Pet Age</span> 
+							<input
+							type="text" id="age" name="age" value="<%=petAge%>" readonly>
+						<button type="button" onclick="enableEdit('age')">Edit</button>
+						<button type="submit">Save</button>
+					</div>
+				</form>
+				<form class="updatePet" action="UpdatePetCategory" method="post">
+					<div style="display: none">
+						<input type="text" id="petID" name="petID" value="<%=petID%>" readonly>
+					</div>
+					<div class="info-row">
+						<span class="input-group-text" id="inputGroup-sizing-default"
+							for="category">Pet Category</span> 
+							<select class="form-select" id="category" name="category" aria-label="Default select example"
+									style="font-size: 1.5rem; background-color: #e0e0e0; border: 1px solid #ccc;"
+									disabled required>
+								<option selected><%=petCategory%></option>
+								<%
+								try {
+									java.sql.Connection con;
+									con = new Database().getConnection();
+									Statement stmt = con.createStatement();
+									ResultSet rs = stmt.executeQuery("SELECT DISTINCT Category FROM pets WHERE Category <>'" + petCategory + "';");
+									while (rs.next()) {
+										out.println("<option>" + rs.getString(1) + "</option>");
+									}
+									rs.close();
+									stmt.close();
+									con.close();
+								} catch (SQLException e) {
+									out.println("SQLException caught: " + e.getMessage());
+								}
+								%>
+						</select>
+						<button type="button" onclick="enableEdit('category')">Edit</button>
+						<button onclick="enableEdit('category')" type="submit">Save</button>
+					</div>
+				</form>
+				<form class="updatePet" action="UpdatePetImage" method="post" enctype="multipart/form-data">
+					<div style="display: none">
+						<input type="text" id="petID" name="petID" value="<%=petID%>"
+							readonly>
+					</div>
+					<div class="info-row">
+						<span class="input-group-text input-group-text-profile"
+							id="inputGroup-sizing-default" for="image">Pet Image</span> 
+							<input type="file" class="form-control" id="image" name="image"
+							accept="image/*" placeholder="Upload an image" readonly required>
+						<button type="button" onclick="enableEdit('image')">Edit</button>
+						<button type="submit">Save</button>
+					</div>
+				</form>
+         	</div>
         </div>
     </div>	
 		
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
 		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
 		crossorigin="anonymous">
+		
 	</script>
 	
 	<script>
-        function enableEdit(fieldId) {
-            const field = document.getElementById(fieldId);
-            field.removeAttribute('readonly');
-            field.removeAttribute('disabled');
-            field.style.backgroundColor = '#ffffff'; // Change background to white when editable
-            field.style.pointerEvents = 'auto'; // Make the input clickable
-            field.focus();
-        }
+		function enableEdit(fieldId) {
+			const field = document.getElementById(fieldId);
+			field.removeAttribute('readonly');
+			field.removeAttribute('disabled');
+			field.style.backgroundColor = '#ffffff'; // Change background to white when editable
+			field.style.pointerEvents = 'auto'; // Make the input clickable
+			field.focus();
+		}
 
-        function saveInfo(fieldId) {
-            const field = document.getElementById(fieldId);
-            field.setAttribute('readonly', true);
-            field.style.backgroundColor = '#e0e0e0'; // Grey out background again
-            field.style.pointerEvents = 'none'; // Make the input unclickable
-            alert(fieldId + " has been saved.");
-            // Add your code here to handle saving the updated information
-        }
-    </script>
+		function saveInfo(fieldId) {
+			const field = document.getElementById(fieldId);
+			field.setAttribute('readonly', true);
+			field.style.backgroundColor = '#e0e0e0'; // Grey out background again
+			field.style.pointerEvents = 'none'; // Make the input unclickable
+			alert(fieldId + " has been saved.");
+			// Add your code here to handle saving the updated information
+		}
+	</script>
    
 </body>
 </html>
