@@ -50,8 +50,8 @@
 			<table class="table table-light table-striped">
 				<thead>
 					<tr>
-						<th scope="col">Phone Number</th>
 						<th scope="col">Name</th>
+						<th scope="col">Phone Number</th>
 						<th scope="col">Email</th>
 						<th scope="col">Address</th>
 						<th scope="col">Delete?</th>

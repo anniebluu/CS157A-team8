@@ -57,7 +57,7 @@
 				    <th scope="col">PetID</th>
 				    <th scope="col">Status</th>
 				    <th scope="col">Approve</th>
-				    <th scope="col">Reject</th>
+				    <th scope="col">Deny</th>
 				    <th scope="col">Reset Status</th>
 				    <th scope="col">Delete?</th>
 				  </tr>
@@ -78,10 +78,10 @@
 						 			out.println("<td>Pending</td>");
 						 		}
 						 		else if(Integer.parseInt(rs.getString(4)) == 1) {
-						 			out.println("<td>Rejected</td>");
+						 			out.println("<td style=\"color:red;\">Denied</td>");
 						 		}
 						 		else if(Integer.parseInt(rs.getString(4)) == 2) {
-						 			out.println("<td>Approved</td>");
+						 			out.println("<td style=\"color:green;\">Approved</td>");
 						 		}
 						 		
 						 		out.println("<td><form action=\"SetApplication\" method=\"post\"><input type=\"hidden\" name=\"appId\" value=\"" + rs.getString(1) + "\"/><button class=\"btn btn-success\" type=\"submit\" name=\"action\" value=\"approve\">Approve</button></form></td>" 

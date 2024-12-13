@@ -9,7 +9,7 @@
  	<nav>
 		<ul>
 			<li><a href='<%= (session.getAttribute("userName") != null)? "userOrganizations.jsp":  "guestOrganizations.jsp"%>' class="header-${userOrganizationsActive}">Organizations</a></li>
-			<li><a href='<%= (session.getAttribute("userName") != null)? "userPets.jsp":  "guestPets.jsp"%>' class="header-${userPetseActive}">Pets</a></li>
+			<li><a href='<%= (session.getAttribute("userName") != null)? "userPets.jsp":  "guestPets.jsp"%>' class="header-${userPetsActive}">Pets</a></li>
 		</ul>
 	</nav>
 	

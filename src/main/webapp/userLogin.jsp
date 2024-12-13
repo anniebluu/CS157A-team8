@@ -51,10 +51,10 @@
 	                <i class='bx bxs-lock-alt'></i>
 	            </div>
 	            <!-- Remember Me and Forgot Password -->
-	            <div class="remember-forgot">
+<!-- 	            <div class="remember-forgot">
 	                <label><input type="checkbox"> Remember me</label>
 	                <a href="#">Forgot password?</a>
-	            </div>
+	            </div> -->
 	            <!-- Login button -->
 	            <button type="submit" class="btn">Login</button>
 	            <!-- Register link -->
