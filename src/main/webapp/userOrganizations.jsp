@@ -24,7 +24,6 @@
 
 <% request.setAttribute("userOrganizationsActive", "active"); %>
 
-
 <body>
 
 	<!-- header section starts -->

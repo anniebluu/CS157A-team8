@@ -17,9 +17,22 @@
 		crossorigin="anonymous">
 		
 	 <link rel="stylesheet" href="style.css">
+	 
+	 <style>
+		/* The "show" class is added to the filtered elements */
+		.card-holder {
+			display: none;
+		}
+		
+		.show {
+		  display: inline;
+		}
+	</style>
+	 
 </head>
 
 <body>
+	
 
    	<!-- header section starts -->
    <header class="header">
@@ -30,25 +43,31 @@
 	<!-- header section ends -->
 	
 	<div class="container">
+		<nav>
+			<div class="input-group mb-3" style="top: 20px;">
+				<select class="form-select" id="category" name="category" aria-label="Default select example">
+					  <option id="select-all" onclick="filterSelection('all')" selected value='all'>All</option>
+					  	<%
+					        try {
+					            java.sql.Connection con;
+					            con = new Database().getConnection();
+					            Statement stmt = con.createStatement();
+					            ResultSet rs = stmt.executeQuery("SELECT DISTINCT Category FROM pets");
+					            while (rs.next()) {
+					            	String dashedString = rs.getString(1).replace(" ", "-");
+					            	out.println("<option value='" + dashedString + "' onclick='filterSelection(\"" + dashedString + "\")'>" + rs.getString(1) + "</option>");
+					            }
+					            rs.close();
+					            stmt.close();
+					            con.close();
+					        } catch(SQLException e) {
+					            out.println("SQLException caught: " + e.getMessage());
+					        }
+					    %>
+				</select>
+			</div>
+		</nav>
 		
-<!-- 			<div class="content1">
-					
-					<p3>Browse our available pets and Apply to adopt. </p3>
-					
-					<form action="Search" method="Get">
-			            <div class="row justify-content-center">
-			                
-			                <div class="col-md-8">
-			                    <input type="text" class="form-control" name="Search" placeholder="Search for specific pets..." required>
-			                </div>
-			                <div class="col-md-2">
-			                    <button type="submit" class="btn btn-primary">Search</button>
-			                </div>
-			                
-			            </div>
-			        </form>
-			</div> -->
-			
 			<div class="guest-container">
 				<div class="row row-cols-1 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 row-cols-xxl-7 justify-content-center">
 					<%
@@ -65,13 +84,13 @@
 					                 String imagePath = rs.getString("imagePath");
 					                 %>
 					                 <!-- <div class="col-md-2 mb-3"> -->
-					                 <div class="card-holder">
+					                 <div class="card-holder <%= category.replace(" ", "-") %>">
 					                 	<div class="card h-100">
 						                    <img src="<%= imagePath %>" class="card-img-top" alt="<%= petName %>">
 					                         <div class="card-body">
 					                             <h3 class="card-title"><%= petName %></h3>
-					                             <p class="card-text"><%= petAge %></h5>
-					                             <p class="card-text"><small class="text-body-secondary"><%= category %></small></h5>
+					                             <p class="card-text"><%= petAge %></p>
+					                             <p class="card-text"><small class="text-body-secondary"><%= category %></small></p>
 					                         </div>
 					                         <div class="info-row">
 					                                 <button type="button" class="btn btn-primary"
@@ -91,9 +110,56 @@
 				</div>
 			</div>
 		</div>
-	</div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+    
+    // reset the category to 'All' when the page is loaded/reloaded
+    window.onload = function() {
+    	filterSelection('all');
+  	  	document.getElementById("category").value = 'all';
+    }
+    
+    // filter the selection
+    function filterSelection(c) { 
+		var x, i;
+		x = document.getElementsByClassName("card-holder");
+		if (c == "all")
+			c = "";
+		// Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
+		for (i = 0; i < x.length; i++) {
+			categoryRemoveClass(x[i], "show");
+			if (x[i].className.indexOf(c) > -1)
+				categoryAddClass(x[i], "show");
+		}
+	}
+	
+	// Show filtered elements
+	function categoryAddClass(element, name) {
+		var i, arr1, arr2;
+		arr1 = element.className.split(" ");
+		arr2 = name.split(" ");
+		for (i = 0; i < arr2.length; i++) {
+			if (arr1.indexOf(arr2[i]) == -1) {
+				element.className += " " + arr2[i];
+			}
+		}
+	}
+	
+	// Hide elements that are not selected
+	function categoryRemoveClass(element, name) {
+		var i, arr1, arr2;
+		arr1 = element.className.split(" ");
+		arr2 = name.split(" ");
+		for (i = 0; i < arr2.length; i++) {
+			while (arr1.indexOf(arr2[i]) > -1) {
+				arr1.splice(arr1.indexOf(arr2[i]), 1);
+			}
+		}
+		element.className = arr1.join(" ");
+	}
+	</script>
     
 </body>
 </html>

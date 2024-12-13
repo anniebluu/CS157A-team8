@@ -65,10 +65,28 @@
 	                }
 	            %>
 	            
+	            <%
+		            int newPetID = 0;
+			        try {
+			            java.sql.Connection con;
+			            con = new Database().getConnection();
+			            Statement stmt = con.createStatement();
+			            ResultSet rs = stmt.executeQuery("SELECT MAX(CAST(PetID AS SIGNED)) FROM pets;");
+			            while (rs.next()) {
+			            	newPetID = rs.getInt(1) + 1;
+			            }
+			            rs.close();
+			            stmt.close();
+			            con.close();
+			        } catch(SQLException e) {
+			            out.println("SQLException caught: " + e.getMessage());
+			        }
+	            %>
+	            
 	            <form action="AddPet" method="post" enctype="multipart/form-data">
 	                <div class="input-group mb-3">
 	                    <span class="input-group-text" id="inputGroup-sizing-default" for="petID">Pet ID</span>
-	                    <input type="text" class="form-control" id="petID" name="petID" placeholder="Enter New Pet ID (xxx-xxxx-xxx)" required>
+	                    <input type="text" class="form-control" id="petID" name="petID" value="<%=newPetID%>" readonly>
 	                </div>
 	
 	                <div class="input-group mb-3">
@@ -82,7 +100,7 @@
 	                </div>
 	
 	                <div class="input-group mb-3">
-	                    <span class="input-group-text" id="inputGroup-sizing-default" for="petName">Category</span>
+	                    <span class="input-group-text" id="inputGroup-sizing-default" for="category">Pet Category</span>
 	                    <!-- <input type="text" class="form-control" id="category" name="category" placeholder="Enter Category: Dog & Puppies, Cat & Kittens, Rabbits, etc." required> -->
 	                    <select class="form-select" id="category" name="category" aria-label="Default select example">
 						  <option selected>Select Category: Rabbits & Bunnies, Dogs & Puppies, Cats & Kittens, etc.</option>
@@ -108,6 +126,30 @@
 	                <div class="input-group mb-3">
 	                	<span class="input-group-text" id="inputGroup-sizing-default" for="petImage">Pet Image</span>
 	                    <input type="file" class="form-control" id="image" name="image" accept="image/*" placeholder="Upload an image" required>
+	                </div>
+	                
+	               	<div class="input-group mb-3">
+	                    <span class="input-group-text" id="inputGroup-sizing-default" for="petOrg">Pet Organization</span>
+	                    <!-- <input type="text" class="form-control" id="category" name="category" placeholder="Enter Category: Dog & Puppies, Cat & Kittens, Rabbits, etc." required> -->
+	                    <select class="form-select" id="petOrg" name="petOrg" aria-label="Default select example">
+						  <option selected>Select Pet Organization</option>
+						  	<%
+						        try {
+						            java.sql.Connection con;
+						            con = new Database().getConnection();
+						            Statement stmt = con.createStatement();
+						            ResultSet rs = stmt.executeQuery("SELECT DISTINCT OrgName FROM petorganizations");
+						            while (rs.next()) {
+						            	out.println("<option>" + rs.getString(1) + "</option>");
+						            }
+						            rs.close();
+						            stmt.close();
+						            con.close();
+						        } catch(SQLException e) {
+						            out.println("SQLException caught: " + e.getMessage());
+						        }
+						    %>
+						</select>
 	                </div>
 	                                
 	                <div class="info-row">

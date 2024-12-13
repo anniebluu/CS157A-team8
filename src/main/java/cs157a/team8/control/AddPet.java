@@ -3,6 +3,7 @@ package cs157a.team8.control;
 import cs157a.team8.entity.Pet;
 import cs157a.team8.dao.PetDao;
 
+
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -52,6 +53,7 @@ public class AddPet extends HttpServlet {
         String age = request.getParameter("age");
         String category = request.getParameter("category");
         String imagePath = null;
+        String petOrg = request.getParameter("petOrg");
 
         // for file upload
         Part filePart = request.getPart("image"); // gets <input type="file" name="image">
@@ -81,6 +83,7 @@ public class AddPet extends HttpServlet {
         // Insert the new pet
         Pet pet = new Pet(petID, petName, age, category, imagePath);
         String result = pdao.insertPet(pet);
+        
         
         // Send response back to user
         if ("Data Entered Successfully".equals(result)) {

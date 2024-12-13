@@ -66,7 +66,7 @@
 				            java.sql.Connection con;
 				            con = new Database().getConnection();
 				            Statement stmt = con.createStatement();
-				            ResultSet rs = stmt.executeQuery("SELECT * FROM users");
+				            ResultSet rs = stmt.executeQuery("SELECT * FROM users ORDER BY UserID ASC");
 				            while (rs.next()) {
 				         out.println("<tr>" + 
 				            "<td>" + rs.getString(1) + "</td>" + 

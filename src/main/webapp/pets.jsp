@@ -66,7 +66,7 @@
 					    java.sql.Connection con;
 					    con = new Database().getConnection();
 					    Statement stmt = con.createStatement();
-					    ResultSet rs = stmt.executeQuery("SELECT * FROM pets");
+					    ResultSet rs = stmt.executeQuery("SELECT * FROM petquery.pets ORDER BY CAST(PetID AS SIGNED) ASC;");
 					    while (rs.next()) {
 					    	String petID = rs.getString("petID");
 							 out.println("<tr>" + 

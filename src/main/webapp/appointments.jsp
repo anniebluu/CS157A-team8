@@ -65,7 +65,7 @@
 						    con = new Database().getConnection();
 						
 						    Statement stmt = con.createStatement();
-						    ResultSet rs = stmt.executeQuery("SELECT * FROM creates NATURAL JOIN appointments");
+						    ResultSet rs = stmt.executeQuery("SELECT * FROM creates NATURAL JOIN appointments ORDER BY CAST(SUBSTRING(AppointmentID, 4) AS SIGNED) ASC");
 						                
 						    while (rs.next()) {
 						 		out.println("<tr>" + "<td>" + rs.getString(1) + "</td>" 

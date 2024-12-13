@@ -552,21 +552,6 @@ input[type="text"]:read-only, form.updatePet > .info-row > input[type="file"]:re
 	
 	.password-validation {
 		display: none;
-		position: absolute;
-		top: 130px; /* Adjust to move the bubble closer to the password field */
-		left: 100%;
-		margin-left: 20px;
-		padding: 15px;
-		background: rgba(255, 255, 255, 0.9); /* Less transparent background */
-		
-		color: #333;
-		border: 2px solid rgba(255, 255, 255, 0.7); /* Lighter border to match the form */
-		border-radius: 10px;
-		width: 250px;
-		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-		font-size: 14px;
-		z-index: 10;
-		backdrop-filter: blur(20px); /* Blurs the background behind the bubble */
 	}
 
        .password-validation::before {
@@ -581,11 +566,15 @@ input[type="text"]:read-only, form.updatePet > .info-row > input[type="file"]:re
        }
 
        .invalid {
-           color: #e74c3c; /* Red for invalid items */
+          /*  color: #e74c3c; Red for invalid items */
+           color: #fff;
+           font-size: 1rem;
        }
 
        .valid {
-           color: #2ecc71; /* Green for valid items */
+          	/* color: #2ecc71; Green for valid items */
+          	color: #13bcf1;
+           font-size: 1rem;
        }
 	
 	/* registration password end */

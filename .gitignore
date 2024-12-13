@@ -43,4 +43,3 @@ build/
 
 ### MySQL Database ###
 **/src/main/resources/db.properties
-

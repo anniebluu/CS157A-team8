@@ -51,14 +51,14 @@
 		
 		<div class=content-box>
 			<div class="content-form">
-				<form action="AddOrganization" method="post"">
-					<div class="input-group mb-3">
-						<span class="input-group-text" id="inputGroup-sizing-default" for="orgID">Organization Phone Number</span>
-						<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="orgID" name="orgID" placeholder="Enter New Organization Phone Number" required>
-					</div>
+				<form action="AddOrganization" method="post">
 					<div class="input-group mb-3">
 						<span class="input-group-text" id="inputGroup-sizing-default" for="orgName">Organization Name</span>
 						<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="orgName" name="orgName" placeholder="Enter Organization Name" required>
+					</div>
+					<div class="input-group mb-3">
+						<span class="input-group-text" id="inputGroup-sizing-default" for="orgID">Organization Phone Number</span>
+						<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="orgID" name="orgID" placeholder="Enter New Organization Phone Number" required>
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text" id="inputGroup-sizing-default" for="orgEmail">Organization Email</span>
@@ -70,7 +70,7 @@
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text" id="inputGroup-sizing-default" for="url">URL</span>
-						<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="url" name="url" placeholder="Enter Organization URL" required>
+						<input type="url" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="url" name="url" placeholder="Enter Organization URL" required>
 					</div>
 		                    
 					<div class="info-row">

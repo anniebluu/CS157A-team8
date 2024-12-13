@@ -67,7 +67,7 @@
 		                		out.println("<tr>" + "<td>" + rs.getString(1) + "</td>" + "<td>" + "Approved" + "</td>" + "<td><a href=\"creates.jsp\"><button type=\"button\" class=\"btn btn-primary\">Make Appointment</button></a></td>" + "</tr>");
 		                	}
 		                	else if (rs.getString(2).equals("1")) {
-		                		out.println("<tr>" + "<td>" + rs.getString(1) + "</td>" + "<td>" + "Denied" + "</td>" + "<td>Denied</td>" + "</tr>");
+		                		out.println("<tr>" + "<td>" + rs.getString(1) + "</td>" + "<td style=\"color:red;\">" + "Denied" + "</td>" + "<td style=\"color:red;\">Denied</td>" + "</tr>");
 		                	}
 		                	else {
 		                		out.println("<tr>" + "<td>" + rs.getString(1) + "</td>" + "<td>" + "Pending" + "</td>" + "<td>TBD</td>" + "</tr>");
