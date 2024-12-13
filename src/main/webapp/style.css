@@ -307,6 +307,12 @@ body {
 	color: #fff;
 }
 
+.info-row button:disabled {
+	background-color: #555; /* Keep the same dark grey when disabled */
+	color: white; /* White text color */
+	cursor: not-allowed;
+}
+
 /* dashboard end*/
 
 /* pets */
@@ -377,6 +383,16 @@ body {
 .home h1 {
 	font-size: 5.5rem;
 }
+
+.home h2 {
+	font-size: 2.5rem;
+	text-align: center;
+}
+
+.home h3 {
+	font-size: 1.5rem;
+}
+
 .home-form{
 	font-style: unset;
 	width: 550px;	
@@ -586,9 +602,10 @@ input[type="text"]:read-only, form.updatePet > .info-row > input[type="file"]:re
 	  flex-wrap: wrap; /* Allow items to wrap onto the next row */
 	  justify-content: center; /* Center the buttons horizontally */
 	  gap: 35px; /* Space between the buttons */
-	  max-width: 1200px; /* Limit the container width */
+	  /* max-width: 1200px; */ /* Limit the container width */
 	  width: 100%;
-	  margin: 2rem 0;
+	  margin: 2rem 0 0 0;
+	  padding: 0 4rem;
 	  overflow: auto;
 	}
 	

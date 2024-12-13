@@ -4,7 +4,20 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<script type="text/javascript">
 
+	window.onload = function (){
+		<% 
+		if (session.getAttribute("userName") == null){
+            response.sendRedirect("landingPage.jsp");  // Redirect to the landing page
+        } else {%>	
+		<% 
+		if ((Integer) session.getAttribute("isAdmin") == 0){
+            response.sendRedirect("petQueryHome.jsp");  // Redirect to the landing page
+        } }%>		
+	}
+	
+</script>
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,32 +32,15 @@
 		integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
 		crossorigin="anonymous">
 </head>
+<% request.setAttribute("adminUsersActive", "active"); %>
 
 <body>
 	<!-- header section starts -->
 	<jsp:include page="header.jsp"/>
 	<!-- header section ends -->
 	
-    <div class="sidebar">
-    	<div class="sidebar-menu">
-	 		<a href="adminProfile.jsp">My Profile</a>
-			<a href="organizations.jsp">Organizations</a>
-			<a href="addOrganization.jsp">Add Organization</a>
-			<a href="pets.jsp">Pets</a>
-			<a href="addPet.jsp">Add Pet</a>
-			<a href="users.jsp" class="active">Users</a>
-			<a href="applications.jsp">Applications</a>
-			<a href="appointments.jsp">Appointments</a>
-		</div>
-		<div class="logout">
-		    <form action="Logout" method="POST">
-		    	<div class="info-row">
-					<button type="submit" class="btn btn-secondary btn-lg">Log Out</button>
-				</div>
-			
-		    </form>
-	    </div>
-    </div>>
+    <jsp:include page="sidebar.jsp"/>
+
     
     
 	 <div class="main-content">

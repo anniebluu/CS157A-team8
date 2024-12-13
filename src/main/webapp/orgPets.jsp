@@ -36,28 +36,38 @@
 								con = new Database().getConnection();
 								Statement stmt = con.createStatement();
 								ResultSet rs = stmt.executeQuery("SELECT * FROM owns, pets WHERE owns.PetID = pets.PetID && owns.OrgID = '" + orgID + "'");
-								 while (rs.next()) {
-					                 String petID = rs.getString("petID");
-					                 String petName = rs.getString("petName");
-					                 String petAge = rs.getString("Age");
-					                 String category = rs.getString("Category");
-					                 String imagePath = rs.getString("imagePath");
-					%>
-					                 <div class="card-holder">
-					                 	<div class="card h-100">
-						                    <img src="<%= imagePath %>" class="card-img-top" alt="<%= petName %>">
-					                         <div class="card-body">
-					                             <h3 class="card-title"><%= petName %></h3>
-					                             <p class="card-text"><%= petAge %></h5>
-					                             <p class="card-text"><small class="text-body-secondary"><%= category %></small></h5>
-					                         </div>
-					                         <div class="info-row">
-					                             <button type="button" onclick="window.location.href='submits.jsp?petID=<%= petID %>'">Adopt</button>
-					                         </div>
-					                     </div>
-					                 </div>
-					<%
-								 }
+								if (!rs.next()){
+								%>
+								<div class="home">
+								<h2>Sorry!</h2>
+								<h3>This organization currently has no pets up for adoption :(</h3>
+								</div>	
+								<%} else {
+									do {
+						                 String petID = rs.getString("petID");
+						                 String petName = rs.getString("petName");
+						                 String petAge = rs.getString("Age");
+						                 String category = rs.getString("Category");
+						                 String imagePath = rs.getString("imagePath");
+						%>
+						                 <div class="card-holder">
+						                 	<div class="card h-100">
+							                    <img src="<%= imagePath %>" class="card-img-top" alt="<%= petName %>">
+						                         <div class="card-body">
+						                             <h3 class="card-title"><%= petName %></h3>
+						                             <p class="card-text"><%= petAge %></h5>
+						                             <p class="card-text"><small class="text-body-secondary"><%= category %></small></h5>
+						                         </div>
+						                         <div class="info-row">
+						                             <button class="adopt-button" type="button" onclick="adopt(<%= petID %>)">Adopt</button>
+						                         </div>
+						                     </div>
+						                 </div>
+						<%
+									 } while (rs.next());
+								}
+								
+								
 									 rs.close();
 						             stmt.close();
 						             con.close();
@@ -69,6 +79,39 @@
 			</div>
 	</div>
 	
+    
+    <script>
+    window.onload = function() {
+  	  	// disable buttons for admin
+  	  <% if (session.getAttribute("userName") != null){ 
+  	  		if ((Integer) session.getAttribute("isAdmin") == 1) {%>
+		  	  	var elems = document.getElementsByClassName('adopt-button');
+			  	for(var i = 0; i < elems.length; i++) {
+			  	    elems[i].disabled = true;
+			  	}
+	  	<% 	}
+  	  	} %>
+    }
+    
+ 	// handle adopt button
+    function adopt(petID) {
+    	<% if (session.getAttribute("userName") != null ) { %>
+		    // logged in
+    	 	<% if ((Integer) session.getAttribute("isAdmin") == 0) {%>
+		    	 	// is a regular user
+			    	window.location.href='submits.jsp?petID='+ petID;
+    	 	<%} else {%>
+    	 			// admin
+    	 			window.location.href='userOrganizations.jsp'; // it should not get here, but just in case
+    	 	<%} %>
+		<%} else {%>
+	    		// not logged in 
+		    	window.location = 'userLogin.jsp';
+    	<%}  %>
+    }
+    
+    
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
         crossorigin="anonymous">

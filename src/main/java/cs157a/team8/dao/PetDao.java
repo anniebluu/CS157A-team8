@@ -91,15 +91,96 @@ public class PetDao {
 		}
     }
     
-	public boolean updatePet(Pet pet) {
+	public boolean updatePetName(Pet pet) {
 	    con = new Database().getConnection();
-	    String sql = "UPDATE pets SET password = ? WHERE userID = ?";
+	    String sql = "UPDATE pets SET PetName = ? WHERE PetID = ?";
 	    boolean isUpdated = false;
 
 	    try {
 	        ps = con.prepareStatement(sql);
-	        ps.setString(1, pet.getPetName());  // Set the new password
-	        ps.setString(2, pet.getPetID());    // Specify the user to update
+	        ps.setString(1, pet.getPetName());  // Set the new name
+	        ps.setString(2, pet.getPetID());    // Specify the pet to update
+
+	        int rowsAffected = ps.executeUpdate();
+	        if (rowsAffected > 0) {
+	            isUpdated = true; // Update was successful
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if (con != null) con.close();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+	    return isUpdated; // Return whether the update was successful
+	}
+	
+	public boolean updatePetAge(Pet pet) {
+	    con = new Database().getConnection();
+	    String sql = "UPDATE pets SET Age = ? WHERE PetID = ?";
+	    boolean isUpdated = false;
+
+	    try {
+	        ps = con.prepareStatement(sql);
+	        ps.setString(1, pet.getAge());  // Set the new name
+	        ps.setString(2, pet.getPetID());    // Specify the pet to update
+
+	        int rowsAffected = ps.executeUpdate();
+	        if (rowsAffected > 0) {
+	            isUpdated = true; // Update was successful
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if (con != null) con.close();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+	    return isUpdated; // Return whether the update was successful
+	}
+	
+	public boolean updatePetCategory(Pet pet) {
+	    con = new Database().getConnection();
+	    String sql = "UPDATE pets SET Category = ? WHERE PetID = ?";
+	    boolean isUpdated = false;
+
+	    try {
+	        ps = con.prepareStatement(sql);
+	        ps.setString(1, pet.getCategory());  // Set the new name
+	        ps.setString(2, pet.getPetID());    // Specify the pet to update
+
+	        int rowsAffected = ps.executeUpdate();
+	        if (rowsAffected > 0) {
+	            isUpdated = true; // Update was successful
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if (con != null) con.close();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+	    return isUpdated; // Return whether the update was successful
+	}
+	
+	public boolean updatePetImage(Pet pet) {
+	    con = new Database().getConnection();
+	    String sql = "UPDATE pets SET imagePath = ? WHERE PetID = ?";
+	    boolean isUpdated = false;
+
+	    try {
+	        ps = con.prepareStatement(sql);
+	        ps.setString(1, pet.getImagePath());  // Set the new name
+	        ps.setString(2, pet.getPetID());    // Specify the pet to update
 
 	        int rowsAffected = ps.executeUpdate();
 	        if (rowsAffected > 0) {

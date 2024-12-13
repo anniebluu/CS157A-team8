@@ -6,76 +6,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Pet Query - Pet Organizations</title>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Pet Organizations</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
-		rel="stylesheet" 
-		integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
-		crossorigin="anonymous">
-		
-	<link rel="stylesheet" href="style.css">
-
-	
+        rel="stylesheet" 
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
+        crossorigin="anonymous">
+    <!-- Link to FontAwesome for the right arrow icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <% request.setAttribute("userOrganizationsActive", "active"); %>
 
 <body>
-
 	<!-- header section starts -->
-	<jsp:include page="header.jsp"/>
+   <header class="header">
+    	<jsp:include page="header.jsp"/>
+	</header>
 	<!-- header section ends -->
 
-<%-- 	<jsp:include page="sidebar.jsp"/>
- --%>	
-
-	<div class="main-content no-sidebar">
-    	<div class="content-table">
-	    	<h2>Pet Organizations</h2>
-	    
-		    <table class="table table-light table-striped">
-		        <thead>
-		            <tr>
-		                <th scope="col">Phone Number</th>
-		                <th scope="col">Name</th>
-		                <th scope="col">Email</th>
-		                <th scope="col">Address</th>
-		                <th scope="col">URL</th>
-		            </tr>
-		        </thead>
-		        <tbody>
-		            <%
-		                try {
-		                    java.sql.Connection con;
-		                    con = new Database().getConnection();
-		                    Statement stmt = con.createStatement();
-		                    ResultSet rs = stmt.executeQuery("SELECT * FROM petorganizations");
-		                    while (rs.next()) {
-		                        out.println("<tr>" + 
-		                            "<td>" + rs.getString(1) + "</td>" + 
-		                            "<td>" + rs.getString(2) + "</td>" + 
-		                            "<td>" + rs.getString(3) + "</td>" + 
-		                            "<td>" + rs.getString(4) + "</td>" + 
-		                            "<td>" + 
-		                            "<button type=\"button\" class=\"btn btn-outline-primary\" onclick='openURL(\"" + rs.getString(5)  + "\")'>" + 
-		                            "<i class=\"fas fa-arrow-right\"></i></button>" + 
-		                            "</td>" + 
-		                            "</tr>");
-		                    }
-		                    
-		                    rs.close();
-		                    stmt.close();
-		                    con.close();
-		                } catch(SQLException e) {
-		                    out.println("SQLException caught: " + e.getMessage());
-		                }
-		            %>
-		        </tbody>
-		    </table>
+    <div class=container>
+		
+		<div class="org-container">
+		<%
+	        try {
+	            java.sql.Connection con;
+	            con = new Database().getConnection();
+	            Statement stmt = con.createStatement();
+	            ResultSet rs = stmt.executeQuery("SELECT * FROM petorganizations");
+	            while (rs.next()) {
+	                String orgID = rs.getString(1);
+	                String orgName = rs.getString(2);
+	                out.println("<a href='orgPets.jsp?orgID=" + orgID + "' class='org-button'>" + orgName + "</a>");
+	            }
+	            rs.close();
+	            stmt.close();
+	            con.close();
+	        } catch(SQLException e) {
+	            out.println("SQLException caught: " + e.getMessage());
+	        }
+	    %>
 		</div>
 	</div>
 
@@ -85,45 +56,11 @@
     </script>
 
     <script>
-        function openURL(url) {
+        function redirectToPets(organizationID) {
             // Redirect to the organization redirect page with the organization ID
-        	window.open(url, '_blank').focus();
+            window.location.href = "organizationsRedirect.jsp?id=" + String(organizationID);
         }
     </script>
-    
-    <!-- <title>Pet Organizations</title>
-
-</head>
-<body>
-
-	<h2 style="text-align: center; margin-bottom: 30px;">Pet
-		Organizations</h2>
-
-	<div class="org-container">
-<%-- 		<%
-        try {
-            java.sql.Connection con;
-            con = new Database().getConnection();
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM petorganizations");
-            int count = 0;
-            while (rs.next()) {
-                String orgName = rs.getString(2);
-                out.println("<a href='listOfpets.jsp?orgName=" + orgName + "' class='org-button'>" + orgName + "</a>");
-                count++;
-                if (count % 4 == 0) {
-                    out.println("<div style='flex-basis: 100%;'></div>"); 
-                }
-            }
-            rs.close();
-            stmt.close();
-            con.close();
-        } catch(SQLException e) {
-            out.println("SQLException caught: " + e.getMessage());
-        }
-    %> --%>
-	</div> -->
-	
 </body>
-
 </html>
+

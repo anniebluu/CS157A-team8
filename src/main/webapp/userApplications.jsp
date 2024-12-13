@@ -6,6 +6,22 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<script type="text/javascript">
+
+window.onload = function (){
+	<% 
+	if (session.getAttribute("userName") == null){
+        response.sendRedirect("landingPage.jsp");  // Redirect to the landing page
+    } else {
+    	if ((Integer) session.getAttribute("isAdmin") == 1){
+    		response.sendRedirect("petQueryHome.jsp");
+    	}
+    }
+    %>	
+
+}
+	
+</script>
 
 <head>
     <meta charset="UTF-8">

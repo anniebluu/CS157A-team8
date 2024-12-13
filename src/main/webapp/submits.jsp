@@ -18,7 +18,22 @@
 		
 	<link rel="stylesheet" href="style.css">
 </head>
+<script type="text/javascript">
 
+	window.onload = function (){
+		<% 
+		if (session.getAttribute("userName") == null){
+            response.sendRedirect("landingPage.jsp");  // Redirect to the landing page
+        } else {
+        	if ((Integer) session.getAttribute("isAdmin") == 1){
+        		response.sendRedirect("petQueryHome.jsp");
+        	}
+        }
+        %>	
+
+	}
+	
+</script>
 <body>
    <!-- header section starts -->
 	<jsp:include page="header.jsp"/>
@@ -51,7 +66,6 @@
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text submits-input-group-text" id="inputGroup-sizing-default" for="petID">Pet ID</span>
-						<!-- <input type="text" class="form-control" id="petID" name="petID" placeholder="Enter Desired Pet's ID" required> -->
 						<input type="text" class="form-control" id="petID" name="petID"
 						value="<%
 							    // Get the petID from the request parameters
@@ -60,21 +74,18 @@
 							    // Check if petID is null or empty (optional)
 							    if (petID != null && !petID.isEmpty()) {
 							        // You can now use petID in your JSP page
-							        out.println(petID);
-							    } else {
-							        out.println("No pet selected");
-							    }
-							%>" readonly>
-					</div>   
+							        out.println(petID);}%>" placeholder="No pet selected" readonly required>
+							    
+						</div>  
 					<div class="info-row apply-button-container">
-						<button type="submit" class="btn btn-primary">Submit Application</button>
-<!-- 					<a href="#"><button class="btn btn-primary" onclick="userPets.jsp">Return to Pets</button></a> -->
+						<button class="submit-apt-button" type="submit" class="btn btn-primary" <%= (petID == null || petID.isEmpty()) ? "disabled" : "" %>>Submit Application</button>
 					</div>
 					
 				</form>
 			</div>
 		</div>
 	</div>
+	
 
 </body>
 </html>
