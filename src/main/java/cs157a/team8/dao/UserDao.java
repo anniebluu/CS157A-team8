@@ -85,12 +85,28 @@ public class UserDao {
     	return queryUsers(query);
     }
     
+    // method deletes a specific user from the database
     public void deleteUser(String userID) {
     	con = new Database().getConnection();
-    	String sql = "DELETE FROM users WHERE UserID = '" + userID + "'";
+    	// delete user from users table, submits table, adopts table, and creates table
+    	String usersSql = "DELETE FROM users WHERE UserID = '" + userID + "'";
+    	String submitsSql = "DELETE FROM submits WHERE UserID = '" + userID + "'";
+    	String adoptsSql = "DELETE FROM adopts WHERE UserID ='" + userID + "'";
+    	String createsSql = "DELETE FROM creates WHERE UserID ='" + userID + "'";
+    	
     	try {
-    		ps = con.prepareStatement(sql);
+    		ps = con.prepareStatement(usersSql);
     		ps.executeUpdate();
+    		
+    		ps = con.prepareStatement(submitsSql);
+    		ps.executeUpdate();
+    		
+    		ps = con.prepareStatement(adoptsSql);
+    		ps.executeUpdate();
+    		
+    		ps = con.prepareStatement(createsSql);
+    		ps.executeUpdate();
+    		
 	    } catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

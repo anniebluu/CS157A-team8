@@ -42,11 +42,13 @@ public class AppointmentDao {
 		return result;
 	}
 	
-	// method delete Application into database
+	// method delete Appointment from database
 	public String cancelAppointment(String appointmentID) {
 		con = new Database().getConnection();
+		// delete this Appointment from appointments, creates, and organizes tables
 		String appointmentsQuery = "DELETE FROM appointments WHERE AppointmentID = '" + appointmentID + "'";
 		String createsQuery = "DELETE FROM creates WHERE AppointmentID = '" + appointmentID + "'";
+		String organizesQuery = "DELETE FROM organizes WHERE AppointmentID = '" + appointmentID + "'";
 		String result="Appointment Cancelled Successfully";
 
 		try {
@@ -54,6 +56,9 @@ public class AppointmentDao {
 			ps.executeUpdate();
 			
 			ps = con.prepareStatement(createsQuery);
+			ps.executeUpdate();
+			
+			ps = con.prepareStatement(organizesQuery);
 			ps.executeUpdate();
 			
 		} catch (SQLException e) {
