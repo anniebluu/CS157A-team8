@@ -41,8 +41,8 @@
 	<div class="container">
 		<nav>
 			<div class="input-group mb-3" style="top: 20px;">
-				<select class="form-select" id="category" name="category" aria-label="Default select example">
-					  <option id="select-all" onclick="filterSelection('all')" selected value='all'>All</option>
+				<select class="form-select" id="category" name="category" aria-label="Default select example" onchange="filterSelection(this.value)">
+					  <option value="all" <% if (request.getParameter("category") == null || request.getParameter("category").equals("all")) out.print("selected"); %>>All</option>
 					  	<%
 					        try {
 					            java.sql.Connection con;
@@ -51,7 +51,7 @@
 					            ResultSet rs = stmt.executeQuery("SELECT DISTINCT Category FROM pets");
 					            while (rs.next()) {
 					            	String dashedString = rs.getString(1).replace(" ", "-");
-					            	out.println("<option value='" + dashedString + "' onclick='filterSelection(\"" + dashedString + "\")'>" + rs.getString(1) + "</option>");
+					            	out.println("<option value='" + dashedString + "' " + (request.getParameter("category") != null && request.getParameter("category").equals(dashedString) ? "selected" : "") + ">" + rs.getString(1) + "</option>");
 					            }
 					            rs.close();
 					            stmt.close();
@@ -64,15 +64,31 @@
 			</div>
 		</nav>
 					
-		<div class=guest-container>
+		<div class="guest-container">
 			<div class="row row-cols-1 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 row-cols-xxl-7 justify-content-center">
 				<%
+					String categoryFilter = request.getParameter("category");
+					if (categoryFilter == null || categoryFilter.equals("all")) {
+						categoryFilter = "";
+					} else {
+						categoryFilter = categoryFilter.replace("-", " "); // Convert dashed to space-separated string
+					}
+
 					try {
 						java.sql.Connection con;
-							con = new Database().getConnection();
-							Statement stmt = con.createStatement();
-							ResultSet rs = stmt.executeQuery("SELECT * FROM pets");
-							 while (rs.next()) {
+						con = new Database().getConnection();
+						Statement stmt = con.createStatement();
+						String query = "SELECT * FROM pets";
+						if (!categoryFilter.equals("")) {
+							query += " WHERE Category = ?";
+						}
+						PreparedStatement pstmt = con.prepareStatement(query);
+						if (!categoryFilter.equals("")) {
+							pstmt.setString(1, categoryFilter);
+						}
+						ResultSet rs = pstmt.executeQuery();
+						
+						while (rs.next()) {
 				                 String petID = rs.getString("petID");
 				                 String petName = rs.getString("petName");
 				                 String petAge = rs.getString("Age");
@@ -84,8 +100,8 @@
 					                    <img src="<%= imagePath %>" class="card-img-top" alt="<%= petName %>">
 				                         <div class="card-body">
 				                             <h3 class="card-title"><%= petName %></h3>
-				                             <p class="card-text"><%= petAge %></h5>
-				                             <p class="card-text"><small class="text-body-secondary"><%= category %></small></h5>
+				                             <p class="card-text"><%= petAge %></p>
+				                             <p class="card-text"><small class="text-body-secondary"><%= category %></small></p>
 				                         </div>
 				                         <div class="info-row">
 				                             <button class="adopt-button" type="button" onclick="adopt(<%= petID %>)">Adopt</button>
@@ -95,7 +111,7 @@
 				<%
 							 }
 								 rs.close();
-					             stmt.close();
+					             pstmt.close();
 					             con.close();
 							} catch(SQLException e) {
 								out.println("SQLException caught: " + e.getMessage());
@@ -111,7 +127,7 @@
 	    // reset the category to 'All' when the page is loaded/reloaded
 	    window.onload = function() {
 	    	filterSelection('all');
-	  	  	document.getElementById("category").value = 'all';
+	  	  	document.getElementById("category").value = '<%= request.getParameter("category") != null ? request.getParameter("category") : "all" %>';
 	  	  	
 	  	  	// disable buttons for admin
 	  	  <% if (session.getAttribute("userName") != null){ 

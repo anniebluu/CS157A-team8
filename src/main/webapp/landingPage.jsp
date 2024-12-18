@@ -28,10 +28,11 @@
     <div class="home">
         <h1>Find your perfect pet today</h1><br>
         <p>Our user-friendly platform allows you to effortlessly browse through a diverse selection of pets from multiple adoption centers all in one place.</p><br>
-        <div class="button">
-            <a href="#"><button class="btn1" onclick="location.href='http://localhost:8080/CS157A-team8/userLogin.jsp'">Login</button></a>
-            <a href="#"><button class="btn2" onclick="location.href='http://localhost:8080/CS157A-team8/userRegister.jsp'">Register</button></a>
-        </div>
+	<div class="button">
+	    <button class="btn1" onclick="window.location.href='http://localhost:8080/CS157A-team8/userLogin.jsp'">Login</button>
+	    <button class="btn2" onclick="window.location.href='http://localhost:8080/CS157A-team8/userRegister.jsp'">Register</button>
+	</div>
+
     </div>
 </div>
 
