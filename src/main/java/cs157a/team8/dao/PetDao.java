@@ -84,12 +84,27 @@ public class PetDao {
         return (queryPets(query) != null);
     }
     
+    // method to delete a specific pet from database
     public void deletePet(String petID) {
     	con = new Database().getConnection();
-    	String sql = "DELETE FROM pets WHERE PetID = '" + petID + "'";
+    	String petsSql = "DELETE FROM pets WHERE PetID = '" + petID + "'";
+    	String submitsSql = "DELETE FROM submits WHERE PetID = '" + petID + "'";
+    	String adoptsSql = "DELETE FROM adopts WHERE PetID = '" + petID + "'";
+    	String ownsSql = "DELETE FROM owns WHERE PetID = '" + petID + "'";
+    	
     	try {
-    		ps = con.prepareStatement(sql);
+    		ps = con.prepareStatement(petsSql);
     		ps.executeUpdate();
+    		
+    		ps = con.prepareStatement(submitsSql);
+    		ps.executeUpdate();
+    		
+    		ps = con.prepareStatement(adoptsSql);
+    		ps.executeUpdate();
+    		
+    		ps = con.prepareStatement(ownsSql);
+    		ps.executeUpdate();
+    		
 	    } catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
