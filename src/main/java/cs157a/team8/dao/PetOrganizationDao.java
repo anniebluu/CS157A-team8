@@ -72,11 +72,22 @@ public class PetOrganizationDao {
         return (queryOrganizations(query) != null);
     }
     
+    // delete an organization from database
     public void deleteOrganization(String organizationID) {
     	con = new Database().getConnection();
-    	String sql = "DELETE FROM petorganizations WHERE OrgID = '" + organizationID + "'";
+    	
+    	// delete organization from organizations, owns, and organizes relations
+    	String organizationsSql = "DELETE FROM petorganizations WHERE OrgID = '" + organizationID + "'";
+    	String ownsSql = "DELETE FROM owns WHERE OrgID = '" + organizationID + "'";
+    	String organizesSql = "DELETE FROM organizes WHERE OrgID = '" + organizationID + "'";
     	try {
-    		ps = con.prepareStatement(sql);
+    		ps = con.prepareStatement(organizationsSql);
+    		ps.executeUpdate();
+    		
+    		ps = con.prepareStatement(ownsSql);
+    		ps.executeUpdate();
+    		
+    		ps = con.prepareStatement(organizesSql);
     		ps.executeUpdate();
 	    } catch (SQLException e) {
 			// TODO Auto-generated catch block
