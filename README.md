@@ -8,7 +8,7 @@ Our project was modeled on the idea of an animal adoption center as a database a
 ## Project Implementation Section: Procedures to Set Up and Run the System
 This project uses a 3-tier architecture to run; you will need to set up the code on your IDE, download Tomcat to run on your local server, and have MySQLWorkbench to successfully run the project on your system.
 
-Step 1: To set this project up in your system, first unzip the "Team8_Project.zip" where the source code will be found. Alternatively, pull the source code directly from the "CS157A-team8" Github repository. The folder titled "CS157A-team8" will be the main project folder. Import that to the IDE you are using to view the project; this project was implemented using Eclipse.
+Step 1: To set this project up in your system, first unzip the "Team8_Project.zip" where the source code will be found. Alternatively, pull the source code directly from the "CS157A-team8" Github repository. The folder titled "Source Code" will be the main project folder. Import that to the IDE you are using to view the project; this project was implemented using Eclipse.
 
 Step 2: After the project is imported, it is important to follow these steps to set up your MySQLWorkbench from https://www.mysql.com/products/workbench/ and also install the MySQL server from https://dev.mysql.com/downloads/mysql/. Also install the MySQL connector 9.0 as a jar file from https://dev.mysql.com/downloads/connector/j/?os=26.
 
